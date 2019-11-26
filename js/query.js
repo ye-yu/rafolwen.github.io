@@ -7,3 +7,7 @@ $('#query-input').keyup(e => {
     console.log(e.target.value);
   }
 })
+
+$('.query-suggestion').click(e => {
+  $('#query-input').val(e.target.innerText);
+})
