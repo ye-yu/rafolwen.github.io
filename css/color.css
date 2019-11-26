@@ -7,6 +7,10 @@
   background-color: #FFFFFFDD;
 }
 
+.bg-dark-translucent{
+  background-color: #343a40DD;
+}
+
 
 /* text-related colours */
 .text-yellow{
