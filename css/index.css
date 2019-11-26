@@ -42,3 +42,12 @@
   }
 }
 
+.hover-bold:hover{
+  font-weight: bold;
+  transition: transform 0.5s;
+}
+
+.hover-black:hover{
+  background-color: #111111;
+  transition: transform 0.5s;
+}
