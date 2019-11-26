@@ -9,43 +9,43 @@
     <link rel="stylesheet" href="/css/color.css" />
   </head>
   <body>
-    <div class="container-fluid bg-black code text-yellow">
+    <div class="container-fluid bg-black query py-0 px-0 text-xs">
       <div class="row">
         <div class="col">
           <div class="panel-group">
            <div class="panel panel-default">
              <div class="panel-heading">
-               <h4 class="panel-title">
-                 <div class="text-yellow collapse-before" data-toggle="collapse" href="#querying-container">query my data here</div>
-               </h4>
+               <div class="panel-title">
+                 <div class="text-yellow text-xs query collapse-before" data-toggle="collapse" href="#querying-container"><b>query my data here</b></div>
+               </div>
              </div>
              <div id="querying-container" class="panel-collapse collapse">
-               <div class="container-fluid">
+               <div class="container-fluid pb-3 pt-2">
                  <div class="row">
                    <div class="col">
                      <div class="form-group">
-                       <input type="text" class="form-control" placeholder="stdin: insert query here">
+                       <input type="text" class="form-control text-xs px-1 py-1 bg-dark text-white border-radius-0" placeholder="stdin: insert query here">
                      </div>
                    </div>
                  </div>
                  <div class="row">
-                   <div class="col-md">
-                     <div class="card w-100 h-100" style="width: 18rem;">
-                       <div class="card-body">
-                         <h6 class="card-subtitle mb-2 text-muted">stdout: query result</h6>
-                         <p class="card-text">None</p>
-                       </div>
-                     </div>
-                   </div>
-                   <div class="col-md">
-                     <div class="card w-100 h-100" style="width: 18rem;">
-                       <div class="card-body">
-                         <h6 class="card-title">query list</h6>
-                         <ul class="list-group list-group-flush">
-                           <li class="list-group-item">Cras justo odio</li>
-                           <li class="list-group-item">Dapibus ac facilisis in</li>
-                           <li class="list-group-item">Vestibulum at eros</li>
-                         </ul>
+                   <div class="col">
+                     <div class="card bg-dark text-white border-radius-0">
+                       <div class="card-body px-0">
+                         <div class="container-fluid">
+                           <div class="row">
+                             <div class="col-md">
+                               <b class="text-muted text-sm">stdout: query results</b>
+                             </div>
+                             <div class="col-md border-left">
+                               <span class="text-sm">query lists</span>
+                               <ul>
+                                 <li>select *</li>
+                                 <li>list tables</li>
+                               </ul>
+                             </div>
+                           </div>
+                         </div>
                        </div>
                      </div>
                    </div>
