@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Source+Code+Pro|Source+Sans+Pro&display=swap');
 
-body, p, h4, h5, h6, a {
+.font-secondary, body, p, h4, h5, h6, a {
   font-family: 'Source Sans Pro', sans-serif;
 }
 

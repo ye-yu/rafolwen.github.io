@@ -57,11 +57,6 @@
   transition: border-right 0.2s ease-out;
 }
 
-.projects-section > span{
-  color: gray;
-  font-family: 'Bebas Neue', cursive;
-}
-
 .nav-tabs-left{
   border: none;
 }
