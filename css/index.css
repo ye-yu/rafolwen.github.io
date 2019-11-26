@@ -56,3 +56,29 @@
   border-right: solid 15px white;
   transition: border-right 0.2s ease-out;
 }
+
+.projects-section > span{
+  color: gray;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.nav-tabs-left{
+  border: none;
+}
+.nav-tabs-left > .nav-link.active {
+  border-top: solid 1px #dee2e6;
+  border-bottom: solid 1px #dee2e6;
+  border-left: solid 1px #dee2e6;
+  border-right: none;
+  -webkit-box-shadow: -2px 0px 10px -1px rgba(0,0,0,0.3);
+  -moz-box-shadow: -2px 0px 10px -1px rgba(0,0,0,0.3);
+  box-shadow: -2px 0px 10px -1px rgba(0,0,0,0.3);
+  background-color: white !important;
+  color: #333 !important;
+}
+
+.nav-tabs-left > .nav-link{
+  border-radius: 0.25rem 0 0 0.25rem;
+  border: none;
+  border-right: solid 1px #dee2e6;
+}
