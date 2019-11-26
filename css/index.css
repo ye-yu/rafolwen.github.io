@@ -15,3 +15,7 @@
 .collapse-before[aria-expanded=false]::before{
   transition: transform 0.2s;
 }
+
+.border-radius-0{
+  border-radius: 0px;
+}
