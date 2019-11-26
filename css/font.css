@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Source+Code+Pro|Source+Sans+Pro&display=swap');
+
+body, p, h4, h5, h6, a {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.query, code, pre {
+  font-family: 'Source Code Pro', monospace;
+}
+
+h1, h2, h3 {
+  font-family: 'Bebas Neue', cursive;
+}
