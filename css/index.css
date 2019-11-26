@@ -30,6 +30,10 @@
   }
 }
 
+.border-top-gray-15{
+  border-top: solid #555 10px;
+}
+
 .header-bg{
   background-image: url("/images/header-bg.jpg");
   background-size: 100% auto;
