@@ -11,6 +11,9 @@
   background-color: #343a40DD;
 }
 
+.bg-black-translucent{
+  background-color: #111111DD;
+}
 
 /* text-related colours */
 .text-yellow{
