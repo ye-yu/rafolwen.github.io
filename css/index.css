@@ -51,3 +51,8 @@
   background-color: #111111;
   transition: transform 0.5s;
 }
+
+.hover-border-right:hover {
+  border-right: solid 15px white;
+  transition: border-right 0.2s ease-out;
+}
