@@ -29,3 +29,9 @@
     border-left: 0px;
   }
 }
+
+.header-bg{
+  background-image: url("/images/header-bg.jpg");
+  background-size: 100% auto;
+  background-position: 20% 0;
+}
