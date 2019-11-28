@@ -19,3 +19,20 @@
 .text-yellow{
   color: yellow
 }
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: lightgray;
+}
+
+a:active {
+  border: none;
+  color: darkgray;
+}
+
+a:visited {
+  color: darkgray;
+}
