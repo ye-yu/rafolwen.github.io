@@ -4,13 +4,9 @@ $('.link').click(e => {
 
 var projectCategories = JSON.parse(`
   [
-    \"Python\",
-    \"Java\",
-    \"C\",
-    \"PHP\",
-    \"JavaScript/Node.js\",
-    \"Web Design\",
-    \"Music\"
+    \"Machine Learning\",
+    \"Web\",
+    \"Command Line Tools\"
   ]
 `);
 
