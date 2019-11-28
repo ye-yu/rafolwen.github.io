@@ -1,7 +1,3 @@
-$('.link').click(e => {
-  window.location = $(e.target.parentElement).attr('href');
-})
-
 var projectCategories = JSON.parse(`
   [
     \"Machine Learning\",
