@@ -61,6 +61,11 @@
   transition: border-right 0.2s ease-out;
 }
 
+.hover-border-left:hover {
+  border-left: solid 10px white;
+  transition: border-left 0.2s ease-out;
+}
+
 .nav-tabs-left{
   border: none;
 }
