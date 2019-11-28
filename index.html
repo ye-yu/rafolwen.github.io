@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Base Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/font.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+  </head>
+  <body class="bg-light">
+    <div class="container-fluid bg-black query py-0 px-0 text-xs">
+      <div class="row">
+        <div class="col">
+          <div class="panel-group">
+           <div class="panel panel-default">
+             <div class="panel-heading">
+               <div class="panel-title">
+                 <div class="text-yellow text-xs query collapse-before" data-toggle="collapse" href="#querying-container"><b>query my data here</b></div>
+               </div>
+             </div>
+             <div id="querying-container" class="panel-collapse collapse">
+               <div class="container-fluid pb-3 pt-2">
+                 <div class="row">
+                   <div class="col">
+                     <div class="form-group">
+                       <input id="query-input" type="text" class="form-control text-xs px-1 py-1 bg-dark text-white border-radius-0" placeholder="stdin: insert query here">
+                     </div>
+                   </div>
+                 </div>
+                 <div class="row">
+                   <div class="col">
+                     <div class="card bg-dark text-white border-radius-0">
+                       <div class="card-body px-0">
+                         <div class="container-fluid">
+                           <div class="row">
+                             <div class="col-md">
+                               <b class="text-muted text-sm">stdout: query results</b>
+                             </div>
+                             <div class="col-md border-left-md">
+                               <span class="text-sm">query lists</span>
+                               <ul>
+                                 <li class="query-suggestion">select *</li>
+                                 <li class="query-suggestion">list tables</li>
+                               </ul>
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid py-3 header-bg">
+      <div class="row">
+        <div class="col">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 bg-white-translucent">
+                <div class="display-1 font-main my-0 py-0">
+                  Raflie Olwen
+                </div>
+                <div class="text-muted text-md py-0 my-0">
+                  Bachelor of Computer Science (Hons.) Majoring Data Science
+                </div>
+                <b>Fresh Graduate</b>
+              </div>
+              <div class="col-md-3 bg-dark-translucent text-white py-2">
+                <a class="text-white text-lg" href="https://www.hackerrank.com/rafolwen98"><u>Hackerrank's Badges:</u></a>
+                <div class="d-block">
+                </div>
+              </div>
+              <div class="col-md-3 bg-black-translucent text-white py-0 px-0">
+                <div class="d-flex align-items-stretch h-100 flex-column">
+                  <div class="link hover-border-right hover-black d-flex h-100" href="https://linkedin.com/in/raflie">
+                    <div class="align-self-center px-4 h5">LinkedIn</div>
+                  </div>
+                  <div class="link hover-border-right hover-black d-flex h-100" href="https://www.kaggle.com/yedata">
+                    <div class="align-self-center px-4 h5">Kaggle</div>
+                  </div>
+                  <div class="link hover-border-right hover-black d-flex h-100" href="https://google.com/">
+                    <div class="align-self-center px-4 h5">Resume</div>
+                  </div>
+                  <div class="link hover-border-right hover-black d-flex h-100" href="https://google.com/">
+                    <div class="align-self-center px-4 h5">Contact</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container bg-white mt-3 pt-3 border-left border-right border-top-gray-15">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="nav flex-column text-lg font-main nav-tabs nav-tabs-left" id="v-tabs-tab-projects" role="tablist" aria-orientation="vertical">
+            <span class="nav-link active" id="v-tabs-all-projects-tab" data-toggle="pill" href="#v-tabs-all-projects" role="tab" aria-controls="v-tabs-all-projects" aria-selected="true">All Projects</span>
+          </div>
+        </div>
+
+        <div class="col-md-9">
+
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="/js/query.js" type="text/javascript"></script>
+  <script src="/js/index.js" type="text/javascript"></script>
+</html>
