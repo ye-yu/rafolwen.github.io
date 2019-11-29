@@ -1,3 +1,10 @@
+@media (max-width: 992px) {
+  	.container {
+    	max-width: 100%;
+      padding: 0;
+  	}
+}
+
 .collapse-before::before{
   content: "> ";
   display: inline-block;
