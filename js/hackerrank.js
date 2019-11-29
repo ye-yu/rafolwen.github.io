@@ -17,3 +17,28 @@ for(i of badges) {
                     `;
   $("#badges-section").append(template);
 }
+
+/* scrolling animation */
+var badgeScrollWidthTotalPX = $("#badges-section").prop("scrollWidth");
+var badgeScrollWidthPX = 75;
+var badgeScrollCount = 0;
+const badgeScrollIntervalRepeat = Math.floor(badgeScrollWidthTotalPX / badgeScrollWidthPX)
+var badgeScrollDirection = 'right';
+var badgeScrollInterval = setInterval(
+  () => {
+    let scroll;
+    if (badgeScrollDirection == 'left')
+      scroll = `-=${badgeScrollWidthPX}px`;
+    else
+      scroll = `+=${badgeScrollWidthPX}px`;
+    $("#badges-section").animate({
+            'scrollLeft': scroll
+        }, '100');
+    badgeScrollCount++;
+    if (badgeScrollCount >= badgeScrollIntervalRepeat) {
+      badgeScrollCount = 0;
+      badgeScrollDirection = badgeScrollDirection == 'left' ? 'right' : 'left';
+    }
+  },
+  1500
+);
