@@ -146,3 +146,8 @@ body {
     max-width: 80px;
   }
 }
+
+#project-header-subtitle p{
+  margin-bottom: 15px;
+  line-height: 150%;
+}

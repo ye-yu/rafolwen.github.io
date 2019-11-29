@@ -2,7 +2,7 @@ var projectCategories = JSON.parse(`
   [
     \"Machine Learning\",
     \"Web\",
-    \"Command Line Tools\"
+    \"Command Line\"
   ]
 `);
 
@@ -17,3 +17,26 @@ for(i of projectCategories){
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+// read from projects.JSON
+var projects;
+$.ajax({
+  url: "/js/projects.json",
+  dataType: "json",
+  success: function (data) {
+    projects = data;
+    displayProjects("All Projects");
+  }
+});
+
+function displayProjects(targetCategory) {
+  let project = projects.projectCategories.filter(x => x.name == targetCategory)[0];
+  let description = project.desc;
+  $("#project-header-title").html(targetCategory);
+  $("#project-header-subtitle").html(description.replace(/'\n'/g, '<br />'));
+  console.log(description.replace('\n', '<br />'));
+}
+
+$("#v-tabs-tab-projects > *").click(e => {
+  displayProjects(e.target.innerHTML);
+});
