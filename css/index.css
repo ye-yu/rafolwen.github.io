@@ -102,3 +102,10 @@
 .overflow-x-scroll {
   overflow-x: scroll;
 }
+
+.tooltip-help{
+  min-height: 20px;
+  max-height: 20px;
+  min-width: 20px;
+  max-width: 20px;
+}

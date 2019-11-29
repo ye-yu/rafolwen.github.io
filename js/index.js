@@ -12,3 +12,8 @@ for(i of projectCategories){
   let navTabTemplate = `<span class="nav-link" id="v-tabs-${temp_id}-tab" data-toggle="pill" href="#v-tabs-${temp_id}" role="tab" aria-controls="v-tabs-${temp_id}" aria-selected="false">${temp_name}</span>`;
   $("#v-tabs-tab-projects").append(navTabTemplate);
 }
+
+// Activate all tooltips
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
