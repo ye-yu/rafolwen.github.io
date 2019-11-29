@@ -61,7 +61,7 @@
     line-height: 100%;
   }
 
-  .text-xl{
+  .text-xl, .text-lg-xl{
     font-size: 12rem;
     line-height: 100%;
   }
