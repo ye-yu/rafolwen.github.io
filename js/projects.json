@@ -2,19 +2,19 @@
     "projectCategories": [
         {
             "name": "All Projects",
-            "desc": "All projects that are done since the beginning of my study in computer science. Many programming languages have been studied and practiced especially Python, Java, JavaScript, SQL, and C.<br />            These are sorted by development date. You can choose to filter based on the categories in the tab on the left/above.<br />            Repos that are tagged with 'Archived' are repos that were not maintain in git. Thus, git commits in these repos are not as meaningful as the other.<br />            "
+            "desc": "<p>All projects that are done since the beginning of my study in computer science. Many programming languages have been studied and practiced especially Python, Java, JavaScript, SQL, and C.</p><p>            These are sorted by development date. You can choose to filter based on the categories in the tab on the left/above.</p><p>            Repos that are tagged with 'Archived' are repos that were not maintain in git. Thus, git commits in these repos are not as meaningful as the other.</p>"
         },
         {
             "name": "Machine Learning",
-            "desc": "Machine learning is my main focus of study because I am majoring in Data Science. I am interested in modelling for unstructured data such as images, text, and audio. All implementations of machine learning are mostly done in Python using Keras library.<br />            "
+            "desc": "<p>Machine learning is my main focus of study because I am majoring in Data Science. I am interested in modelling for unstructured data such as images, text, and audio. All implementations of machine learning are mostly done in Python using Keras library.</p>"
         },
         {
             "name": "Web",
-            "desc": "Web development was one of the tasks given during the duration of my internship period. I have learnt to use bootstrap and jquery for designing the front-end. I have also been involving in backend web development using vanilla PHP and Node.js Express package.<br />            "
+            "desc": "<p>Web development was one of the tasks given during the duration of my internship period. I have learnt to use bootstrap and jquery for designing the front-end. I have also been involving in backend web development using vanilla PHP and Node.js Express package.</p>"
         },
         {
             "name": "Command Line",
-            "desc": "Command line application is very useful because I can reuse the application in another program. Some of the command line applications are the API that I program for preprocessing of data.<br />            "
+            "desc": "<p>Command line application is very useful because I can reuse the application in another program. Some of the command line applications are the API that I program for preprocessing of data.</p>"
         }
     ],
     "projects": [
