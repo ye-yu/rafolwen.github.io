@@ -100,11 +100,26 @@
   min-width: 80px;
   max-width: 80px;
   height: 80px;
+  font-size: 0.65rem;
 }
 
 .hackerrank-image > img {
   width: 50px;
   height: 50px;
+}
+
+@media (max-width: 992px) {
+  .hackerrank-image {
+    min-width: 160px;
+    max-width: 160px;
+    height: 160px;
+    font-size: 1rem;
+  }
+
+  .hackerrank-image > img {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 .overflow-x-scroll {
@@ -116,4 +131,13 @@
   max-height: 20px;
   min-width: 20px;
   max-width: 20px;
+}
+
+@media (max-width: 992px) {
+  .tooltip-help{
+    min-height: 40px;
+    max-height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+  }
 }
