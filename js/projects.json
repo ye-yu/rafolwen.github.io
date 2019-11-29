@@ -1,0 +1,74 @@
+{
+    "project_categories": [
+        {
+            "name": "All Projects",
+            "desc": "All projects that are done since the beginning of my study in computer science. Many\n            programming languages have been studied and practiced especially Python, Java, JavaScript, SQL, and C.\n            These are sorted by development date. You can choose to filter based on the categories in the tab on \n            the left/above.\n            \n            Repos that are tagged with 'Archived' are repos that were not maintain in git. Thus, git commits\n            in these repos are not as meaningful as the other.\n            "
+        },
+        {
+            "name": "Machine Learning",
+            "desc": "Machine learning is my main focus of study because I am majoring in Data Science. I am interested\n            in modelling for unstructured data such as images, text, and audio. All implementations of machine\n            learning are mostly done in Python using Keras library."
+        },
+        {
+            "name": "Web",
+            "desc": "Web development was one of the tasks given during the duration of my internship period. I have\n            learnt to use bootstrap and jquery for designing the front-end. I have also been involving in backend\n            web development using vanilla PHP and Node.js Express package."
+        },
+        {
+            "name": "Command Line",
+            "desc": "Command line application is very useful because I can reuse the application in another program.\n            Some of the command line applications are the API that I program for preprocessing of data."
+        }
+    ],
+    "projects": [
+        {
+            "hash_id": "1bf6a5c5ff7bd1ea40d6f7d73914bec1",
+            "name": "Java Midi Reader",
+            "description": "This is a command line tool that helps to translate midi note from single track. \n    It converts midi to simple csv and re-converts supported csv to midi of one track using simple\n    command line instruction.\n    ",
+            "thumbnail_src": "",
+            "repo_src": "https://github.com/ye-yu/java-midi-reader",
+            "category": "Command Line Tool",
+            "tags": [
+                "Command Line",
+                "Java"
+            ]
+        },
+        {
+            "hash_id": "333509fb24513c1b28d4c70b15bc476f",
+            "name": "Food Self-Service Ordering System",
+            "description": "This web-app food ordering system enables customer to choose seat whenever available, and prompts\n    takeaway when there are no seat available. This interactive system requires one server and at least one client\n    system to communicate between the database for seat administrating and food ordering at the same time. Payments\n    is made right after the ordering is done.\n    ",
+            "thumbnail_src": "",
+            "repo_src": "https://github.com/ye-yu/GMFoodOrderingSystem",
+            "category": "Web",
+            "tags": [
+                "PHP",
+                "MySQL",
+                "JavaScript",
+                "Bootstrap",
+                "HTML",
+                "Archived"
+            ]
+        },
+        {
+            "hash_id": "b608791b4efb883c2fced6e29cf2c62d",
+            "name": "Word Counter using MPI",
+            "description": "The word counter is done parallelly within a cluster of system controlled by MPI. To measure\n    effectiveness, the word counter program is both run in a single system and the cluster of system, and the \n    computation time is calculated. Time taken using POSIX threading implementation is also taken for comparisons.\n    ",
+            "thumbnail_src": "",
+            "repo_src": "",
+            "category": "Command Line",
+            "tags": [
+                "C",
+                "Archived"
+            ]
+        },
+        {
+            "hash_id": "581d168c17bd702ce350c6c555ddf516",
+            "name": "Image Classification on Satellite Images",
+            "description": "Implementation of CNN using Keras on dataset of 12-classes and 45-classes images. Dataset is \n    obtained and derived from ******. Implementation training took approximately 12 hours, and the accuracy on 12-classes\n    45-classes images are 83% and 61%, respectively.\n    ",
+            "thumbnail_src": "",
+            "repo_src": "",
+            "category": "Machine Learning",
+            "tags": [
+                "Python",
+                "Convolutional Neural NetworkArchived"
+            ]
+        }
+    ]
+}
