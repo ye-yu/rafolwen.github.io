@@ -32,18 +32,22 @@ body {
   border-radius: 0px;
 }
 
-.border-left-md {
-  border-left: solid 1px white;
-}
-
-@media screen and (max-width: 768px) {
-  .border-left-md {
-    border-left: 0px;
-  }
+@media screen and (max-width: 992px) {
 }
 
 .border-top-gray-15{
   border-top: solid #555 10px;
+}
+
+.border-lg-left {
+  border-left: solid 1px white;
+}
+
+@media screen and (max-width: 992px) {
+
+  .border-lg-left {
+    border-left: 0px;
+  }
 }
 
 .header-bg{
