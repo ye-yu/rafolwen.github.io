@@ -25,6 +25,10 @@
   font-size: 1.1rem;
 }
 
+.text-ml{
+  font-size: 1.75rem;
+}
+
 .text-lg{
   font-size: 3rem;
   line-height: 100%;
@@ -48,7 +52,11 @@
     font-size: 2.75rem;
   }
 
-  .text-lg{
+  .text-ml, .text-lg-ml{
+    font-size: 4.25rem;
+  }
+
+  .text-lg, .text-lg-lg{
     font-size: 6rem;
     line-height: 100%;
   }
