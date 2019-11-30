@@ -98,6 +98,18 @@ body {
   }
 }
 
+.image-responsive-200 {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+@media screen and (max-width: 992px) {
+  .image-responsive-200 {
+    max-width: 500px;
+    max-height: 500px;
+  }
+}
+
 .inset-shadow{
   box-shadow: inset 0px 0px 500px 50px black;
 }

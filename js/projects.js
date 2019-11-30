@@ -15,17 +15,17 @@ var appendProjectTo = (projs, eid) => {
     <div class="row py-1 border-bottom">
       <div class="col-lg-3 border-right py-4 d-flex flex-column justify-content-center align-items-center">
         <div>
-          <img src="${imgSrc}" style="max-width:200px; max-height:200px;" alt="${imgCap}" />
+          <img src="${imgSrc}" class="image-responsive-200" alt="${imgCap}" />
         </div>
         <div class="text-sm font-weight-bold">
           ${imgCap}
         </div>
       </div>
-      <div class="col-lg-9">
-        <a class="pt-3 pb-1 font-main h1 d-block text-body" href="${projLink}">
+      <div class="col-lg-9 px-5 px-lg-3">
+        <a class="pt-3 pb-1 font-main d-block text-body text-ml" href="${projLink}">
           ${projTitle}
         </a>
-        <div class="pt-1 pb-2 pl-2 border-bottom font-main text-muted h5">
+        <div class="pt-1 pb-2 pl-2 border-bottom font-main text-muted text-sm">
           ${projSubtitle}
         </div>
         <div class="py-3 px-2 text-body">
