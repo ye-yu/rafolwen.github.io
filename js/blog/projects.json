@@ -19,10 +19,26 @@
     ],
     "projects": [
         {
+            "hashId": "5fc4fdb2171c25c1f08c2d50a4d1adda",
+            "name": "Extending Singing Sample with CAC and SVS",
+            "description": "The main objective of this research is to extract pitch and timbre features from the input singing voice and extend the music composition while synthesising singing voice that is audibly similar to the input voice (i.e. having the similar timbre score from a certain measurement.)\n    Computer-assisted composition (CAC) is a Sequence-to-Sequence (Seq2Seq) + Attention model that can receive and generate variable length of input and output. Singing voice synthesis (SVS) is a software that generate singing voice based on the musical score and lyric given. To simplify the problem, many open-source programs are used to achieve the main goal. <a href=\"https://code.soundsoftware.ac.uk/projects/tony/repository\" target=\"_blank\">Tony</a> can be used to extract note tracks from a monophonic audio file into midi file. For synthesising of singing voice, <a href=\"http://utau.wiki\" target=\"_blank\">UTAU</a> can be used to sing from the generated music score by the CAC. The timbre score will determine which soundbanks to be used to achieve similarity with input voice.\n    Training data set consists of vocal-isolated music track and is converted into midi track using Tony. \n    The research is still under development.\n    ",
+            "thumbnailSrc": "/images/projects/cac-svs/pitch-track.png",
+            "thumbnail_cap": "Note track extraction using Tony",
+            "repoSrc": "",
+            "category": "Machine Learning",
+            "tags": [
+                "Python",
+                "Sequence-to-Sequence",
+                "Recurrent Neural Network",
+                "Archived"
+            ]
+        },
+        {
             "hashId": "1bf6a5c5ff7bd1ea40d6f7d73914bec1",
             "name": "Java Midi Reader",
             "description": "This is a command line tool that helps to translate midi note from single track. \n    It converts midi to simple csv and re-converts supported csv to midi of one track using simple\n    command line instruction.\n    ",
             "thumbnailSrc": "",
+            "thumbnail_cap": "",
             "repoSrc": "https://github.com/ye-yu/java-midi-reader",
             "category": "Command Line Tool",
             "tags": [
@@ -35,6 +51,7 @@
             "name": "Food Self-Service Ordering System",
             "description": "This web-app food ordering system enables customer to choose seat whenever available, and prompts takeaway when there are no seat available. This interactive system requires one server and at least one client system to communicate between the database for seat administrating and food ordering at the same time. Payments is made right after the ordering is done.\n    ",
             "thumbnailSrc": "",
+            "thumbnail_cap": "",
             "repoSrc": "https://github.com/ye-yu/GMFoodOrderingSystem",
             "category": "Web",
             "tags": [
@@ -51,6 +68,7 @@
             "name": "Word Counter using MPI",
             "description": "The word counter is done parallelly within a cluster of system controlled by MPI. To measure effectiveness, the word counter program is both run in a single system and the cluster of system, and the computation time is calculated. Time taken using POSIX threading implementation is also taken for comparisons.\n    ",
             "thumbnailSrc": "",
+            "thumbnail_cap": "",
             "repoSrc": "",
             "category": "Command Line",
             "tags": [
@@ -63,6 +81,7 @@
             "name": "Image Classification on Satellite Images",
             "description": "Implementation of CNN using Keras on dataset of 12-classes and 45-classes images. Dataset is obtained and derived from ******. Implementation training took approximately 12 hours, and the accuracy on 12-classes 45-classes images are 83% and 61%, respectively.\n    ",
             "thumbnailSrc": "",
+            "thumbnail_cap": "",
             "repoSrc": "",
             "category": "Machine Learning",
             "tags": [
