@@ -54,14 +54,29 @@ body {
   border-top: solid #555 10px;
 }
 
+.border-top-orange-15{
+  border-top: solid #F60 10px;
+}
+
+.border-top-blue-15{
+  border-top: solid #06F 10px;
+}
+
 .border-lg-left {
   border-left: solid 1px white;
 }
 
 @media screen and (max-width: 992px) {
-
   .border-lg-left {
     border-left: 0px;
+  }
+
+  .border-top-orange-15{
+    border-top: solid #F60 20px;
+  }
+
+  .border-top-blue-15{
+    border-top: solid #06F 20px;
   }
 }
 
@@ -71,11 +86,20 @@ body {
   background-position: 0 0;
 }
 
+.bg-lg-responsive{
+  background-size: 100% auto;
+  background-position: 0 0;
+}
+
 @media screen and (max-width: 992px) {
-  .header-bg{
+  .header-bg, .bg-lg-responsive{
     background-position: 20% 0;
     background-size: auto 100%;
   }
+}
+
+.inset-shadow{
+  box-shadow: inset 0px 0px 500px 50px black;
 }
 
 .hover-bold:hover{
