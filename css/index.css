@@ -80,19 +80,13 @@ body {
   }
 }
 
-.header-bg{
-  background-image: url("images/header-bg.jpg");
-  background-size: 100% auto;
-  background-position: 0 0;
-}
-
-.bg-lg-responsive{
+.bg-image-responsive{
   background-size: 100% auto;
   background-position: 0 0;
 }
 
 @media screen and (max-width: 992px) {
-  .header-bg, .bg-lg-responsive{
+  .bg-image-responsive{
     background-position: 20% 0;
     background-size: auto 100%;
   }
