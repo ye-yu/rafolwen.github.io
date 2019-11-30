@@ -28,6 +28,11 @@ body {
   transition: transform 0.2s;
 }
 
+.bullet-before::before{
+  content: "▾ ";
+  padding-right: 2px;
+}
+
 .border-radius-0{
   border-radius: 0px;
 }
