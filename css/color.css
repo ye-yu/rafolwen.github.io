@@ -20,6 +20,14 @@
   color: yellow
 }
 
+.text-body a {
+  color: #343a40;
+}
+
+.text-body a:visited {
+  color: black;
+}
+
 a {
   color: white;
 }
