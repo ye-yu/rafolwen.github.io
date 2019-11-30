@@ -33,6 +33,16 @@ body {
   padding-right: 2px;
 }
 
+ .bullet-before-round::before{
+   content: "• ";
+   color: black;
+}
+
+ .bullet-before-mx-3::before{
+   margin-left: 1.5rem;
+   margin-right: 1.5rem;
+}
+
 .border-radius-0{
   border-radius: 0px;
 }
