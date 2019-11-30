@@ -1,0 +1,94 @@
+{
+    "projectCategories": [
+        {
+            "name": "All Projects",
+            "desc": "<p>All projects that are done since the beginning of my study in computer science. Many programming languages have been studied and practiced especially Python, Java, JavaScript, SQL, and C.</p><p>            These are sorted by development date. You can choose to filter based on the categories in the tab on the left/above.</p><p>            Repos that are tagged with 'Archived' are repos that were not maintain in git. Thus, git commits in these repos are not as meaningful as the other.</p>"
+        },
+        {
+            "name": "Machine Learning",
+            "desc": "<p>Machine learning is my main focus of study because I am majoring in Data Science. I am interested in modelling for unstructured data such as images, text, and audio. All implementations of machine learning are mostly done in Python using Keras library.</p>"
+        },
+        {
+            "name": "Web",
+            "desc": "<p>Web development was one of the tasks given during the duration of my internship period. I have learnt to use bootstrap and jquery for designing the front-end. I have also been involving in backend web development using vanilla PHP and Node.js Express package.</p>"
+        },
+        {
+            "name": "Command Line",
+            "desc": "<p>Command line application is very useful because I can reuse the application in another program. Some of the command line applications are the API that I program for preprocessing of data.</p>"
+        }
+    ],
+    "projects": [
+        {
+            "hashId": "5fc4fdb2171c25c1f08c2d50a4d1adda",
+            "name": "Extending Singing Sample with CAC and SVS",
+            "description": "<p>The main objective of this research is to extract pitch and timbre features from the input singing voice and extend the music composition while synthesising singing voice that is audibly similar to the input voice (i.e. having the similar timbre score from a certain measurement.)</p><p>    Computer-assisted composition (CAC) is a Sequence-to-Sequence (Seq2Seq) + Attention model that can receive and generate variable length of input and output. Singing voice synthesis (SVS) is a software that generate singing voice based on the musical score and lyric given. To simplify the problem, many open-source programs are used to achieve the main goal. <a href=\"https://code.soundsoftware.ac.uk/projects/tony/repository\" target=\"_blank\">Tony</a> can be used to extract note tracks from a monophonic audio file into midi file. For synthesising of singing voice, <a href=\"http://utau.wiki\" target=\"_blank\">UTAU</a> can be used to sing from the generated music score by the CAC. The timbre score will determine which soundbanks to be used to achieve similarity with input voice.</p><p>    Training data set consists of vocal-isolated music track and is converted into midi track using Tony. </p><p>    The research is still under development.</p><p>    </p>",
+            "thumbnailSrc": "/images/projects/cac-svs/pitch-track.png",
+            "thumbnailCap": "Note track extraction using Tony",
+            "repoSrc": "",
+            "category": "Machine Learning",
+            "tags": [
+                "Python",
+                "Sequence-to-Sequence",
+                "Recurrent Neural Network",
+                "Archived"
+            ]
+        },
+        {
+            "hashId": "1bf6a5c5ff7bd1ea40d6f7d73914bec1",
+            "name": "Java Midi Reader",
+            "description": "<p>This is a command line tool that helps to translate midi note from single track. </p><p>    It converts midi to simple csv and re-converts supported csv to midi of one track using simple</p><p>    command line instruction.</p><p>    </p>",
+            "thumbnailSrc": "",
+            "thumbnailCap": "",
+            "repoSrc": "https://github.com/ye-yu/java-midi-reader",
+            "category": "Command Line Tool",
+            "tags": [
+                "Command Line",
+                "Java"
+            ]
+        },
+        {
+            "hashId": "333509fb24513c1b28d4c70b15bc476f",
+            "name": "Food Self-Service Ordering System",
+            "description": "<p>This web-app food ordering system enables customer to choose seat whenever available, and prompts takeaway when there are no seat available. This interactive system requires one server and at least one client system to communicate between the database for seat administrating and food ordering at the same time. Payments is made right after the ordering is done.</p><p>    </p>",
+            "thumbnailSrc": "",
+            "thumbnailCap": "",
+            "repoSrc": "https://github.com/ye-yu/GMFoodOrderingSystem",
+            "category": "Web",
+            "tags": [
+                "PHP",
+                "MySQL",
+                "JavaScript",
+                "Bootstrap",
+                "HTML",
+                "Archived"
+            ]
+        },
+        {
+            "hashId": "b608791b4efb883c2fced6e29cf2c62d",
+            "name": "Word Counter using MPI",
+            "description": "<p>The word counter is done parallelly within a cluster of system controlled by MPI. To measure effectiveness, the word counter program is both run in a single system and the cluster of system, and the computation time is calculated. Time taken using POSIX threading implementation is also taken for comparisons.</p><p>    </p>",
+            "thumbnailSrc": "",
+            "thumbnailCap": "",
+            "repoSrc": "",
+            "category": "Command Line",
+            "tags": [
+                "C",
+                "Archived"
+            ]
+        },
+        {
+            "hashId": "581d168c17bd702ce350c6c555ddf516",
+            "name": "Image Classification on Satellite Images",
+            "description": "<p>Implementation of CNN using Keras on dataset of 12-classes and 45-classes images. Dataset is obtained and derived from ******. Implementation training took approximately 12 hours, and the accuracy on 12-classes 45-classes images are 83% and 61%, respectively.</p><p>    </p>",
+            "thumbnailSrc": "",
+            "thumbnailCap": "",
+            "repoSrc": "",
+            "category": "Machine Learning",
+            "tags": [
+                "Python",
+                "Convolutional Neural Network",
+                "Archived"
+            ]
+        }
+    ]
+}

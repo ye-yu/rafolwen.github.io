@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue|Source+Code+Pro|Source+Sans+Pro&display=swap');
+
+.font-secondary, body, p, h4, h5, h6, a {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.query, code, pre {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.font-main, h1, h2, h3 {
+  font-family: 'Bebas Neue', cursive;
+}
+
+/* size-related styling */
+.text-xs{
+  font-size: 0.75rem;
+}
+
+.text-sm{
+  font-size: 0.90rem;
+}
+
+.text-md{
+  font-size: 1.1rem;
+}
+
+.text-ml{
+  font-size: 1.75rem;
+}
+
+.text-lg{
+  font-size: 3rem;
+  line-height: 100%;
+}
+
+.text-xl{
+  font-size: 6.5rem;
+  line-height: 100%;
+}
+
+@media (max-width: 992px) {
+  .text-xs{
+    font-size: 1.5rem;
+  }
+
+  .text-sm{
+    font-size: 1.75rem;
+  }
+
+  .text-md{
+    font-size: 2.75rem;
+  }
+
+  .text-ml, .text-lg-ml{
+    font-size: 4.25rem;
+  }
+
+  .text-lg, .text-lg-lg{
+    font-size: 6rem;
+    line-height: 100%;
+  }
+
+  .text-xl, .text-lg-xl{
+    font-size: 12rem;
+    line-height: 100%;
+  }
+
+  p {
+    font-size: 3rem;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}

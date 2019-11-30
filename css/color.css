@@ -1,0 +1,46 @@
+/* background-related colours */
+.bg-black{
+  background-color: black;
+}
+
+.bg-white-translucent{
+  background-color: #FFFFFFDD;
+}
+
+.bg-dark-translucent{
+  background-color: #343a40DD;
+}
+
+.bg-black-translucent{
+  background-color: #111111DD;
+}
+
+/* text-related colours */
+.text-yellow{
+  color: yellow
+}
+
+.text-body a {
+  color: #343a40;
+}
+
+.text-body a:visited {
+  color: black;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: lightgray;
+}
+
+a:active {
+  border: none;
+  color: darkgray;
+}
+
+a:visited {
+  color: white;
+}
