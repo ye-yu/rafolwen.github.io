@@ -65,4 +65,10 @@
     font-size: 12rem;
     line-height: 100%;
   }
+
+  p {
+    font-size: 3rem;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
 }
