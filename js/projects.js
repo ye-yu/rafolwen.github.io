@@ -13,7 +13,7 @@ var appendProjectTo = (projs, eid) => {
     let projLink = "/blog.html?project=" + i.hashId;
     let template = `
     <div class="row py-1 border-bottom">
-      <div class="col-3 border-right py-4 d-flex flex-column justify-content-center align-items-center">
+      <div class="col-lg-3 border-right py-4 d-flex flex-column justify-content-center align-items-center">
         <div>
           <img src="${imgSrc}" style="max-width:200px; max-height:200px;" alt="${imgCap}" />
         </div>
@@ -21,7 +21,7 @@ var appendProjectTo = (projs, eid) => {
           ${imgCap}
         </div>
       </div>
-      <div class="col-9">
+      <div class="col-lg-9">
         <a class="pt-3 pb-1 font-main h1 d-block text-body" href="${projLink}">
           ${projTitle}
         </a>
