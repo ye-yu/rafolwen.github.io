@@ -39,7 +39,7 @@ var appendProjectTo = (projs, eid) => {
   }
 }
 $.ajax({
-  url: "/js/blog/projects.json",
+  url: "https://ye-yu.github.io/portfolio/js/blog/projects.json",
   dataType: "json",
   success: function (data) {
     projects = data;
