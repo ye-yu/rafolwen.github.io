@@ -22,7 +22,7 @@
             "hashId": "5fc4fdb2171c25c1f08c2d50a4d1adda",
             "name": "Extending Singing Sample with CAC and SVS",
             "description": "<p>The main objective of this research is to extract pitch and timbre features from the input singing voice and extend the music composition while synthesising singing voice that is audibly similar to the input voice (i.e. having the similar timbre score from a certain measurement.)</p><p>    Computer-assisted composition (CAC) is a Sequence-to-Sequence (Seq2Seq) + Attention model that can receive and generate variable length of input and output. Singing voice synthesis (SVS) is a software that generate singing voice based on the musical score and lyric given. To simplify the problem, many open-source programs are used to achieve the main goal. <a href=\"https://code.soundsoftware.ac.uk/projects/tony/repository\" target=\"_blank\">Tony</a> can be used to extract note tracks from a monophonic audio file into midi file. For synthesising of singing voice, <a href=\"http://utau.wiki\" target=\"_blank\">UTAU</a> can be used to sing from the generated music score by the CAC. The timbre score will determine which soundbanks to be used to achieve similarity with input voice.</p><p>    Training data set consists of vocal-isolated music track and is converted into midi track using Tony. </p><p>    The research is still under development.</p><p>    </p>",
-            "thumbnailSrc": "/images/projects/cac-svs/pitch-track.png",
+            "thumbnailSrc": "images/projects/cac-svs/pitch-track.png",
             "thumbnailCap": "Note track extraction using Tony",
             "repoSrc": "",
             "category": "Machine Learning",

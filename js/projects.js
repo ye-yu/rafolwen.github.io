@@ -10,7 +10,7 @@ var appendProjectTo = (projs, eid) => {
     let projTitle = i.name;
     let projSubtitle = "Tagged under: " + i.tags.join(", ");
     let projDesc = i.description;
-    let projLink = "/blog.html?project=" + i.hashId;
+    let projLink = "blog.html?project=" + i.hashId;
     let template = `
     <div class="row py-1 border-bottom">
       <div class="col-lg-3 border-right py-4 d-flex flex-column justify-content-center align-items-center">
