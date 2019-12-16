@@ -25,11 +25,13 @@ $.ajax({
   dataType: "json",
   success: function (data) {
     projects = data;
-    displayProjects("All Projects");
+    selectedProjects = projects.projects.filter(x => true);
+    displayProjectsCategory("All Projects");
+    displayProjects(selectedProjects);
   }
 });
 
-function displayProjects(targetCategory) {
+function displayProjectsCategory(targetCategory) {
   let project = projects.projectCategories.filter(x => x.name == targetCategory)[0];
   let description = project.desc;
   $("#project-header-title").html(targetCategory);
@@ -37,6 +39,42 @@ function displayProjects(targetCategory) {
   console.log(description.replace('\n', '<br />'));
 }
 
+function displayProjects(projs) {
+  for(i of projs) {
+    let imgSrc = i.thumbnailSrc ? i.thumbnailSrc : "https://via.placeholder.com/150";
+    let imgCap = i.thumbnailCap ? i.thumbnailCap : "No captions provided";
+    let projTitle = i.name;
+    let projSubtitle = "Tagged under: " + i.tags.join(", ");
+    let projDesc = i.description;
+    let projLink = "blog.html?project=" + i.hashId;
+    let template = `
+    <div class="row py-1 border-bottom">
+      <div class="col-lg-3 py-4 d-flex flex-column justify-content-center align-items-center">
+        <div>
+          <img src="${imgSrc}" class="image-responsive-200" alt="${imgCap}" />
+        </div>
+        <div class="text-sm font-weight-bold">
+          ${imgCap}
+        </div>
+      </div>
+      <div class="col-lg-9 px-5 px-lg-3">
+        <a class="pt-3 pb-1 font-main d-block text-body text-ml" href="${projLink}">
+          ${projTitle}
+        </a>
+        <div class="pt-1 pb-2 pl-2 border-bottom font-main text-muted text-sm">
+          ${projSubtitle}
+        </div>
+        <div class="py-3 px-2 text-body">
+          ${projDesc}
+        </div>
+      </div>
+    </div>
+
+    `;
+    $("#projects").append(template);
+  }
+}
+
 $("#v-tabs-tab-projects > *").click(e => {
-  displayProjects(e.target.innerHTML);
+  displayProjectsCategory(e.target.innerHTML);
 });
