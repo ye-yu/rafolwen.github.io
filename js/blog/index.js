@@ -27,7 +27,7 @@ $.ajax({
     projects = data;
     selectedProjects = projects.projects.filter(x => true);
     displayProjectsCategory("All Projects");
-    displayProjects(selectedProjects);
+    displayProjects("All Projects");
   }
 });
 
@@ -39,7 +39,11 @@ function displayProjectsCategory(targetCategory) {
   console.log(description.replace('\n', '<br />'));
 }
 
-function displayProjects(projs) {
+function displayProjects(targetCategory) {
+  let projs = projects.projects.filter(x => x.category == targetCategory);
+  if (targetCategory == "All Projects") {
+    projs = projects.projects.filter(x => true);
+  }
   $("#projects").empty();
   for(i of projs) {
     let imgSrc = i.thumbnailSrc ? i.thumbnailSrc : "https://via.placeholder.com/150";
@@ -77,11 +81,6 @@ function displayProjects(projs) {
 }
 
 $("#v-tabs-tab-projects > *").click(e => {
-  if (e.target.innerHTML == "All Projects") {
-    selectedProjects = projects.projects.filter(x => true);    
-  } else {
-    selectedProjects = projects.projects.filter(x => x.category == e.target.innerHTML);
-  }
-  displayProjects(selectedProjects);
+  displayProjects(e.target.innerHTML);
   displayProjectsCategory(e.target.innerHTML);
 });
