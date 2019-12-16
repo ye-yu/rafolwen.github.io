@@ -40,6 +40,7 @@ function displayProjectsCategory(targetCategory) {
 }
 
 function displayProjects(projs) {
+  $("#projects").empty();
   for(i of projs) {
     let imgSrc = i.thumbnailSrc ? i.thumbnailSrc : "https://via.placeholder.com/150";
     let imgCap = i.thumbnailCap ? i.thumbnailCap : "No captions provided";
@@ -76,5 +77,11 @@ function displayProjects(projs) {
 }
 
 $("#v-tabs-tab-projects > *").click(e => {
+  if (e.target.innerHTML == "All Projects") {
+    selectedProjects = projects.projects.filter(x => true);    
+  } else {
+    selectedProjects = projects.projects.filter(x => x.category == e.target.innerHTML);
+  }
+  displayProjects(selectedProjects);
   displayProjectsCategory(e.target.innerHTML);
 });
