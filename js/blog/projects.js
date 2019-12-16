@@ -19,20 +19,15 @@ function joinObjToQuery(obj) {
 
   return objArray.join('&');
 }
-var queries = getQueryObj();
 
 function changeQuery(query, page) {
   let baseUrl = 'blog.html?';
-
-  for(let i in query) {
-    queries[i] = query[i];
-  }
 
   if (page == undefined) {
     page = $('title')[0].innerHTML;
   }
 
-  let url = joinObjToQuery(queries)
+  let url = joinObjToQuery(query)
   url = url ? baseUrl + url : baseUrl;
   if (typeof (history.pushState) != "undefined") {
     var obj = {Page: page, Url: url};
