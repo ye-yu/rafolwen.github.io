@@ -26,8 +26,18 @@ $.ajax({
   success: function (data) {
     projects = data;
     selectedProjects = projects.projects.filter(x => true);
-    displayProjectsCategory("All Projects");
-    displayProjects("All Projects");
+
+    let currentQueries = getQueryObj();
+    if (!Object.keys(currentQueries).length < 1) {
+      if (currentQueries.category != undefined) {
+        let category = decodeURI(currentQueries.category);
+        displayProjects(category);
+        displayProjectsCategory(category);
+      }
+    } else {
+      displayProjectsCategory("All Projects");
+      displayProjects("All Projects");
+    }
   }
 });
 
