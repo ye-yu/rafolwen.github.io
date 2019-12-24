@@ -57,6 +57,16 @@ $.ajax({
       if (currentQueries.category != undefined) {
         let category = decodeURI(currentQueries.category);
         activateCategoryClass(category);
+      } else if (currentQueries.project != undefined) {
+
+        // Content placeholder
+        $("#projects").empty();
+        $("#projects").append(`
+          <p>
+            Project content id ${currentQueries.project} goes here.
+            Will soon be implemented.
+          </p>
+          `);
       }
     } else {
       activateCategoryClass("All Projects");
