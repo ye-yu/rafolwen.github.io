@@ -14,6 +14,7 @@ function displayCategory() {
       class="nav-link my-5 my-lg-0 py-3 text-lg-left text-center"
       id="v-tabs-${temp_id}-tab"
       data-toggle="pill"
+      cg-name="${temp_name}"
       href="#v-tabs-${temp_id}"
       role="tab"
       aria-controls="v-tabs-${temp_id}"
@@ -24,12 +25,14 @@ function displayCategory() {
   }
 
   $("#v-tabs-tab-projects > *").click(e => {
+    let category = e.target.attributes.getNamedItem('cg-name').nodeValue;
+
     // Display category desc and projects on category click
-    displayProjects(e.target.innerHTML);
-    displayProjectsCategory(e.target.innerHTML);
+    displayProjects(category);
+    displayProjectsCategory(category);
 
     // Update URL on category click
-    changeQuery({category:e.target.innerHTML});
+    changeQuery({category:category});
   });
 }
 
@@ -53,20 +56,15 @@ $.ajax({
     if (!Object.keys(currentQueries).length < 1) {
       if (currentQueries.category != undefined) {
         let category = decodeURI(currentQueries.category);
-        displayProjects(category);
-        displayProjectsCategory(category);
         activateCategoryClass(category);
       }
     } else {
-      displayProjectsCategory("All Projects");
-      displayProjects("All Projects");
       activateCategoryClass("All Projects");
     }
   }
 });
 
 function displayProjectsCategory(targetCategory) {
-  targetCategory = targetCategory.trim();
   let project = projects.projectCategories.filter(x => x.name == targetCategory)[0];
   let description = project.desc;
   $("#project-header-title").html(targetCategory);
@@ -74,7 +72,6 @@ function displayProjectsCategory(targetCategory) {
 }
 
 function displayProjects(targetCategory) {
-  targetCategory = targetCategory.trim();
   let projs = projects.projects.filter(x => x.category == targetCategory);
   if (targetCategory == "All Projects") {
     projs = projects.projects.filter(x => true);
