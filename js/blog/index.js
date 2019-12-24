@@ -6,8 +6,6 @@ $(function () {
 function displayCategory() {
   // Dynamically obtain categories
   let projectCategories = projects.projectCategories.map(x => x.name);
-  let activeClasses = 'nav-link active my-5 my-lg-0 py-3 text-lg-left text-center';
-  let inactiveClasses = 'nav-link my-5 my-lg-0 py-3 text-lg-left text-center';
 
   for(let i of projectCategories){
     let temp_id = i.toLowerCase().replace(" ", "-");
@@ -31,6 +29,11 @@ function displayCategory() {
   });
 }
 
+function activateCategoryClass(category) {
+  let id = category.toLowerCase().replace(" ", "-");
+  $(`#v-tabs-${id}-tab`).trigger('click');
+}
+
 // read from projects.JSON
 var projects;
 $.ajax({
@@ -48,10 +51,12 @@ $.ajax({
         let category = decodeURI(currentQueries.category);
         displayProjects(category);
         displayProjectsCategory(category);
+        activateCategoryClass(category);
       }
     } else {
       displayProjectsCategory("All Projects");
       displayProjects("All Projects");
+      activateCategoryClass("All Projects");
     }
   }
 });
