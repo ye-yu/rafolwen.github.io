@@ -35,8 +35,3 @@ function changeQuery(query, page) {
   }
   document.title = page;
 }
-
-$("#v-tabs-tab-projects > *").click(e => {
-  // Update URL
-  changeQuery({category:e.target.innerHTML});
-});

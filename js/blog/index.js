@@ -24,8 +24,12 @@ function displayCategory() {
   }
 
   $("#v-tabs-tab-projects > *").click(e => {
+    // Display category desc and projects on category click
     displayProjects(e.target.innerHTML);
     displayProjectsCategory(e.target.innerHTML);
+
+    // Update URL on category click
+    changeQuery({category:e.target.innerHTML});
   });
 }
 
