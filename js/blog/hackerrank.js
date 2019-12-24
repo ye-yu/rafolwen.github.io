@@ -1,5 +1,5 @@
 var badges = [];
-var badgesDir = './images/hackerrank/';
+var badgesDir = 'images/hackerrank/';
 var pushBadge = (name, imgSrc) => badges.push({name: name, imgSrc: badgesDir + imgSrc});
 
 pushBadge('Problem Solving', 'problem-solving.svg');

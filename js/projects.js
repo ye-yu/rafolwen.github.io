@@ -39,12 +39,12 @@ var appendProjectTo = (projs, eid) => {
   }
 }
 $.ajax({
-  url: "https://ye-yu.github.io/portfolio/js/blog/projects.json",
+  url: "/portfolio/js/blog/projects.json",
   dataType: "json",
   success: function (data) {
     projects = data;
-    mlProjects = projects.projects.filter(x => x.category == 'Machine Learning');
-    webProjects = projects.projects.filter(x => x.category == 'Web');
+    mlProjects = projects.projects.filter(x => x.category == 'Machine Learning' && x.isHighlight);
+    webProjects = projects.projects.filter(x => x.category == 'Web' && x.isHighlight);
 
     appendProjectTo(mlProjects, '#machine-learning-projects');
     appendProjectTo(webProjects, '#web-apps-projects');
