@@ -62,7 +62,6 @@ function displayProjectsCategory(targetCategory) {
   let description = project.desc;
   $("#project-header-title").html(targetCategory);
   $("#project-header-subtitle").html(description.replace(/'\n'/g, '<br />'));
-  console.log(description.replace('\n', '<br />'));
 }
 
 function displayProjects(targetCategory) {
