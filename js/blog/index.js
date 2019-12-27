@@ -64,6 +64,7 @@ $.ajax({
   }
 });
 
+// display project category description
 function displayProjectsCategory(targetCategory) {
   let project = projects.projectCategories.filter(x => x.name == targetCategory)[0];
   let description = project.desc;
@@ -71,6 +72,7 @@ function displayProjectsCategory(targetCategory) {
   $("#project-header-subtitle").html(description.replace(/'\n'/g, '<br />'));
 }
 
+// display project by category
 function displayProjects(targetCategory) {
   let projs = projects.projects.filter(x => x.category == targetCategory);
   if (targetCategory == "All Projects") {
@@ -112,6 +114,7 @@ function displayProjects(targetCategory) {
   }
 }
 
+// get url queries as object
 function getQueryObj(){
   let queries = location.href.split('?')[1];
   let qArray = queries ? queries.split('&') : [];
@@ -124,6 +127,7 @@ function getQueryObj(){
   return qArrayDict;
 }
 
+// convert object to url queries
 function joinObjToQuery(obj) {
   let objArray = [];
 
@@ -134,6 +138,7 @@ function joinObjToQuery(obj) {
   return objArray.join('&');
 }
 
+// change url query
 function changeQuery(query, page) {
   let baseUrl = 'blog.html?';
 
