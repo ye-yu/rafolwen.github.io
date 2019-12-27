@@ -57,16 +57,6 @@ $.ajax({
       if (currentQueries.category != undefined) {
         let category = decodeURI(currentQueries.category);
         activateCategoryClass(category);
-      } else if (currentQueries.project != undefined) {
-
-        // Content placeholder
-        $("#projects").empty();
-        $("#projects").append(`
-          <p>
-            Project content id ${currentQueries.project} goes here.
-            Will soon be implemented.
-          </p>
-          `);
       }
     } else {
       activateCategoryClass("All Projects");
@@ -74,6 +64,7 @@ $.ajax({
   }
 });
 
+// display project category description
 function displayProjectsCategory(targetCategory) {
   let project = projects.projectCategories.filter(x => x.name == targetCategory)[0];
   let description = project.desc;
@@ -81,6 +72,7 @@ function displayProjectsCategory(targetCategory) {
   $("#project-header-subtitle").html(description.replace(/'\n'/g, '<br />'));
 }
 
+// display project by category
 function displayProjects(targetCategory) {
   let projs = projects.projects.filter(x => x.category == targetCategory);
   if (targetCategory == "All Projects") {
@@ -94,6 +86,7 @@ function displayProjects(targetCategory) {
     let projSubtitle = "Tagged under: " + i.tags.join(", ");
     let projDesc = i.description;
     let projLink = "blog.html?project=" + i.hashId;
+    let projHash = i.hashId;
     let template = `
     <div class="row py-1 border-bottom">
       <div class="col-lg-3 py-4 d-flex flex-column justify-content-center align-items-center">
@@ -105,7 +98,7 @@ function displayProjects(targetCategory) {
         </div>
       </div>
       <div class="col-lg-9 px-5 px-lg-3">
-        <a class="pt-3 pb-1 font-main d-block text-body text-ml" href="${projLink}">
+        <a class="pt-3 pb-1 font-main d-block text-body text-ml" href="#" type="project-link" hash="${projHash}">
           ${projTitle}
         </a>
         <div class="pt-1 pb-2 pl-2 border-bottom font-main text-muted text-sm">
@@ -120,4 +113,54 @@ function displayProjects(targetCategory) {
     `;
     $("#projects").append(template);
   }
+  $("[type='project-link']").on('click',
+    function(){
+      let id = $(this).attr('hash');
+      displayProjectFromID(id);
+      changeQuery({
+        project: id
+      })
+    }
+  );
+}
+
+// get url queries as object
+function getQueryObj(){
+  let queries = location.href.split('?')[1];
+  let qArray = queries ? queries.split('&') : [];
+  let qArrayDict = {}
+  for(let i of qArray){
+    qAttr = i.split('=')[0];
+    qVal = i.split('=').slice(1).join('=');
+    qArrayDict[qAttr] = qVal;
+  }
+  return qArrayDict;
+}
+
+// convert object to url queries
+function joinObjToQuery(obj) {
+  let objArray = [];
+
+  for(let i in obj) {
+    objArray.push(i + '=' + obj[i]);
+  }
+
+  return objArray.join('&');
+}
+
+// change url query
+function changeQuery(query, page) {
+  let baseUrl = 'blog.html?';
+
+  if (page == undefined) {
+    page = $('title')[0].innerHTML;
+  }
+
+  let url = joinObjToQuery(query)
+  url = url ? baseUrl + url : baseUrl;
+  if (typeof (history.pushState) != "undefined") {
+    var obj = {Page: page, Url: url};
+    history.pushState(obj, obj.Page, obj.Url);
+  }
+  document.title = page;
 }

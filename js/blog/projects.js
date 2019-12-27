@@ -1,37 +1,56 @@
-function getQueryObj(){
-  let queries = location.href.split('?')[1];
-  let qArray = queries ? queries.split('&') : [];
-  let qArrayDict = {}
-  for(let i of qArray){
-    qAttr = i.split('=')[0];
-    qVal = i.split('=').slice(1).join('=');
-    qArrayDict[qAttr] = qVal;
+var md = new Remarkable();
+let currentQueries = getQueryObj();
+if (!Object.keys(currentQueries).length < 1) {
+  if (currentQueries.project != undefined) {
+    displayProjectFromID(currentQueries.project);
   }
-  return qArrayDict;
 }
 
-function joinObjToQuery(obj) {
-  let objArray = [];
+function displayProjectFromID(id) {
+  let projectSrc = `js/blog/content/${id}.md`;
+  $("#projects").empty();
+  $("#project-header-title").empty();
+  $("#project-header-subtitle").html(`Project ID: ${id.slice(0, 6)}`);
 
-  for(let i in obj) {
-    objArray.push(i + '=' + obj[i]);
-  }
-
-  return objArray.join('&');
+  // fetch md content
+  $.ajax({
+    url: projectSrc,
+    contentType: "text/plain",
+    success: function (data) {
+      $("#projects").append(`
+        <div class="project-markdown pt-5">
+        ${md.render(data)}
+        </div>`);
+        paintCode();
+      },
+      error: function (e, status, errStr) {
+        $("#projects").append('<p>Sorry! Project description not available yet.</p>')
+      }
+  });
 }
 
-function changeQuery(query, page) {
-  let baseUrl = 'blog.html?';
+function paintCode() {
+  $('body')
+  .find('code')
+  .each(function() {
+    var $code = $(this),
+    cls = $code.attr('class'),
+    language;
 
-  if (page == undefined) {
-    page = $('title')[0].innerHTML;
-  }
+    // no language information at all
+    if(typeof cls === 'undefined') {
+      return;
+    }
 
-  let url = joinObjToQuery(query)
-  url = url ? baseUrl + url : baseUrl;
-  if (typeof (history.pushState) != "undefined") {
-    var obj = {Page: page, Url: url};
-    history.pushState(obj, obj.Page, obj.Url);
-  }
-  document.title = page;
+    // actually we should also check if a valid "lang-" class
+    // (which is by default set through marked) is given
+    language = cls.split('-')[1];
+
+    // add the data-language to the <code> element
+    $code.data('language', language);
+    console.log(cls);
+  });
+
+  // let the rainbows shine
+  Rainbow.color();
 }
