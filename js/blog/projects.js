@@ -4,7 +4,6 @@ if (!Object.keys(currentQueries).length < 1) {
   if (currentQueries.project != undefined) {
       // Content placeholder
       let projectSrc = `js/blog/content/${currentQueries.project}.md`;
-      console.log(`Searching for ${projectSrc}`);
       $("#projects").empty();
 
       // fetch md content
@@ -12,7 +11,7 @@ if (!Object.keys(currentQueries).length < 1) {
         url: projectSrc,
         contentType: "text/plain",
         success: function (data) {
-          console.log(data);
+          $("#project-header-title").empty();
           $("#projects").append(md.render(data));
         },
         error: function (e, status, errStr) {
