@@ -21,13 +21,13 @@ function displayProjectFromID(id) {
         <div class="project-markdown pt-5">
         ${md.render(data)}
         </div>`);
-      paintCode();
+        paintCode();
       },
       error: function (e, status, errStr) {
         $("#projects").append('<p>Sorry! Project description not available yet.</p>')
       }
-    });
-  }
+  });
+}
 
 function paintCode() {
   $('body')
