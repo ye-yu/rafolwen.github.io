@@ -12,7 +12,11 @@ if (!Object.keys(currentQueries).length < 1) {
         contentType: "text/plain",
         success: function (data) {
           $("#project-header-title").empty();
-          $("#projects").append(md.render(data));
+          $("#project-header-subtitle").html(`Project ID: ${currentQueries.project.slice(0, 6)}`);
+          $("#projects").append(`
+            <div style="project-markdown">
+              ${md.render(data)}
+            </div>`);
         },
         error: function (e, status, errStr) {
           console.log(e);
