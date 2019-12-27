@@ -13,7 +13,7 @@ if (!Object.keys(currentQueries).length < 1) {
         contentType: "text/plain",
         success: function (data) {
           console.log(data);
-          console.log(md.render(data));
+          $("#projects").append(md.render(data));
         },
         error: function (e, status, errStr) {
           console.log(e);
