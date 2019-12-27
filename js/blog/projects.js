@@ -2,30 +2,31 @@ var md = new Remarkable();
 let currentQueries = getQueryObj();
 if (!Object.keys(currentQueries).length < 1) {
   if (currentQueries.project != undefined) {
-    // Content placeholder
-    let projectSrc = `js/blog/content/${currentQueries.project}.md`;
-    $("#projects").empty();
+    displayProjectFromID(currentQueries.project);
+  }
+}
 
-    // fetch md content
-    $.ajax({
-      url: projectSrc,
-      contentType: "text/plain",
-      success: function (data) {
-        $("#project-header-title").empty();
-        $("#project-header-subtitle").html(`Project ID: ${currentQueries.project.slice(0, 6)}`);
-        $("#projects").append(`
-          <div class="project-markdown pt-5">
-          ${md.render(data)}
-          </div>`);
-        paintCode();
-        },
-        error: function (e, status, errStr) {
-          console.log(e);
-          console.log(status);
-          console.log(errStr);
-        }
-      });
-    }
+function displayProjectFromID(id) {
+  let projectSrc = `js/blog/content/${id}.md`;
+  $("#projects").empty();
+  $("#project-header-title").empty();
+  $("#project-header-subtitle").html(`Project ID: ${id.slice(0, 6)}`);
+
+  // fetch md content
+  $.ajax({
+    url: projectSrc,
+    contentType: "text/plain",
+    success: function (data) {
+      $("#projects").append(`
+        <div class="project-markdown pt-5">
+        ${md.render(data)}
+        </div>`);
+      paintCode();
+      },
+      error: function (e, status, errStr) {
+        $("#projects").append('<p>Sorry! Project description not available yet.</p>')
+      }
+    });
   }
 
 function paintCode() {
