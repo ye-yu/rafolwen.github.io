@@ -86,6 +86,7 @@ function displayProjects(targetCategory) {
     let projSubtitle = "Tagged under: " + i.tags.join(", ");
     let projDesc = i.description;
     let projLink = "blog.html?project=" + i.hashId;
+    let projHash = i.hashId;
     let template = `
     <div class="row py-1 border-bottom">
       <div class="col-lg-3 py-4 d-flex flex-column justify-content-center align-items-center">
@@ -97,7 +98,7 @@ function displayProjects(targetCategory) {
         </div>
       </div>
       <div class="col-lg-9 px-5 px-lg-3">
-        <a class="pt-3 pb-1 font-main d-block text-body text-ml" href="${projLink}">
+        <a class="pt-3 pb-1 font-main d-block text-body text-ml" href="#" type="project-link" hash="${projHash}">
           ${projTitle}
         </a>
         <div class="pt-1 pb-2 pl-2 border-bottom font-main text-muted text-sm">
@@ -112,6 +113,15 @@ function displayProjects(targetCategory) {
     `;
     $("#projects").append(template);
   }
+  $("[type='project-link']").on('click',
+    function(){
+      let id = $(this).attr('hash');
+      displayProjectFromID(id);
+      changeQuery({
+        project: id
+      })
+    }
+  );
 }
 
 // get url queries as object
