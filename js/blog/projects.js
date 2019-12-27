@@ -17,6 +17,7 @@ if (!Object.keys(currentQueries).length < 1) {
           <div class="project-markdown pt-5">
           ${md.render(data)}
           </div>`);
+        paintCode();
         },
         error: function (e, status, errStr) {
           console.log(e);
@@ -26,3 +27,29 @@ if (!Object.keys(currentQueries).length < 1) {
       });
     }
   }
+
+function paintCode() {
+  $('body')
+  .find('code')
+  .each(function() {
+    var $code = $(this),
+    cls = $code.attr('class'),
+    language;
+
+    // no language information at all
+    if(typeof cls === 'undefined') {
+      return;
+    }
+
+    // actually we should also check if a valid "lang-" class
+    // (which is by default set through marked) is given
+    language = cls.split('-')[1];
+
+    // add the data-language to the <code> element
+    $code.data('language', language);
+    console.log(cls);
+  });
+
+  // let the rainbows shine
+  Rainbow.color();
+}
