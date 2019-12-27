@@ -14,7 +14,7 @@ if (!Object.keys(currentQueries).length < 1) {
           $("#project-header-title").empty();
           $("#project-header-subtitle").html(`Project ID: ${currentQueries.project.slice(0, 6)}`);
           $("#projects").append(`
-            <div style="project-markdown">
+            <div class="project-markdown">
               ${md.render(data)}
             </div>`);
         },
