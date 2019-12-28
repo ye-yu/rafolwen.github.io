@@ -56,7 +56,7 @@
             "name": "Java Midi Reader",
             "description": "<p>This is a command line tool that helps to translate midi note from single track. </p><p>    It converts midi to simple csv and re-converts supported csv to midi of one track using simple</p><p>    command line instruction.</p><p>    </p>",
             "thumbnailSrc": "images/projects/1bf6a5c5ff7bd1ea40d6f7d73914bec1_thumbnail.png",
-            "thumbnailCap": "Java Midi Reader",
+            "thumbnailCap": "Flags for the command line app",
             "repoSrc": "https://github.com/ye-yu/java-midi-reader",
             "category": "Command Line Tool",
             "tags": [
