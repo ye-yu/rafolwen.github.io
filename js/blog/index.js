@@ -86,6 +86,7 @@ function displayProjects(targetCategory) {
     let projSubtitle = "Tagged under: " + i.tags.join(", ");
     let projDesc = i.description;
     let projLink = "blog.html?project=" + i.hashId;
+    let projDate = i.date;
     let projHash = i.hashId;
     let template = `
     <div class="row py-1 border-bottom">
@@ -98,7 +99,7 @@ function displayProjects(targetCategory) {
         </div>
       </div>
       <div class="col-lg-9 px-5 px-lg-3">
-        <div class="pt-3 pb-1 font-main d-block text-body text-ml hover-underline" type="project-link" hash="${projHash}">
+        <div class="pt-3 pb-1 font-main d-block text-body text-ml hover-underline" type="project-link" hash="${projHash}" date=${projDate} link="${projLink}">
           ${projTitle}
         </div>
         <div class="pt-1 pb-2 pl-2 border-bottom font-main text-muted text-sm">
@@ -116,7 +117,9 @@ function displayProjects(targetCategory) {
   $("[type='project-link']").on('click',
     function(){
       let id = $(this).attr('hash');
-      displayProjectFromID(id);
+      let link = $(this).attr('link');
+      let date = $(this).attr('date');
+      displayProjectFromID(id, link, date);
       changeQuery({
         project: id
       })

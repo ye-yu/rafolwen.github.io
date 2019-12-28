@@ -29,11 +29,11 @@
 }
 
 a {
-  color: white;
+  color: black;
 }
 
 a:hover {
-  color: lightgray;
+  color: #333;
 }
 
 a:active {
@@ -46,6 +46,5 @@ a:visited {
 }
 
 .project-markdown a {
-  color: black;
   text-decoration: underline;
 }
