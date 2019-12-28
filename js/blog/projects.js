@@ -6,11 +6,15 @@ if (!Object.keys(currentQueries).length < 1) {
   }
 }
 
-function displayProjectFromID(id) {
+function displayProjectFromID(id, link, date) {
   let projectSrc = `js/blog/content/${id}.md`;
   $("#projects").empty();
   $("#project-header-title").empty();
-  $("#project-header-subtitle").html(`Project ID: ${id.slice(0, 6)}`);
+  $("#project-header-subtitle").html(`
+    <div>Project ID: ${id.slice(0, 6)}</div>
+    <div>Date: ${date}</div>
+    <div>Relevant Link: <a href="${link}" target="_blank">${link}</a></div>
+    `);
 
   // fetch md content
   $.ajax({
