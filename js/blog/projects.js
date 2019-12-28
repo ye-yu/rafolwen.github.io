@@ -7,10 +7,10 @@ if (!Object.keys(currentQueries).length < 1) {
 }
 
 function displayProjectFromID(id) {
-  let projectSrc = `js/blog/content/${id}.md`;
+  $("#project-header").hide();
   $("#projects").empty();
-  $("#project-header-title").empty();
-  $("#project-header-subtitle").html(`Project ID: ${id.slice(0, 6)}`);
+
+  let projectSrc = `js/blog/content/${id}.md`;
 
   // fetch md content
   $.ajax({

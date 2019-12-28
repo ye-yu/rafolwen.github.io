@@ -68,6 +68,7 @@ $.ajax({
 function displayProjectsCategory(targetCategory) {
   let project = projects.projectCategories.filter(x => x.name == targetCategory)[0];
   let description = project.desc;
+  $("#project-header").show();
   $("#project-header-title").html(targetCategory);
   $("#project-header-subtitle").html(description.replace(/'\n'/g, '<br />'));
 }
@@ -85,7 +86,6 @@ function displayProjects(targetCategory) {
     let projTitle = i.name;
     let projSubtitle = "Tagged under: " + i.tags.join(", ");
     let projDesc = i.description;
-    let projLink = "blog.html?project=" + i.hashId;
     let projHash = i.hashId;
     let template = `
     <div class="row py-1 border-bottom">
@@ -98,9 +98,9 @@ function displayProjects(targetCategory) {
         </div>
       </div>
       <div class="col-lg-9 px-5 px-lg-3">
-        <a class="pt-3 pb-1 font-main d-block text-body text-ml" href="#" type="project-link" hash="${projHash}">
+        <div class="pt-3 pb-1 font-main d-block text-body text-ml hover-underline" type="project-link" hash="${projHash}">
           ${projTitle}
-        </a>
+        </div>
         <div class="pt-1 pb-2 pl-2 border-bottom font-main text-muted text-sm">
           ${projSubtitle}
         </div>
@@ -116,7 +116,9 @@ function displayProjects(targetCategory) {
   $("[type='project-link']").on('click',
     function(){
       let id = $(this).attr('hash');
-      displayProjectFromID(id);
+      let link = $(this).attr('link');
+      let date = $(this).attr('date');
+      displayProjectFromID(id, link, date);
       changeQuery({
         project: id
       })
