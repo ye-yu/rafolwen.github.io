@@ -85,7 +85,7 @@ function displayProjects(targetCategory) {
     let projTitle = i.name;
     let projSubtitle = "Tagged under: " + i.tags.join(", ");
     let projDesc = i.description;
-    let projLink = "blog.html?project=" + i.hashId;
+    let projLink = i.repoSrc;
     let projDate = i.date;
     let projHash = i.hashId;
     let template = `
