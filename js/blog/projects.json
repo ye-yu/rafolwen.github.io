@@ -103,7 +103,7 @@
         {
             "hashId": "581d168c17bd702ce350c6c555ddf516",
             "name": "Image Classification on Satellite Images",
-            "description": "<p>Implementation of CNN using Keras on dataset of 12-classes and 45-classes images. Dataset is obtained and derived from ******. Implementation training took approximately 12 hours, and the accuracy on 12-classes 45-classes images are 83% and 61%, respectively.</p><p>    </p>",
+            "description": "<p>Implementation of CNN using Keras on dataset of 12-classes and 45-classes images. Dataset is obtained and derived from NWPU-RESISC12. Implementation training took approximately 12 hours on Google Colab, and the accuracy on 12-classes 45-classes images are 83% and 61%, respectively.</p><p>    </p>",
             "thumbnailSrc": "images/projects/581d168c17bd702ce350c6c555ddf516_thumbnail.png",
             "thumbnailCap": "Image Classification on Satellite Images",
             "repoSrc": "",
