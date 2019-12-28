@@ -200,3 +200,14 @@ body {
   margin-bottom: 15px;
   line-height: 150%;
 }
+
+.project-markdown img {
+  display: block;
+  max-width: 400px;
+  margin: 15px auto;
+}
+
+.hover-underline:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
