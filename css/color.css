@@ -41,10 +41,7 @@ a:active {
   color: darkgray;
 }
 
-a:visited {
-  color: white;
-}
-
 .project-markdown a {
+  color: black;
   text-decoration: underline;
 }
