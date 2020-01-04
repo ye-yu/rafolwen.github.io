@@ -19,6 +19,23 @@
     ],
     "projects": [
         {
+            "hashId": "66e2f84225bb828fd58a21270c3e6ef4",
+            "name": "Sequence-to-Sequence As a Computer-Assisted Composition Model",
+            "description": "<p>Sequence-to-Sequence (Seq2Seq) architecture enables variable length of input to be used in synthesising variable length of output. This enables better mechanism in text translations with different length of input tokens and different lenght of expected output tokens</p><p>    The recent attention model enhances the prediction output by assigning attention weight to each element in the input sequence. This attention weight determines the order priority of the input with respect to the output.</p><p>    This blog demonstrate the codes that implement the same architecture to generate the sequence of musical notes as a continuation from the input sequence (aka a computer-assisted composition) </p><p>    </p>",
+            "thumbnailSrc": "images/projects/cac-svs/attention_mechanism.jpg",
+            "thumbnailCap": "Attention workflow model",
+            "repoSrc": "",
+            "category": "Machine Learning",
+            "tags": [
+                "Python",
+                "Sequence-to-Sequence",
+                "Recurrent Neural Network",
+                "Archived"
+            ],
+            "isHighlight": true,
+            "date": "2019-12-01"
+        },
+        {
             "hashId": "5fc4fdb2171c25c1f08c2d50a4d1adda",
             "name": "Extending Singing Sample with CAC and SVS",
             "description": "<p>The main objective of this research is to extract pitch and timbre features from the input singing voice and extend the music composition while synthesising the singing voice that is audibly similar to the input voice (i.e. having the similar timbre feature from a certain measurement.)</p><p>    Computer-assisted composition (CAC) is a Sequence-to-Sequence (Seq2Seq) + Attention model that can receive and generate variable length of input and output. Singing voice synthesis (SVS) is a software that generate singing voice based on the musical score and lyrics. To simplify the problem, many open-source programs are used to achieve the main goal. <a href=\"https://github.com/marl/crepe\" target=\"_blank\">CREPE</a> can be used to extract note tracks from a monophonic audio file into midi file. For synthesising of singing voice, <a href=\"http://utau.wiki\" target=\"_blank\">UTAU</a> can be used to sing from the generated music score by the CAC. The timbre score will determine which soundbanks to be used to achieve similarity with input voice.</p><p>    Training data set consists of vocal-isolated music track and is converted into midi track using Tony. </p><p>    The research is still under development.</p><p>    </p>",
@@ -91,7 +108,7 @@
             "description": "<p>The word counter is done parallelly within a cluster of system controlled by MPI. To measure effectiveness, the word counter program is both run in a single system and the cluster of system, and the computation time is calculated. Time taken using POSIX threading implementation is also taken for comparisons.</p><p>    </p>",
             "thumbnailSrc": "images/projects/b608791b4efb883c2fced6e29cf2c62d_thumbnail.png",
             "thumbnailCap": "Word Counter using MPI",
-            "repoSrc": "",
+            "repoSrc": "https://github.com/ye-yu/MPI-wordcounter",
             "category": "Command Line",
             "tags": [
                 "C",
