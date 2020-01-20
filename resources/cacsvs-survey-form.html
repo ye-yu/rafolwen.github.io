@@ -3,6 +3,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style media="screen">
+  html {
+    scroll-behavior:smooth;
+  }
+
   .input-notes {
     background-color: rgb(0, 204, 204);
   }
@@ -26,6 +30,23 @@
      vertical-align: top;
      padding: 1rem 5px;
   }
+
+  .absolute-bottom {
+    position: sticky;
+    margin: auto;
+    bottom: 1.2rem;
+  }
+
+  .absolute-top {
+    position: sticky;
+    margin: auto;
+    top: 1.2rem;
+  }
+
+  .overflow-x-auto {
+    overflow-x: auto;
+  }
+
 </style>
 <div class="container">
   <div class="row">
@@ -134,7 +155,7 @@
         </ul>
       </div>
 
-      <div class="h3 mt-5" id="vote">
+      <div class="h3 pt-5" id="vote">
         Voting Instructions
       </div>
       <hr>
@@ -264,17 +285,50 @@
     AI Generated Singing Music Clips
   </div>
 
-  <button type="button" class="mx-auto d-block btn btn-secondary" name="button">
+  <div id="progress-group">
+    <div class="progress mb-1" height="5px">
+      <div class="progress-bar progress-bar-striped progress-bar-animated"
+           role="progressbar" aria-valuenow="1" aria-valuemin="0"
+           aria-valuemax="100" style="width: 1%" id="iframe-progress"
+           style="-webkit-transition: none;transition: none;"></div>
+    </div>
+    <div class="text-center text-muted mb-5">
+      Loading clips...
+    </div>
+  </div>
+
+  <button type="button" class="mx-auto d-block btn btn-secondary" name="button" onclick="randomizeOnClick();">
     &#8635; Randomize
   </button>
 
   <hr class="my-5">
 
   <div class="container-fluid" id="voting-section">
-
-
   </div>
 
+  <hr class="my-1" id="pdc-divider">
+
+  <div class="mt-5 pb-3 display-4 text-center">
+    Consensual Personal Data Collection
+  </div>
+  <div class="mb-5 font-weight-bold text-center text-muted" style="font-size: 0.8rem;">
+    These information are anonymous and unidentifiable. However, this is not mandatory, and you are free to skip this section.
+  </div>
+
+  <hr class="my-5">
+
+  <form id="pdc-section">
+  </form>
+
+  <div class="absolute-bottom" id="complete-evaluation-button">
+    <button type="button"
+            class="btn btn-primary"
+            name="button"
+            id="submit-button"
+            onclick="submitResponse()">
+      Complete Evaluation &#187;
+    </button>
+  </div>
 
   <div class="d-flex flex-column text-center mt-5 mx-auto"
        style="font-size: 0.75rem; max-width: 50rem;">
@@ -305,30 +359,109 @@
   </form>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 
 <script type="text/javascript">
   "use strict";
+  $.fn.shuffleChildren = function() {
+    $.each(this.get(), function(index, el) {
+      var $el = $(el);
+      var $find = $el.children();
+
+      $find.sort(function() {
+        return 0.5 - Math.random();
+      });
+
+      $el.empty();
+      $find.appendTo($el);
+    });
+  };
+
+  const COMPLETE_EVALUATION = "Complete Evaluation »";
+  let SKIP_PDC = "Skip Personal Data Collection";
+  const ERROR_MSG = "(Please provide at least one answer.)";
 
   let rows = [
     {
       name: "seq2seq-clip-01",
       video: "TPCEgsqiyD0"
-    }
+    },
+    {
+      name: "seq2seq-clip-02",
+      video: "F4Tl6vyGZcU"
+    },
+    {
+      name: "seq2seq-clip-03",
+      video: "l-pvfqvp0xs"
+    },
+    {
+      name: "seq2seq-clip-04",
+      video: "p1I94i-tEfU"
+    },
+    {
+      name: "seq2seq-clip-05",
+      video: "2QUoSI0bvfQ"
+    },
+    {
+      name: "seq2seq-clip-06",
+      video: "rH6PpS4-IS0"
+    },
+    {
+      name: "seq2seq-clip-short-01",
+      video: "bm2qfx8FWCI"
+    },
+    {
+      name: "seq2seq-clip-short-02",
+      video: "RpVyWsSROlk"
+    },
+    {
+      name: "seq2seq-clip-short-03",
+      video: "HVz5fd_G5N0"
+    },
+    {
+      name: "lstm-clip-01",
+      video: "-UR0OH-FDzs"
+    },
+    {
+      name: "lstm-clip-02",
+      video: "-9VtcjMM-_s"
+    },
+    {
+      name: "lstm-clip-03",
+      video: "yG2VwQoUGuU"
+    },
+    {
+      name: "lstm-clip-04",
+      video: "vMZrprmPwxM"
+    },
+    {
+      name: "lstm-clip-05",
+      video: "a0QVsz_qD60"
+    },
+    {
+      name: "lstm-clip-06",
+      video: "HDsthD95KaE"
+    },
   ]
 
   let rowObjs = [];
 
-  let evaluationEvents="";
-  let personalDataEvents="";
+  let evaluationObj={};
+  let personalDataObj= {};
 
   for(let row of rows) {
     let name = row.name;
     let video = row.video;
     let template = `
-    <div class="row">
+    <div class="row align-items-center">
       <div class="col-lg-3">
         <iframe width="250px"
                 height="188px"
@@ -343,54 +476,134 @@
           <div class="row">
 
             <div class="col-lg border">
-              <div class="font-weight-bold text-center text-lg-left">
+              <div class="font-weight-bold text-center text-lg-left py-3">
                 Consistency
               </div>
-              <div class="">
-                <input type="radio" class="voting-option" name="${name}-consistency" value="Weak"> Weak <br>
-                <input type="radio" class="voting-option" name="${name}-consistency" value="Elementary"> Elementary <br>
-                <input type="radio" class="voting-option" name="${name}-consistency" value="Debatable"> Debatable <br>
-                <input type="radio" class="voting-option" name="${name}-consistency" value="Good"> Good <br>
-                <input type="radio" class="voting-option" name="${name}-consistency" value="Excellent"> Excellent <br>
+              <div class="pb-3">
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:consistency" value="weak"> <span class="px-2"> Weak </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:consistency" value="elementary"> <span class="px-2"> Elementary </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:consistency" value="debatable"> <span class="px-2"> Debatable </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:consistency" value="good"> <span class="px-2"> Good </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:consistency" value="excellent"> <span class="px-2"> Excellent </span> <br>
+                  </div>
+                </div>
               </div>
             </div>
 
             <div class="col-lg border">
-              <div class="font-weight-bold text-center text-lg-left">
+              <div class="font-weight-bold text-center text-lg-left py-3">
                 Composition
               </div>
-              <div class="">
-                <input type="radio" class="voting-option" name="${name}-composition" value="Weak"> Weak <br>
-                <input type="radio" class="voting-option" name="${name}-composition" value="Elementary"> Elementary <br>
-                <input type="radio" class="voting-option" name="${name}-composition" value="Debatable"> Debatable <br>
-                <input type="radio" class="voting-option" name="${name}-composition" value="Good"> Good <br>
-                <input type="radio" class="voting-option" name="${name}-composition" value="Excellent"> Excellent <br>
+              <div class="pb-3">
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:composition" value="weak"> <span class="px-2"> Weak </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:composition" value="elementary"> <span class="px-2"> Elementary </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:composition" value="debatable"> <span class="px-2"> Debatable </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:composition" value="good"> <span class="px-2"> Good </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:composition" value="excellent"> <span class="px-2"> Excellent </span> <br>
+                  </div>
+                </div>
               </div>
             </div>
 
             <div class="col-lg border">
-              <div class="font-weight-bold text-center text-lg-left">
+              <div class="font-weight-bold text-center text-lg-left py-3">
                 Creativity
               </div>
-              <div class="">
-                <input type="radio" class="voting-option" name="${name}-creativity" value="Weak"> Weak <br>
-                <input type="radio" class="voting-option" name="${name}-creativity" value="Elementary"> Elementary <br>
-                <input type="radio" class="voting-option" name="${name}-creativity" value="Debatable"> Debatable <br>
-                <input type="radio" class="voting-option" name="${name}-creativity" value="Good"> Good <br>
-                <input type="radio" class="voting-option" name="${name}-creativity" value="Excellent"> Excellent <br>
+              <div class="pb-3">
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:creativity" value="weak"> <span class="px-2"> Weak </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:creativity" value="elementary"> <span class="px-2"> Elementary </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:creativity" value="debatable"> <span class="px-2"> Debatable </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:creativity" value="good"> <span class="px-2"> Good </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:creativity" value="excellent"> <span class="px-2"> Excellent </span> <br>
+                  </div>
+                </div>
               </div>
             </div>
 
             <div class="col-lg border">
-              <div class="font-weight-bold text-center text-lg-left">
+              <div class="font-weight-bold text-center text-lg-left py-3">
                 Preference
               </div>
-              <div class="">
-                <input type="radio" class="voting-option" name="${name}-preference" value="Weak"> Weak <br>
-                <input type="radio" class="voting-option" name="${name}-preference" value="Elementary"> Elementary <br>
-                <input type="radio" class="voting-option" name="${name}-preference" value="Debatable"> Debatable <br>
-                <input type="radio" class="voting-option" name="${name}-preference" value="Good"> Good <br>
-                <input type="radio" class="voting-option" name="${name}-preference" value="Excellent"> Excellent <br>
+              <div class="pb-3">
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:preference" value="weak"> <span class="px-2"> Weak </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:preference" value="elementary"> <span class="px-2"> Elementary </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:preference" value="debatable"> <span class="px-2"> Debatable </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:preference" value="good"> <span class="px-2"> Good </span> <br>
+                  </div>
+                </div>
+                <div class="input-group-prepend">
+                  <div class="input-group-text w-100 mb-1">
+                    <input type="radio" class="voting-option" name="${name}:preference" value="excellent"> <span class="px-2"> Excellent </span> <br>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -398,26 +611,412 @@
         </div>
       </div>
     </div>
+    <hr class="mt-3">
     `;
     rowObjs.push($(template));
   }
 
-  for(let row of rowObjs) {
-    $("#voting-section").append(row);
+  function detachRowObjs() {
+    $("#voting-section").children().detach();
   }
 
-  $(".voting-option").on("click", (e) => appendEvaluationEvent(e));
+  function appendRowObjs() {
+    for(let row of rowObjs) {
+      $("#voting-section").append(row);
+    }
+    $(".voting-option").on("click", (e) => updateEvaluationData(e));
+  }
 
-  function appendEvaluationEvent(e) {
+  function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
+  function updatePdcOnElement(e) {
+    SKIP_PDC = `(Additional Info Included) ${COMPLETE_EVALUATION}`;
+    $("#submit-button").html(SKIP_PDC);
+    let name = e.name;
+    let value = e.value;
+
+    if (e.type == 'checkbox') {
+      if (personalDataObj[name] === undefined) {
+        personalDataObj[name] = {};
+      }
+      personalDataObj[name].checked = e.checked;
+    } else {
+      personalDataObj[name] = value;
+    }
+  }
+
+  function randomizeRowObjs() {
+    rowObjs = shuffle(rowObjs);
+  }
+
+
+  function updateEvaluationData(e) {
+    $("#submit-button").html(COMPLETE_EVALUATION);
     let attributes = e.currentTarget;
-    evaluationEvents += `${attributes.name}:${attributes.value};`;
+    let nameScore = attributes.name.split(":");
+    let name = nameScore[0];
+    let score = nameScore[1];
+    let value = attributes.value;
+    if (evaluationObj[name] === undefined) {
+      evaluationObj[name] = {};
+    }
+
+    console.log(name, score, value);
+    evaluationObj[name][score] = value;
   }
 
   function submitResponse() {
-    if (personalDataEvents.length > 0) {
-      $("#evaluation-events").val(evaluationEvents);
-      $("#personal-data-events").val(personalDataEvents);
-      $("#submit-form").click();
+    let y = $(document).scrollTop();
+    let t = $("#pdc-divider").offset().top - window.innerHeight;
+    if (y < t) {
+      if ($("#submit-button").html() != `${ERROR_MSG} ${COMPLETE_EVALUATION}`) {
+        location.hash = "pdc-divider";
+      }
+    } else {
+      if (Object.keys(evaluationObj).length > 0) {
+        $("#evaluation-events").val(JSON.stringify(evaluationObj));
+        $("#personal-data-events").val(JSON.stringify(personalDataObj));
+        $("#submit-form").click();
+      } else {
+        location.hash = "voting-section";
+        $("#submit-button").html(`${ERROR_MSG} ${COMPLETE_EVALUATION}`);
+      }
     }
   }
+
+  function randomizeOnClick() {
+    detachRowObjs();
+    randomizeRowObjs();
+    appendRowObjs();
+  }
+
+  let pdcQuestions = [
+  {
+    "question": "What device are you using to answer this survey?",
+    "name": "device",
+    "options": [
+      {
+        "type": "radio",
+        "text": "Mobile Device"
+      },
+      {
+        "type": "radio",
+        "text": "Widescreen Device"
+      },
+      {
+        "type": "radio",
+        "otherOption": true
+      }
+    ]
+  },
+  {
+    "question": "Are you aware of computer-generated singing voice like Hatsune Miku?",
+    "name": "know-svs",
+    "options": [
+      {
+        "type": "radio",
+        "text": "Yes"
+      },
+      {
+        "type": "radio",
+        "text": "No"
+      }
+    ]
+  },
+  {
+    "question": "What era of music do you often listen to?",
+    "name": "era",
+    "options": [
+      {
+        "type": "checkbox",
+        "text": "Classical songs"
+      },
+      {
+        "type": "checkbox",
+        "text": "80s songs"
+      },
+      {
+        "type": "checkbox",
+        "text": "90s songs"
+      },
+      {
+        "type": "checkbox",
+        "text": "Latest songs"
+      },
+      {
+        "type": "checkbox",
+        "otherOption": true
+      }
+    ]
+  },
+  {
+    "question": "Which region are you from?",
+    "name": "region",
+    "options": [
+      {
+        "type": "radio",
+        "text": "America"
+      },
+      {
+        "type": "radio",
+        "text": "Africa"
+      },
+      {
+        "type": "radio",
+        "text": "America"
+      },
+      {
+        "type": "radio",
+        "text": "Asia & Pacific"
+      },
+      {
+        "type": "radio",
+        "text": "Arab States"
+      },
+      {
+        "type": "radio",
+        "text": "Europe"
+      }
+    ]
+  },
+  {
+    "question": "What is your level of knowledge in music theory?",
+    "name": "know-music-theory",
+    "options": [
+      {
+        "type": "radio",
+        "text": "Not applicable (Having no idea how music is formed)"
+      },
+      {
+        "type": "radio",
+        "text": "Elementary (Knowing how to sing, not pitch-deaf, etc)"
+      },
+      {
+        "type": "radio",
+        "text": "Intermediate (Self-taught)"
+      },
+      {
+        "type": "radio",
+        "text": "Intermediate (Attended class/tutors)"
+      },
+      {
+        "type": "radio",
+        "text": "Advanced (Musical prodigy)"
+      }
+    ]
+  },
+  {
+    "question": "Which fields of study are you mostly interested in?",
+    "name": "study-fields",
+    "options": [
+      {
+        "type": "checkbox",
+        "text": "Visual Arts"
+      },
+      {
+        "type": "checkbox",
+        "text": "Game Industry"
+      },
+      {
+        "type": "checkbox",
+        "text": "Engineering"
+      },
+      {
+        "type": "checkbox",
+        "text": "Carpenting"
+      },
+      {
+        "type": "checkbox",
+        "text": "Literature"
+      },
+      {
+        "type": "checkbox",
+        "text": "Communication"
+      },
+      {
+        "type": "checkbox",
+        "text": "Music"
+      },
+      {
+        "type": "checkbox",
+        "text": "Business"
+      },
+      {
+        "type": "checkbox",
+        "text": "Biology"
+      },
+      {
+        "type": "checkbox",
+        "text": "Information Technology"
+      },
+      {
+        "type": "checkbox",
+        "text": "Mathematics"
+      },
+      {
+        "type": "checkbox",
+        "otherOption": true
+      }
+    ]
+  },
+  {
+    "question": "Have you built an AI program before?",
+    "name": "built-ai",
+    "options": [
+      {
+        "type": "radio",
+        "text": "Yes. I do it professionally."
+      },
+      {
+        "type": "radio",
+        "text": "Yes. I have done it as my hobby/school project."
+      },
+      {
+        "type": "radio",
+        "text": "No."
+      }
+    ]
+  },
+  {
+    "question": "Do you understand the purpose of this whole survey?",
+    "name": "know-purpose",
+    "options": [
+      {
+        "type": "radio",
+        "text": "Yes."
+      },
+      {
+        "type": "radio",
+        "text": "Yes, but it is not clear to me."
+      },
+      {
+        "type": "radio",
+        "text": "No."
+      }
+    ]
+  }];
+
+  function createOption(type, name, text, otherOption) {
+    if (otherOption) {
+        return `
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <input type="${type}" name="${name}" value="" id="${name}-other">
+            </div>
+          </div>
+          <input type="text"
+                 name="${name}"
+                 value=""
+                 class="form-control"
+                 placeholder="Others (Type your answer here.)"
+                 onkeyup="$('#${name}-other').attr("checked", true);updatePdcOnElement(this);">
+        </div>
+        `;
+    }
+    return `
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <input type="${type}"
+                 name="${name}"
+                 value="${text}"
+                 onclick="updatePdcOnElement(this)">
+        </div>
+      </div>
+      <span class="overflow-x-auto form-control">${text}</span>
+    </div>
+    `;
+  }
+
+  function updateProgressBar(prog) {
+    $("#iframe-progress").css("width", `${prog}%`);
+    $("#iframe-progress").attr("aria-valuenow", `${prog}`);
+    if (prog == 100) {
+      setTimeout(() => $("#progress-group").fadeOut(), 1000);
+    }
+  }
+
+  $(document).ready(() => {
+    randomizeOnClick();
+    updateProgressBar(5);
+
+    let y = $(document).scrollTop();
+    let t = $("#vote").offset().top;
+    if (y > t) {
+      $("#complete-evaluation-button").fadeIn();
+    } else {
+      $("#complete-evaluation-button").fadeOut();
+    }
+
+    $(document).scroll(function() {
+      let y = $(this).scrollTop();
+      let t = $("#vote").offset().top;
+      if (y > t) {
+        $("#complete-evaluation-button").fadeIn();
+      } else {
+        $("#complete-evaluation-button").fadeOut();
+      }
+    });
+
+    $(document).scroll(function() {
+      let y = $(this).scrollTop();
+      let t = $("#pdc-divider").offset().top - window.innerHeight;
+      if (y > t) {
+        if ($("#submit-button").html().trim() == COMPLETE_EVALUATION) {
+          $("#submit-button").html(SKIP_PDC);
+        }
+      } else {
+        if ($("#submit-button").html() == SKIP_PDC) {
+          $("#submit-button").html(COMPLETE_EVALUATION);
+        }
+      }
+    });
+    $("#submit-button").html(COMPLETE_EVALUATION);
+
+    $("input[type='radio']").prop("checked", false);
+    $("input[type='checkbox']").prop("checked", false);
+    $("input[type=text]").val("");
+
+    const TOTAL_IFRAMES = rows.length;
+    let loadedIframes = 0;
+    $("iframe").on('load', () => {
+      let prog = Math.ceil(((++loadedIframes)/TOTAL_IFRAMES) * 100);
+      updateProgressBar(prog);
+    });
+
+    pdcQuestions = shuffle(pdcQuestions);
+    for (let pdc of pdcQuestions) {
+      let options = "";
+      let question = pdc.question;
+      let name = pdc.name;
+      for (let option of pdc.options) {
+        options += createOption(option.type, name, option.text, option.otherOption);
+      }
+      let wrapper = `    <div class="form-group">
+        <label for="${name}">${question}</label>
+        ${options}
+            </div>
+      `;
+
+      $("#pdc-section").append(wrapper);
+    }
+  });
 </script>
