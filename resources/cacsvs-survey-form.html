@@ -621,10 +621,25 @@
   }
 
   function appendRowObjs() {
+    updateProgressBar(5);
+    $("#progress-group").fadeIn();
+    let loadedIframes = 0;
+    const TOTAL_IFRAMES = rows.length;
+
+    let n = 1;
+    const SECS = 850;
+
     for(let row of rowObjs) {
-      $("#voting-section").append(row);
+      setTimeout(() => {
+        $("#voting-section").append(row);
+        $(".voting-option").on("click", (e) => updateEvaluationData(e));
+        $("iframe").on('load', () => {
+          let prog = Math.ceil(((++loadedIframes)/TOTAL_IFRAMES) * 100);
+          updateProgressBar(prog);
+        });
+      }, (n++) * SECS);
     }
-    $(".voting-option").on("click", (e) => updateEvaluationData(e));
+
   }
 
   function shuffle(array) {
@@ -646,17 +661,35 @@
     return array;
   }
 
-  function updatePdcOnElement(e) {
+  function updatePdcOnElement(e, textConstraintById) {
     SKIP_PDC = `(Additional Info Included) ${COMPLETE_EVALUATION}`;
     $("#submit-button").html(SKIP_PDC);
+
+    if (textConstraintById !== undefined) {
+      let element = $('#' + textConstraintById);
+      let name = element.attr('name');
+      let value = element.val();
+      personalDataObj[name][value] = e.checked;
+      return;
+    }
+
+    let type = e.attributes.getNamedItem('stype').value;
+    let reference = e.attributes.getNamedItem('reference');
     let name = e.name;
     let value = e.value;
 
-    if (e.type == 'checkbox') {
+    if (type == 'checkbox') {
       if (personalDataObj[name] === undefined) {
         personalDataObj[name] = {};
       }
-      personalDataObj[name].checked = e.checked;
+
+      personalDataObj[name][value] = e.checked;
+
+      if (reference !== null) {
+        delete personalDataObj[name][reference.value];
+        $(e).attr('reference', value);
+        personalDataObj[name][value] = document.getElementById(`${e.attributes.getNamedItem('update-check-on').value}`).checked;
+      }
     } else {
       personalDataObj[name] = value;
     }
@@ -678,7 +711,6 @@
       evaluationObj[name] = {};
     }
 
-    console.log(name, score, value);
     evaluationObj[name][score] = value;
   }
 
@@ -919,15 +951,19 @@
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <div class="input-group-text">
-              <input type="${type}" name="${name}" value="" id="${name}-other">
+              <input type="${type}" name="${name}" value="" id="${name}-other" onclick="updatePdcOnElement(this, '${name}-other-text')">
             </div>
           </div>
           <input type="text"
+                 stype="${type}"
                  name="${name}"
                  value=""
+                 reference=""
+                 update-check-on="${name}-other"
                  class="form-control"
-                 placeholder="Others (Type your answer here.)"
-                 onkeyup="$('#${name}-other').attr("checked", true);updatePdcOnElement(this);">
+                 id="${name}-other-text"
+                 placeholder="Others (Type your answer here)"
+                 onkeyup="document.getElementById('${name}-other').checked = true;updatePdcOnElement(this);">
         </div>
         `;
     }
@@ -936,6 +972,7 @@
       <div class="input-group-prepend">
         <div class="input-group-text">
           <input type="${type}"
+                 stype="${type}"
                  name="${name}"
                  value="${text}"
                  onclick="updatePdcOnElement(this)">
@@ -995,12 +1032,6 @@
     $("input[type='checkbox']").prop("checked", false);
     $("input[type=text]").val("");
 
-    const TOTAL_IFRAMES = rows.length;
-    let loadedIframes = 0;
-    $("iframe").on('load', () => {
-      let prog = Math.ceil(((++loadedIframes)/TOTAL_IFRAMES) * 100);
-      updateProgressBar(prog);
-    });
 
     pdcQuestions = shuffle(pdcQuestions);
     for (let pdc of pdcQuestions) {
