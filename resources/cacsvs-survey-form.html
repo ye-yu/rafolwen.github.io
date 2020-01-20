@@ -89,7 +89,10 @@
             that is naturally monophonic, which achieves different goals than
             the other kinds of implementation. To compare model architectures,
             I trained two kinds of model: model with several layers of LSTM, and
-            a Sequence-to-Sequence model with Bahdanau attention.
+            a Sequence-to-Sequence model with Bahdanau attention. To listen to
+            the raw audio inputs, feel free to check out this link
+            <a href="https://www.youtube.com/playlist?list=PLHVwmyuGAjJ-OnBO9dKrNsnmmj7WAXDv0"
+               target="_blank"> over here</a>.
           </p>
           <p class="card-text">
             This survey can identify the quality of the generated outputs from
@@ -168,12 +171,11 @@
             <b>Consistency</b>
           </td>
           <td>
-            The direction of the
+            The direction from the
+            <span class="input-notes-text px-1">input melody</span>
+            to the
             <span class="output-notes-text px-1">generated melody</span>
-            is reasonable
-            with respect to the
-            <span class="input-notes-text px-1">input melody</span>.
-            (or in lay man's term: the music makes sense)
+            makes sense.
           </td>
         </tr>
 
@@ -184,8 +186,7 @@
           <td>
             The
             <span class="output-notes-text px-1">generated melody</span>
-            is comparable with human composition. That is, the generated melody is
-            almost like a composition by human.
+            is comparable to human composition, or it is realistic.
           </td>
         </tr>
 
@@ -196,8 +197,8 @@
           <td>
             The
             <span class="output-notes-text px-1">generated melody</span>
-            is interesting, or it is not spitting out garbage nor producing
-            random melody.
+            is interesting and innovative, or it is not spitting out garbage nor
+            producing random melody.
           </td>
         </tr>
 
@@ -215,7 +216,7 @@
 
       <p class="mt-2">
         To indicate the performance on each score shown above, you are required
-        to assign the following label as described below:
+        to assign one of the following labels to the score as described below:
       </p>
 
       <div class="container-fluid">
@@ -259,7 +260,7 @@
               <div class="card-body">
                 <h5 class="card-title font-weight-bold">Good</h5>
                 <p class="card-text">
-                  The performance needs less improvement on this score, or the flaw of the performance in this score is negligible.
+                  The performance needs less improvements on this score, or the flaw of the performance in this score is negligible.
                 </p>
               </div>
             </div>
@@ -270,7 +271,7 @@
               <div class="card-body">
                 <h5 class="card-title font-weight-bold">Excellent</h5>
                 <p class="card-text">
-                  The performance is flawless on this score.
+                  The performance is outstanding on this score.
                 </p>
               </div>
             </div>
