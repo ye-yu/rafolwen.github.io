@@ -46,7 +46,7 @@
   <div class="text-muted mt-2 mb-5 text-center font-weight-bold">
     AIs that analyze the <span class="input-notes-text px-1">input melody</span>
     that is sung <a href="https://www.youtube.com/playlist?list=PLHVwmyuGAjJ-OnBO9dKrNsnmmj7WAXDv0" target="_blank">by me</a>,
-    generate new notes,
+    generate <span class="output-notes-text px-1">new notes</span>,
     and re-sing the <span class="input-notes-text px-1">whole</span><span class="output-notes-text px-1">part</span>
     in just one syllable &mdash; duh.
   </div>
@@ -179,245 +179,278 @@
   const ERROR_MSG = "(Please provide at least one answer.)";
 
   let rows = [
+  [
     {
-      name: "seq2seq-clip-01",
-      video: "TPCEgsqiyD0"
+      "name": "seq2seq-0",
+      "video": "nIguHj9UE4g"
     },
     {
-      name: "seq2seq-clip-02",
-      video: "F4Tl6vyGZcU"
+      "name": "lstm-0",
+      "video": "SfhSMZlEg7I"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-1",
+      "video": "qtRDhseOy38"
     },
     {
-      name: "seq2seq-clip-03",
-      video: "l-pvfqvp0xs"
+      "name": "lstm-1",
+      "video": "Nx51Gorv_jc"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-2",
+      "video": "EK10TSPw6Hg"
     },
     {
-      name: "seq2seq-clip-04",
-      video: "p1I94i-tEfU"
+      "name": "lstm-2",
+      "video": "HziR51WMIVY"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-3",
+      "video": "mVp-YSSdvg0"
     },
     {
-      name: "seq2seq-clip-05",
-      video: "2QUoSI0bvfQ"
+      "name": "lstm-3",
+      "video": "ie_Jw1wpKsI"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-4",
+      "video": "ZXJub_8PaMw"
     },
     {
-      name: "seq2seq-clip-06",
-      video: "rH6PpS4-IS0"
+      "name": "lstm-4",
+      "video": "mDLeR3cvBQI"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-5",
+      "video": "g70h-niaB2c"
     },
     {
-      name: "seq2seq-clip-short-01",
-      video: "bm2qfx8FWCI"
+      "name": "lstm-5",
+      "video": "LvuarnMbYPQ"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-6",
+      "video": "hdn_D6YVamw"
     },
     {
-      name: "seq2seq-clip-short-02",
-      video: "RpVyWsSROlk"
+      "name": "lstm-6",
+      "video": "85tOHQchBh4"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-7",
+      "video": "bGCV_X4un5I"
     },
     {
-      name: "seq2seq-clip-short-03",
-      video: "HVz5fd_G5N0"
+      "name": "lstm-7",
+      "video": "1pbzFcKRwKU"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-8",
+      "video": "YEqWUmKwnSg"
     },
     {
-      name: "lstm-clip-01",
-      video: "-UR0OH-FDzs"
-    },
-    {
-      name: "lstm-clip-02",
-      video: "-9VtcjMM-_s"
-    },
-    {
-      name: "lstm-clip-03",
-      video: "yG2VwQoUGuU"
-    },
-    {
-      name: "lstm-clip-04",
-      video: "vMZrprmPwxM"
-    },
-    {
-      name: "lstm-clip-05",
-      video: "a0QVsz_qD60"
-    },
-    {
-      name: "lstm-clip-06",
-      video: "HDsthD95KaE"
-    },
-  ]
+      "name": "lstm-8",
+      "video": "EiTz1J_8Csc"
+    }
+  ]];
+  rows = shuffle(rows);
 
   let rowObjs = [];
 
   let evaluationObj={};
   let personalDataObj= {};
 
-  for(let row of rows) {
-    let name = row.name;
-    let video = row.video;
-    let template = `
-    <div class="row align-items-center">
-      <div class="col-lg-3">
-        <iframe width="250px"
-                height="188px"
-                style="display: block; margin: auto;"
-                src="https://www.youtube-nocookie.com/embed/${video}"
-                frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-      </div>
-      <div class="col-lg pl-3">
-        <div class="container-fluid my-4">
-          <div class="row">
+  let count = 0;
+  for(let rowGroup of rows) {
+    count++;
+    rowObjs.push($(`<div class="h1 text-center"> Group ${count}</div>`));
 
-            <div class="col-lg border">
-              <div class="font-weight-bold text-center text-lg-left py-3">
-                Consistency <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" data-html="true" title='            The direction from the
-                            <div class="input-notes-text px-1">input melody</div>
-                            to the
-                            <div class="output-notes-text px-1">generated melody</div>
-                            makes sense.'>?</span>
+    rowGroup = shuffle(rowGroup);
+    for(let row of rowGroup) {
+      let name = row.name;
+      let video = row.video;
+      let template = `
+      <div class="row align-items-center">
+        <div class="col-lg-3">
+          <iframe width="250px"
+          height="188px"
+          style="display: block; margin: auto;"
+          src="https://www.youtube-nocookie.com/embed/${video}"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+        </div>
+        <div class="col-lg pl-3">
+          <div class="container-fluid my-4">
+            <div class="row">
+
+              <div class="col-lg border">
+                <div class="font-weight-bold text-center text-lg-left py-3">
+                  Consistency <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" data-html="true" title='            The direction from the
+                  <div class="input-notes-text px-1">input melody</div>
+                  to the
+                  <div class="output-notes-text px-1">generated melody</div>
+                  makes sense.'>?</span>
+                </div>
+                <div class="pb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:consistency" value="weak"> <span class="px-2"> Weak <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance for this score is not meaningful, or it does not contribute any value to this score.">?</span> </span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:consistency" value="elementary"> <span class="px-2"> Elementary <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is slightly meaningful or does contribute little value to this score.">?</span> </span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:consistency" value="debatable"> <span class="px-2"> Debatable <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance can contribute some values to this score if we cherry-picked some parts of the generated melody.">?</span> </span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:consistency" value="good"> <span class="px-2"> Good <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance needs less improvements on this score, or the flaw of the performance in this score is negligible.">?</span> </span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:consistency" value="excellent"> <span class="px-2"> Excellent <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is outstanding on this score.">?</span> </span> <br>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="pb-3">
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:consistency" value="weak"> <span class="px-2"> Weak <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance for this score is not meaningful, or it does not contribute any value to this score.">?</span> </span> <br>
-                  </div>
+
+              <div class="col-lg border">
+                <div class="font-weight-bold text-center text-lg-left py-3">
+                  Composition <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" data-html="true" title='The
+                  <div class="output-notes-text px-1">generated melody</div>
+                  is comparable to human composition, or it is realistic.'>?</span>
                 </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:consistency" value="elementary"> <span class="px-2"> Elementary <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is slightly meaningful or does contribute little value to this score.">?</span> </span> <br>
+                <div class="pb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:composition" value="weak"> <span class="px-2"> Weak <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance for this score is not meaningful, or it does not contribute any value to this score.">?</span> </span> <br>
+                    </div>
                   </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:consistency" value="debatable"> <span class="px-2"> Debatable <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance can contribute some values to this score if we cherry-picked some parts of the generated melody.">?</span> </span> <br>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:composition" value="elementary"> <span class="px-2"> Elementary <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is slightly meaningful or does contribute little value to this score.">?</span> </span> <br>
+                    </div>
                   </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:consistency" value="good"> <span class="px-2"> Good <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance needs less improvements on this score, or the flaw of the performance in this score is negligible.">?</span> </span> <br>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:composition" value="debatable"> <span class="px-2"> Debatable <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance can contribute some values to this score if we cherry-picked some parts of the generated melody.">?</span> </span> <br>
+                    </div>
                   </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:consistency" value="excellent"> <span class="px-2"> Excellent <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is outstanding on this score.">?</span> </span> <br>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:composition" value="good"> <span class="px-2"> Good <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance needs less improvements on this score, or the flaw of the performance in this score is negligible.">?</span> </span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:composition" value="excellent"> <span class="px-2"> Excellent <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is outstanding on this score.">?</span> </span> <br>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              <div class="col-lg border">
+                <div class="font-weight-bold text-center text-lg-left py-3">
+                  Creativity <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" data-html="true" title='The
+                  <div class="output-notes-text px-1">generated melody</div>
+                  is interesting and innovative, or it is not spitting out garbage nor
+                  producing random melody.'>?</span>
+                </div>
+                <div class="pb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:creativity" value="weak"> <span class="px-2"> Weak <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance for this score is not meaningful, or it does not contribute any value to this score.">?</span> </span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:creativity" value="elementary"> <span class="px-2"> Elementary <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is slightly meaningful or does contribute little value to this score.">?</span> </span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:creativity" value="debatable"> <span class="px-2"> Debatable <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance can contribute some values to this score if we cherry-picked some parts of the generated melody.">?</span> </span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:creativity" value="good"> <span class="px-2"> Good <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance needs less improvements on this score, or the flaw of the performance in this score is negligible.">?</span> </span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:creativity" value="excellent"> <span class="px-2"> Excellent <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is outstanding on this score.">?</span> </span> <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg border">
+                <div class="font-weight-bold text-center text-lg-left py-3">
+                  Preference <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" data-html="true" title='The
+                  <span class="input-notes-text pl-1">whole</span><span class="output-notes-text px-1">clip</span>
+                  is likeable.'>?</span>
+                </div>
+                <div class="pb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:preference" value="weak"> <span class="px-2"> Weak <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance for this score is not meaningful, or it does not contribute any value to this score.">?</span> </span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:preference" value="elementary"> <span class="px-2"> Elementary <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is slightly meaningful or does contribute little value to this score.">?</span> </span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:preference" value="debatable"> <span class="px-2"> Debatable <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance can contribute some values to this score if we cherry-picked some parts of the generated melody.">?</span> </span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:preference" value="good"> <span class="px-2"> Good <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance needs less improvements on this score, or the flaw of the performance in this score is negligible.">?</span> </span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:preference" value="excellent"> <span class="px-2"> Excellent <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is outstanding on this score.">?</span> </span> <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
-
-            <div class="col-lg border">
-              <div class="font-weight-bold text-center text-lg-left py-3">
-                Composition <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" data-html="true" title='The
-                <div class="output-notes-text px-1">generated melody</div>
-                is comparable to human composition, or it is realistic.'>?</span>
-              </div>
-              <div class="pb-3">
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:composition" value="weak"> <span class="px-2"> Weak <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance for this score is not meaningful, or it does not contribute any value to this score.">?</span> </span> <br>
-                  </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:composition" value="elementary"> <span class="px-2"> Elementary <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is slightly meaningful or does contribute little value to this score.">?</span> </span> <br>
-                  </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:composition" value="debatable"> <span class="px-2"> Debatable <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance can contribute some values to this score if we cherry-picked some parts of the generated melody.">?</span> </span> <br>
-                  </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:composition" value="good"> <span class="px-2"> Good <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance needs less improvements on this score, or the flaw of the performance in this score is negligible.">?</span> </span> <br>
-                  </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:composition" value="excellent"> <span class="px-2"> Excellent <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is outstanding on this score.">?</span> </span> <br>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg border">
-              <div class="font-weight-bold text-center text-lg-left py-3">
-                Creativity <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" data-html="true" title='The
-                <div class="output-notes-text px-1">generated melody</div>
-                is interesting and innovative, or it is not spitting out garbage nor
-                producing random melody.'>?</span>
-              </div>
-              <div class="pb-3">
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:creativity" value="weak"> <span class="px-2"> Weak <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance for this score is not meaningful, or it does not contribute any value to this score.">?</span> </span> <br>
-                  </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:creativity" value="elementary"> <span class="px-2"> Elementary <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is slightly meaningful or does contribute little value to this score.">?</span> </span> <br>
-                  </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:creativity" value="debatable"> <span class="px-2"> Debatable <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance can contribute some values to this score if we cherry-picked some parts of the generated melody.">?</span> </span> <br>
-                  </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:creativity" value="good"> <span class="px-2"> Good <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance needs less improvements on this score, or the flaw of the performance in this score is negligible.">?</span> </span> <br>
-                  </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:creativity" value="excellent"> <span class="px-2"> Excellent <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is outstanding on this score.">?</span> </span> <br>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg border">
-              <div class="font-weight-bold text-center text-lg-left py-3">
-                Preference <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" data-html="true" title='The
-                <span class="input-notes-text pl-1">whole</span><span class="output-notes-text px-1">clip</span>
-                is likeable.'>?</span>
-              </div>
-              <div class="pb-3">
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:preference" value="weak"> <span class="px-2"> Weak <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance for this score is not meaningful, or it does not contribute any value to this score.">?</span> </span> <br>
-                  </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:preference" value="elementary"> <span class="px-2"> Elementary <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is slightly meaningful or does contribute little value to this score.">?</span> </span> <br>
-                  </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:preference" value="debatable"> <span class="px-2"> Debatable <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance can contribute some values to this score if we cherry-picked some parts of the generated melody.">?</span> </span> <br>
-                  </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:preference" value="good"> <span class="px-2"> Good <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance needs less improvements on this score, or the flaw of the performance in this score is negligible.">?</span> </span> <br>
-                  </div>
-                </div>
-                <div class="input-group-prepend">
-                  <div class="input-group-text w-100 mb-1">
-                    <input type="radio" class="voting-option" name="${name}:preference" value="excellent"> <span class="px-2"> Excellent <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is outstanding on this score.">?</span> </span> <br>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
-    </div>
-    <hr class="mt-3">
-    `;
-    rowObjs.push($(template));
-  }
-
-  function detachRowObjs() {
-    $("#voting-section").children().detach();
+      <hr class="mt-3">
+      `;
+      rowObjs.push($(template));
+    }
   }
 
   function appendRowObjs() {
@@ -496,11 +529,6 @@
     }
   }
 
-  function randomizeRowObjs() {
-    rowObjs = shuffle(rowObjs);
-  }
-
-
   function updateEvaluationData(e) {
     $("#submit-button").html(COMPLETE_EVALUATION);
     let attributes = e.currentTarget;
@@ -532,12 +560,6 @@
         $("#submit-button").html(`${ERROR_MSG} ${COMPLETE_EVALUATION}`);
       }
     }
-  }
-
-  function randomizeOnClick() {
-    detachRowObjs();
-    randomizeRowObjs();
-    appendRowObjs();
   }
 
   let pdcQuestions = [
@@ -793,7 +815,7 @@
   }
 
   $(document).ready(() => {
-    randomizeOnClick();
+    appendRowObjs();
     updateProgressBar(5);
 
     let y = $(document).scrollTop();
@@ -835,6 +857,24 @@
 
 
     pdcQuestions = shuffle(pdcQuestions);
+    pdcQuestions.push({
+      "question": "What can be improved for this survey?",
+      "name": "survey-improvement",
+      "options": [{
+          "type": "radio",
+          "otherOption": true
+        }
+      ]
+    });
+    pdcQuestions.push({
+      "question": "What can be improved for this project?",
+      "name": "project-improvement",
+      "options": [{
+          "type": "radio",
+          "otherOption": true
+        }
+      ]
+    });
     for (let pdc of pdcQuestions) {
       let options = "";
       let question = pdc.question;
