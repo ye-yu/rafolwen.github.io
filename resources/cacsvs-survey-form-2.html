@@ -1,0 +1,894 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style media="screen">
+  html {
+    scroll-behavior:smooth;
+  }
+
+  .input-notes-text {
+    background-color: rgb(0, 204, 204);
+    color: black;
+  }
+
+  .output-notes-text {
+    background-color: rgb(255, 51, 0);
+    color: white;
+  }
+
+  td {
+     vertical-align: top;
+     padding: 1rem 5px;
+  }
+
+  .absolute-bottom {
+    position: sticky;
+    margin: auto;
+    bottom: 1.2rem;
+  }
+
+  .absolute-top {
+    position: sticky;
+    margin: auto;
+    top: 1.2rem;
+  }
+
+  .overflow-x-auto {
+    overflow-x: auto;
+  }
+
+</style>
+<div class="container" id="vote">
+  <div class="mt-5 mb-1 display-3 text-center">
+    AI Generated Singing Music Clips
+  </div>
+  <div class="text-muted mt-2 mb-5 text-center font-weight-bold">
+    AIs that analyze the <span class="input-notes-text px-1">input melody</span>
+    that is sung <a href="https://www.youtube.com/playlist?list=PLHVwmyuGAjJ-OnBO9dKrNsnmmj7WAXDv0" target="_blank">by me</a>,
+    generate <span class="output-notes-text px-1">new notes</span>,
+    and re-sing the <span class="input-notes-text px-1">whole</span><span class="output-notes-text px-1">part</span>
+    in just one syllable &mdash; duh.
+  </div>
+
+  <div id="progress-group">
+    <div class="progress mb-1" height="5px">
+      <div class="progress-bar progress-bar-striped progress-bar-animated"
+           role="progressbar" aria-valuenow="1" aria-valuemin="0"
+           aria-valuemax="100" style="width: 1%" id="iframe-progress"
+           style="-webkit-transition: none;transition: none;"></div>
+    </div>
+    <div class="text-center text-muted mb-5">
+      Loading clips...
+    </div>
+  </div>
+
+  <a href="cacsvs-survey-form.html" class="mx-auto d-block btn">
+    <button class="btn btn-secondary">
+      More Info
+    </button>
+  </a>
+
+  <hr class="my-5">
+
+  <div class="p-3 mb-2 bg-info text-white d-flex flex-row align-items-center">
+    <div class="d-inline-block pb-1 pr-3">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+           viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+           class="feather feather-alert-circle">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="12" y1="8" x2="12" y2="12"></line>
+        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+      </svg>
+    </div>
+    <div class="d-inline-block">
+      This survey may take around 5 to 20 minutes depending on how many questions do you choose to answer.
+      <br>
+      However, it is highly appreciated to have at least 5 questions answered carefully.
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <div class="container-fluid" id="voting-section">
+  </div>
+
+  <hr class="my-1" id="pdc-divider">
+
+  <div class="mt-5 pb-3 display-4 text-center">
+    Consensual Personal Data Collection
+  </div>
+  <div class="mb-5 font-weight-bold text-center text-muted" style="font-size: 0.8rem;">
+    These information are anonymous and unidentifiable. However, this is not mandatory, and you are free to skip this section.
+  </div>
+
+  <hr class="my-5">
+
+  <form id="pdc-section">
+  </form>
+
+  <div class="absolute-bottom" id="complete-evaluation-button">
+    <button type="button"
+            class="btn btn-primary"
+            name="button"
+            id="submit-button"
+            onclick="submitResponse()">
+      Complete Evaluation &#187;
+    </button>
+  </div>
+
+  <div class="d-flex flex-column text-center mt-5 mx-auto"
+       style="font-size: 0.75rem; max-width: 50rem;">
+    <div class="">
+      <b>Fair Use Notice</b>
+    </div>
+    <div class="">
+      <p>
+        This project may have used copyrighted contents without the right authorization from their respective owners. These contents are only for educational and research purposes and may be identified in some part of the contents in this survey. This is by no means collecting any monetary benefits from using these contents.
+      </p>
+      <p>
+        Further discussions can be issued through this link:
+        <a href="https://github.com/ye-yu/cac-svs/issues" target="_blank">
+          GitHub Repo Issues
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div style="visibility: hidden;">
+  <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfJr2nX7CSplUzr0po5uvppMv50gkZ48orVL2XYuVFQEWjUNQ/formResponse"
+        method="POST"
+        id="mG61Hd">
+    <input type="text" name="entry.1086921046" id="evaluation-events">
+    <input type="text" name="entry.1933991603" id="personal-data-events">
+    <button type="submit" class="btn btn-primary" id="submit-form">Submit</button>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+  "use strict";
+
+  $.fn.shuffleChildren = function() {
+    $.each(this.get(), function(index, el) {
+      var $el = $(el);
+      var $find = $el.children();
+
+      $find.sort(function() {
+        return 0.5 - Math.random();
+      });
+
+      $el.empty();
+      $find.appendTo($el);
+    });
+  };
+
+  const COMPLETE_EVALUATION = "Complete Evaluation »";
+  let SKIP_PDC = "Skip Personal Data Collection";
+  const ERROR_MSG = "(Please provide at least one answer.)";
+
+  let rows = [
+  [
+    {
+      "name": "seq2seq-0",
+      "video": "nIguHj9UE4g"
+    },
+    {
+      "name": "lstm-0",
+      "video": "SfhSMZlEg7I"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-1",
+      "video": "qtRDhseOy38"
+    },
+    {
+      "name": "lstm-1",
+      "video": "Nx51Gorv_jc"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-2",
+      "video": "EK10TSPw6Hg"
+    },
+    {
+      "name": "lstm-2",
+      "video": "HziR51WMIVY"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-3",
+      "video": "mVp-YSSdvg0"
+    },
+    {
+      "name": "lstm-3",
+      "video": "ie_Jw1wpKsI"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-4",
+      "video": "ZXJub_8PaMw"
+    },
+    {
+      "name": "lstm-4",
+      "video": "mDLeR3cvBQI"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-5",
+      "video": "g70h-niaB2c"
+    },
+    {
+      "name": "lstm-5",
+      "video": "LvuarnMbYPQ"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-6",
+      "video": "hdn_D6YVamw"
+    },
+    {
+      "name": "lstm-6",
+      "video": "85tOHQchBh4"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-7",
+      "video": "bGCV_X4un5I"
+    },
+    {
+      "name": "lstm-7",
+      "video": "1pbzFcKRwKU"
+    }
+  ],
+  [
+    {
+      "name": "seq2seq-8",
+      "video": "YEqWUmKwnSg"
+    },
+    {
+      "name": "lstm-8",
+      "video": "EiTz1J_8Csc"
+    }
+  ]];
+  rows = shuffle(rows);
+
+  let rowObjs = [];
+
+  let evaluationObj={};
+  let personalDataObj= {};
+
+  let count = 0;
+  for(let rowGroup of rows) {
+    count++;
+    rowObjs.push($(`<div class="h1 text-center"> Group ${count}</div>`));
+
+    rowGroup = shuffle(rowGroup);
+    for(let row of rowGroup) {
+      let name = row.name;
+      let video = row.video;
+      let template = `
+      <div class="row align-items-center">
+        <div class="col-lg-3">
+          <iframe width="250px"
+          height="188px"
+          style="display: block; margin: auto;"
+          src="https://www.youtube-nocookie.com/embed/${video}"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+        </div>
+        <div class="col-lg pl-3">
+          <div class="container-fluid my-4">
+            <div class="row">
+
+              <div class="col-lg border">
+                <div class="font-weight-bold text-center text-lg-left py-3">
+                  Consistency <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" data-html="true" title='            The direction from the
+                  <div class="input-notes-text px-1">input melody</div>
+                  to the
+                  <div class="output-notes-text px-1">generated melody</div>
+                  makes sense.'>?</span>
+                </div>
+                <div class="pb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:consistency" value="weak"> <span class="px-2 mr-auto d-inline-block"> Weak </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance for this score is not meaningful, or it does not contribute any value to this score.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:consistency" value="elementary"> <span class="px-2 mr-auto d-inline-block"> Elementary </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is slightly meaningful or does contribute little value to this score.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:consistency" value="debatable"> <span class="px-2 mr-auto d-inline-block"> Debatable </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance can contribute some values to this score if we cherry-picked some parts of the generated melody.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:consistency" value="good"> <span class="px-2 mr-auto d-inline-block"> Good </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance needs less improvements on this score, or the flaw of the performance in this score is negligible.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:consistency" value="excellent"> <span class="px-2 mr-auto d-inline-block"> Excellent </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is outstanding on this score.">?</span> <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg border">
+                <div class="font-weight-bold text-center text-lg-left py-3">
+                  Composition <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" data-html="true" title='The
+                  <div class="output-notes-text px-1">generated melody</div>
+                  is comparable to human composition, or it is realistic.'>?</span>
+                </div>
+                <div class="pb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:composition" value="weak"> <span class="px-2 mr-auto d-inline-block"> Weak </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance for this score is not meaningful, or it does not contribute any value to this score.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:composition" value="elementary"> <span class="px-2 mr-auto d-inline-block"> Elementary </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is slightly meaningful or does contribute little value to this score.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:composition" value="debatable"> <span class="px-2 mr-auto d-inline-block"> Debatable </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance can contribute some values to this score if we cherry-picked some parts of the generated melody.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:composition" value="good"> <span class="px-2 mr-auto d-inline-block"> Good </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance needs less improvements on this score, or the flaw of the performance in this score is negligible.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:composition" value="excellent"> <span class="px-2 mr-auto d-inline-block"> Excellent </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is outstanding on this score.">?</span> <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg border">
+                <div class="font-weight-bold text-center text-lg-left py-3">
+                  Creativity <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" data-html="true" title='The
+                  <div class="output-notes-text px-1">generated melody</div>
+                  is interesting and innovative, or it is not spitting out garbage nor
+                  producing random melody.'>?</span>
+                </div>
+                <div class="pb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:creativity" value="weak"> <span class="px-2 mr-auto d-inline-block"> Weak </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance for this score is not meaningful, or it does not contribute any value to this score.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:creativity" value="elementary"> <span class="px-2 mr-auto d-inline-block"> Elementary </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is slightly meaningful or does contribute little value to this score.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:creativity" value="debatable"> <span class="px-2 mr-auto d-inline-block"> Debatable </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance can contribute some values to this score if we cherry-picked some parts of the generated melody.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:creativity" value="good"> <span class="px-2 mr-auto d-inline-block"> Good </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance needs less improvements on this score, or the flaw of the performance in this score is negligible.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:creativity" value="excellent"> <span class="px-2 mr-auto d-inline-block"> Excellent </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is outstanding on this score.">?</span> <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg border">
+                <div class="font-weight-bold text-center text-lg-left py-3">
+                  Preference <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" data-html="true" title='The
+                  <span class="input-notes-text pl-1">whole</span><span class="output-notes-text px-1">clip</span>
+                  is likeable.'>?</span>
+                </div>
+                <div class="pb-3">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:preference" value="weak"> <span class="px-2 mr-auto d-inline-block"> Weak </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance for this score is not meaningful, or it does not contribute any value to this score.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:preference" value="elementary"> <span class="px-2 mr-auto d-inline-block"> Elementary </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is slightly meaningful or does contribute little value to this score.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:preference" value="debatable"> <span class="px-2 mr-auto d-inline-block"> Debatable </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance can contribute some values to this score if we cherry-picked some parts of the generated melody.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:preference" value="good"> <span class="px-2 mr-auto d-inline-block"> Good </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance needs less improvements on this score, or the flaw of the performance in this score is negligible.">?</span> <br>
+                    </div>
+                  </div>
+                  <div class="input-group-prepend">
+                    <div class="input-group-text w-100 mb-1">
+                      <input type="radio" class="voting-option" name="${name}:preference" value="excellent"> <span class="px-2 mr-auto d-inline-block"> Excellent </span> <span class="badge badge-pill badge-dark" data-toggle="tooltip" data-placement="top" title="The performance is outstanding on this score.">?</span> <br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="mt-3">
+      `;
+      rowObjs.push($(template));
+    }
+  }
+
+  function appendRowObjs() {
+    updateProgressBar(5);
+    $("#progress-group").fadeIn();
+    let loadedIframes = 0;
+    const TOTAL_IFRAMES = rowObjs.length - 9;
+
+    let n = 1;
+    const SECS = 850;
+
+    for(let row of rowObjs) {
+      setTimeout(() => {
+        $("#voting-section").append(row);
+        $(".voting-option").on("click", (e) => updateEvaluationData(e));
+        $("[data-toggle=tooltip]").tooltip();
+        $("iframe").on('load', () => {
+          let prog = Math.ceil(((++loadedIframes)/TOTAL_IFRAMES) * 100);
+          updateProgressBar(prog);
+        });
+      }, (n++) * SECS);
+    }
+
+  }
+
+  function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
+  function updatePdcOnElement(e, textConstraintById) {
+    SKIP_PDC = `(Additional Info Included) ${COMPLETE_EVALUATION}`;
+    $("#submit-button").html(SKIP_PDC);
+
+    if (textConstraintById !== undefined) {
+      let element = $('#' + textConstraintById);
+      let name = element.attr('name');
+      let value = element.val();
+      personalDataObj[name][value] = e.checked;
+      return;
+    }
+
+    let type = e.attributes.getNamedItem('stype').value;
+    let reference = e.attributes.getNamedItem('reference');
+    let name = e.name;
+    let value = e.value;
+
+    if (type == 'checkbox') {
+      if (personalDataObj[name] === undefined) {
+        personalDataObj[name] = {};
+      }
+
+      personalDataObj[name][value] = e.checked;
+
+      if (reference !== null) {
+        delete personalDataObj[name][reference.value];
+        $(e).attr('reference', value);
+        personalDataObj[name][value] = document.getElementById(`${e.attributes.getNamedItem('update-check-on').value}`).checked;
+      }
+    } else {
+      personalDataObj[name] = value;
+    }
+  }
+
+  function updateEvaluationData(e) {
+    $("#submit-button").html(COMPLETE_EVALUATION);
+    let attributes = e.currentTarget;
+    let nameScore = attributes.name.split(":");
+    let name = nameScore[0];
+    let score = nameScore[1];
+    let value = attributes.value;
+    if (evaluationObj[name] === undefined) {
+      evaluationObj[name] = {};
+    }
+
+    evaluationObj[name][score] = value;
+  }
+
+  function submitResponse() {
+    let y = $(document).scrollTop();
+    let t = $("#pdc-divider").offset().top - window.innerHeight;
+    if (y < t) {
+      if ($("#submit-button").html() != `${ERROR_MSG} ${COMPLETE_EVALUATION}`) {
+        location.hash = "pdc-divider";
+      }
+    } else {
+      if (Object.keys(evaluationObj).length > 0) {
+        $("#evaluation-events").val(JSON.stringify(evaluationObj));
+        $("#personal-data-events").val(JSON.stringify(personalDataObj));
+        $("#submit-form").click();
+      } else {
+        location.hash = "voting-section";
+        $("#submit-button").html(`${ERROR_MSG} ${COMPLETE_EVALUATION}`);
+      }
+    }
+  }
+
+  let pdcQuestions = [
+  {
+    "question": "What device are you using to answer this survey?",
+    "name": "device",
+    "options": [
+      {
+        "type": "radio",
+        "text": "Mobile Device"
+      },
+      {
+        "type": "radio",
+        "text": "Widescreen Device"
+      },
+      {
+        "type": "radio",
+        "otherOption": true
+      }
+    ]
+  },
+  {
+    "question": "Are you aware of computer-generated singing voice like Hatsune Miku?",
+    "name": "know-svs",
+    "options": [
+      {
+        "type": "radio",
+        "text": "Yes"
+      },
+      {
+        "type": "radio",
+        "text": "No"
+      }
+    ]
+  },
+  {
+    "question": "What era of music do you often listen to?",
+    "name": "era",
+    "options": [
+      {
+        "type": "checkbox",
+        "text": "Classical songs"
+      },
+      {
+        "type": "checkbox",
+        "text": "80s songs"
+      },
+      {
+        "type": "checkbox",
+        "text": "90s songs"
+      },
+      {
+        "type": "checkbox",
+        "text": "Latest songs"
+      },
+      {
+        "type": "checkbox",
+        "otherOption": true
+      }
+    ]
+  },
+  {
+    "question": "Which region are you from?",
+    "name": "region",
+    "options": [
+      {
+        "type": "radio",
+        "text": "America"
+      },
+      {
+        "type": "radio",
+        "text": "Africa"
+      },
+      {
+        "type": "radio",
+        "text": "America"
+      },
+      {
+        "type": "radio",
+        "text": "Asia & Pacific"
+      },
+      {
+        "type": "radio",
+        "text": "Arab States"
+      },
+      {
+        "type": "radio",
+        "text": "Europe"
+      }
+    ]
+  },
+  {
+    "question": "What is your level of knowledge in music theory?",
+    "name": "know-music-theory",
+    "options": [
+      {
+        "type": "radio",
+        "text": "Not applicable (Having no idea how music is formed)"
+      },
+      {
+        "type": "radio",
+        "text": "Elementary (Knowing how to sing, not pitch-deaf, etc)"
+      },
+      {
+        "type": "radio",
+        "text": "Intermediate (Self-taught)"
+      },
+      {
+        "type": "radio",
+        "text": "Intermediate (Attended class/tutors)"
+      },
+      {
+        "type": "radio",
+        "text": "Advanced (Musical prodigy)"
+      }
+    ]
+  },
+  {
+    "question": "Which fields of study are you mostly interested in?",
+    "name": "study-fields",
+    "options": [
+      {
+        "type": "checkbox",
+        "text": "Visual Arts"
+      },
+      {
+        "type": "checkbox",
+        "text": "Game Industry"
+      },
+      {
+        "type": "checkbox",
+        "text": "Engineering"
+      },
+      {
+        "type": "checkbox",
+        "text": "Carpenting"
+      },
+      {
+        "type": "checkbox",
+        "text": "Literature"
+      },
+      {
+        "type": "checkbox",
+        "text": "Communication"
+      },
+      {
+        "type": "checkbox",
+        "text": "Music"
+      },
+      {
+        "type": "checkbox",
+        "text": "Business"
+      },
+      {
+        "type": "checkbox",
+        "text": "Biology"
+      },
+      {
+        "type": "checkbox",
+        "text": "Information Technology"
+      },
+      {
+        "type": "checkbox",
+        "text": "Mathematics"
+      },
+      {
+        "type": "checkbox",
+        "otherOption": true
+      }
+    ]
+  },
+  {
+    "question": "Have you built an AI program before?",
+    "name": "built-ai",
+    "options": [
+      {
+        "type": "radio",
+        "text": "Yes. I do it professionally."
+      },
+      {
+        "type": "radio",
+        "text": "Yes. I have done it as my hobby/school project."
+      },
+      {
+        "type": "radio",
+        "text": "No."
+      }
+    ]
+  },
+  {
+    "question": "Do you understand the purpose of this whole survey?",
+    "name": "know-purpose",
+    "options": [
+      {
+        "type": "radio",
+        "text": "Yes."
+      },
+      {
+        "type": "radio",
+        "text": "Yes, but it is not clear to me."
+      },
+      {
+        "type": "radio",
+        "text": "No."
+      }
+    ]
+  }];
+
+  function createOption(type, name, text, otherOption) {
+    if (otherOption) {
+        return `
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <input type="${type}" name="${name}" value="" id="${name}-other" onclick="updatePdcOnElement(this, '${name}-other-text')">
+            </div>
+          </div>
+          <input type="text"
+                 stype="${type}"
+                 name="${name}"
+                 value=""
+                 reference=""
+                 update-check-on="${name}-other"
+                 class="form-control"
+                 id="${name}-other-text"
+                 placeholder="Others (Type your answer here)"
+                 onkeyup="document.getElementById('${name}-other').checked = true;updatePdcOnElement(this);">
+        </div>
+        `;
+    }
+    return `
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <div class="input-group-text">
+          <input type="${type}"
+                 stype="${type}"
+                 name="${name}"
+                 value="${text}"
+                 onclick="updatePdcOnElement(this)">
+        </div>
+      </div>
+      <span class="overflow-x-auto form-control">${text}</span>
+    </div>
+    `;
+  }
+
+  function updateProgressBar(prog) {
+    $("#iframe-progress").css("width", `${prog}%`);
+    $("#iframe-progress").attr("aria-valuenow", `${prog}`);
+    if (prog == 100) {
+      setTimeout(() => $("#progress-group").fadeOut(), 1000);
+    }
+  }
+
+  $(document).ready(() => {
+    appendRowObjs();
+    updateProgressBar(5);
+
+    let y = $(document).scrollTop();
+    let t = $("#vote").offset().top;
+    if (y > t) {
+      $("#complete-evaluation-button").fadeIn();
+    } else {
+      $("#complete-evaluation-button").fadeOut();
+    }
+
+    $(document).scroll(function() {
+      let y = $(this).scrollTop();
+      let t = $("#vote").offset().top;
+      if (y > t) {
+        $("#complete-evaluation-button").fadeIn();
+      } else {
+        $("#complete-evaluation-button").fadeOut();
+      }
+    });
+
+    $(document).scroll(function() {
+      let y = $(this).scrollTop();
+      let t = $("#pdc-divider").offset().top - window.innerHeight;
+      if (y > t) {
+        if ($("#submit-button").html().trim() == COMPLETE_EVALUATION) {
+          $("#submit-button").html(SKIP_PDC);
+        }
+      } else {
+        if ($("#submit-button").html() == SKIP_PDC) {
+          $("#submit-button").html(COMPLETE_EVALUATION);
+        }
+      }
+    });
+    $("#submit-button").html(COMPLETE_EVALUATION);
+
+    $("input[type='radio']").prop("checked", false);
+    $("input[type='checkbox']").prop("checked", false);
+    $("input[type=text]").val("");
+
+
+    pdcQuestions = shuffle(pdcQuestions);
+    pdcQuestions.push({
+      "question": "What can be improved for this survey?",
+      "name": "survey-improvement",
+      "options": [{
+          "type": "radio",
+          "otherOption": true
+        }
+      ]
+    });
+    pdcQuestions.push({
+      "question": "What can be improved for this project?",
+      "name": "project-improvement",
+      "options": [{
+          "type": "radio",
+          "otherOption": true
+        }
+      ]
+    });
+    for (let pdc of pdcQuestions) {
+      let options = "";
+      let question = pdc.question;
+      let name = pdc.name;
+      for (let option of pdc.options) {
+        options += createOption(option.type, name, option.text, option.otherOption);
+      }
+      let wrapper = `    <div class="form-group">
+        <label for="${name}">${question}</label>
+        ${options}
+            </div>
+      `;
+
+      $("#pdc-section").append(wrapper);
+    }
+  });
+</script>
