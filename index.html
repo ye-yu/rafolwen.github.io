@@ -140,6 +140,7 @@
           <tspan class="h3" x="8.5%" dy="-3">$</tspan>
           <tspan class="h1" x="10%" dy="3">]</tspan>
         </text>
+        <text id="text-dollar-bin" y="80" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
       </g>
       <g id="particle-hash">
         <text y="130" text-anchor="middle">
@@ -147,6 +148,7 @@
           <tspan class="h3" x="8.5%" dy="-3">#</tspan>
           <tspan class="h1" x="10%" dy="3">]</tspan>
         </text>
+        <text id="text-hash-bin" y="130" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
       </g>
       <g id="particle-amper">
         <text y="180" text-anchor="middle">
@@ -154,6 +156,7 @@
           <tspan class="h3" x="8.5%" dy="-3">&</tspan>
           <tspan class="h1" x="10%" dy="3">]</tspan>
         </text>
+        <text id="text-amper-bin" y="180" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
       </g>
       <g id="particle-percent">
         <text y="230" text-anchor="middle">
@@ -161,6 +164,7 @@
           <tspan class="h3" x="8.5%" dy="-3">%</tspan>
           <tspan class="h1" x="10%" dy="3">]</tspan>
         </text>
+        <text id="text-percent-bin" y="230" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
       </g>
       <g id="particle-at">
         <text y="280" text-anchor="middle">
@@ -168,6 +172,7 @@
           <tspan class="h3" x="8.5%" dy="-3">@</tspan>
           <tspan class="h1" x="10%" dy="3">]</tspan>
         </text>
+        <text id="text-at-bin" y="280" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
       </g>
       <g>
         <text text-anchor="end" x="96%" y="200" class="leading fill-5 display-2">RAFLIE <tspan class="fill-light">ZAINUDDIN</tspan></text>
@@ -258,7 +263,24 @@
   }
 
   function reduceAction() {
-
+    Object.keys(DIRT_DOMS).forEach(k => {
+      const marginTop = 75;
+      const spacingY = 50 * DIRT_TYPE.indexOf(k);
+      DIRT_DOMS[k].forEach(elem => {
+        elem.interrupt();
+        elem.transition().duration(randomRange(400, 800))
+        .attr('y', marginTop + spacingY)
+        .attr('x', WINDOW_WIDTH * 0.07)
+        .on('end', () => {
+          elem.remove();
+        });
+      });
+      console.log(`There are ${DIRT_COUNT[k]} of ${k} collected.`);
+      d3.select("#text" + DIRT_BIN_MAP[k]).text(DIRT_COUNT[k])
+      .transition().duration(300).attr('opacity', '100%').delay(800)
+      .transition().duration(300).attr('opacity', '0%').delay(2000);
+      DIRT_COUNT[k] = 0;
+    });
   }
 
   function adjustBoxXPosition(selector, multiplier=1) {
@@ -294,6 +316,14 @@
     "@": 0
   }
 
+  const DIRT_DOMS = {
+    "$": [],
+    "#": [],
+    "&": [],
+    "%": [],
+    "@": []
+  }
+
   function spawnDirtParticle() {
     const text = choice(DIRT_TYPE);
     const cls = "fill-white h2";
@@ -325,6 +355,7 @@
     } else {
       const text = d3Elem.text();
       const count = DIRT_COUNT[text]++;
+      DIRT_DOMS[text].push(d3Elem);
       const extraMaxCount = {
         "$": 3,
         "#": 2,
