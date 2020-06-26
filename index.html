@@ -120,21 +120,25 @@
   <div class="container-fluid">
     <svg class="d-lg-block d-none" width="100%" height="350">
       <g>
-        <circle cx="70%" cy="80%" r="500px" fill="#011316"></circle>
+        <circle cx="70%" cy="80%" r="55%" fill="#011316"></circle>
         <rect x="70%" width="50%" height="100%" fill="#011316"></rect>
+      </g>
+      <g id="particle">
+      </g>
+      <g>
         <text text-anchor="end" x="96%" y="200" class="leading fill-5 display-2">RAFLIE <tspan class="fill-light">ZAINUDDIN</tspan></text>
         <text text-anchor="end" x="96%" y="240" class="alt-leading h6" fill="#AAA">I enjoy piping and shaping data into</text>
         <text text-anchor="end" x="96%" y="260" class="alt-leading h6" fill="#AAA">a form that benefits you in <tspan class="fill-3 font-weight-bold" text-decoration="underline">productivity</tspan> and <tspan class="fill-3 font-weight-bold" text-decoration="underline">deliveries</tspan>.</text>
       </g>
       <g>
         <rect id="role-box-1" class="fill-2" rx="15" ry="15" height="30"></rect>
-        <text id="role-text-1" class="small" text-anchor="middle" class="fill-dark">Data Science</text>
+        <text id="role-text-1" class="small fill-dark" text-anchor="middle"><tspan class="font-weight-bold">Data</tspan> Science</text>
 
         <rect id="role-box-2" class="fill-3" rx="15" ry="15" height="30"></rect>
-        <text id="role-text-2" class="small" text-anchor="middle" class="fill-dark">Data Engineering</text>
+        <text id="role-text-2" class="small fill-dark" text-anchor="middle"><tspan class="font-weight-bold">Data</tspan> Engineering</text>
 
         <rect id="role-box-3" class="fill-4" rx="15" ry="15" height="30"></rect>
-        <text id="role-text-3" class="small" text-anchor="middle" class="fill-dark">Web Application</text>
+        <text id="role-text-3" class="small fill-dark" text-anchor="middle"><tspan class="font-weight-bold">Web</tspan> Application</text>
       </g>
     </svg>
   </div>
@@ -146,8 +150,8 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-<!-- svg.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.0.15/svg.min.js" integrity="sha256-Ir9Jd+8Zy5+Y5B/sIg5UG94sUkiAfrI+JmJM/0x9vqY=" crossorigin="anonymous"></script>
+<!-- d3.js -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
 
 <script type="text/javascript">
   "use strict";
@@ -162,27 +166,56 @@
     SPACING: 20
   }
 
-  function adjustRoleBoxes() {
-    adjustBoxXPosition("rect#role-box-1");
-    adjustBoxXPosition("rect#role-box-2", 2);
-    adjustBoxXPosition("rect#role-box-3", 3);
+  const PARTICLE_ATTR = {
+    HEIGHT_BOUND: {
+      MIN: 0, MAX: SVG_HEIGHT
+    },
+    LEFT_BOUND: {
+      MIN: 0, MAX: WINDOW_WIDTH * 0.23
+    },
+    RIGHT_BOUND: {
+      MIN: WINDOW_WIDTH * 0.35, MAX: WINDOW_WIDTH
+    },
+    CONTAINER_ID: "g#particle",
+    create: (x, y, text, cls) => `<text text-anchor="middle" x="${x}" y="${y}" class="${cls}">${text}</text>`
+  }
 
-    adjustBoxTextXPosition("text#role-text-1", "rect#role-box-1");
-    adjustBoxTextXPosition("text#role-text-2", "rect#role-box-2");
-    adjustBoxTextXPosition("text#role-text-3", "rect#role-box-3");
+  function adjustRoleBoxes() {
+    const containers = 3;
+    for(let i = 1; i <= containers; i++) {
+      adjustBoxXPosition(`rect#role-box-${i}`, i);
+      adjustBoxTextXPosition(`text#role-text-${i}`, i);
+    }
   }
 
   function adjustBoxXPosition(selector, multiplier=1) {
-    const roleBox = SVG(selector);
+    const roleBox = d3.select(selector);
     const finalX = WINDOW_WIDTH * ROLE_BOX_ATTR.RIGHT_OFFSET - ROLE_BOX_ATTR.WIDTH * multiplier - ROLE_BOX_ATTR.SPACING * (multiplier - 1);
     roleBox.attr('width', ROLE_BOX_ATTR.WIDTH).attr('x', finalX).attr('y', ROLE_BOX_ATTR.FIXED_Y);
   }
 
-  function adjustBoxTextXPosition(selector, relative, multiplier=1, marginX=20) {
-    const roleText = SVG(selector);
-    const finalX = SVG(relative).attr('x') + ROLE_BOX_ATTR.WIDTH * 0.5;
-    roleText.attr('x', finalX).attr('y', ROLE_BOX_ATTR.FIXED_Y + 20);
+  function adjustBoxTextXPosition(selector, multiplier=1, marginX=20) {
+    const roleText = d3.select(selector);
+    const finalX = WINDOW_WIDTH * ROLE_BOX_ATTR.RIGHT_OFFSET - ROLE_BOX_ATTR.WIDTH * multiplier - ROLE_BOX_ATTR.SPACING * (multiplier - 1);
+    roleText.attr('x', finalX + ROLE_BOX_ATTR.WIDTH * 0.5).attr('y', ROLE_BOX_ATTR.FIXED_Y + 20);
   }
+
+  function spawnDirtParticle() {
+    const text = "ASDFASDF";
+    const cls = "fill-white h2";
+    const x = randomRange(PARTICLE_ATTR.RIGHT_BOUND.MIN, PARTICLE_ATTR.RIGHT_BOUND.MAX);
+    const y = randomRange(PARTICLE_ATTR.HEIGHT_BOUND.MIN, PARTICLE_ATTR.HEIGHT_BOUND.MAX);
+    d3.select(PARTICLE_ATTR.CONTAINER_ID).append("text").attr('x', x).attr('y', y).attr('class', cls).text(text);
+  }
+
+  function randomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  function randomRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
 
   adjustRoleBoxes();
 </script>
