@@ -205,11 +205,34 @@
   }
 
   function spawnDirtParticle() {
-    const text = "ASDFASDF";
+    const text = "#";
     const cls = "fill-white h2";
     const x = randomRange(PARTICLE_ATTR.RIGHT_BOUND.MIN, PARTICLE_ATTR.RIGHT_BOUND.MAX);
     const y = randomRange(PARTICLE_ATTR.HEIGHT_BOUND.MIN, PARTICLE_ATTR.HEIGHT_BOUND.MAX);
-    d3.select(PARTICLE_ATTR.CONTAINER_ID).append("text").attr('x', x).attr('y', y).attr('class', cls).text(text);
+    const dirt = d3.select(PARTICLE_ATTR.CONTAINER_ID).append("text");
+    dirt.attr('x', x).attr('y', y).attr('class', cls).text(text);
+    animateParticle(dirt, x, y);
+  }
+
+  function animateParticle(d3Elem, posX, posY) {
+    const threshold = PARTICLE_ATTR.RIGHT_BOUND.MIN;
+    const timePerX = 5;
+    if (posX > threshold) {
+      // still on the right side
+      const randomY = 10 + randomRange(PARTICLE_ATTR.HEIGHT_BOUND.MIN + 20, PARTICLE_ATTR.HEIGHT_BOUND.MAX - 20);
+      const randomX = randomRange(30, 200);
+      const duration = timePerX * randomX;
+      const newX = posX - randomX;
+      d3Elem.transition().ease(d3.easeLinear).duration(duration)
+      .attr('x', newX)
+      .attrTween('y', () => (e) => d3.interpolate(posY, randomY)(d3.easeSinInOut(e)))
+      .on('end', () => {
+        console.log("Reanimating");
+        animateParticle(d3Elem, newX, randomY);
+      });
+    } else {
+      console.log("Not moving");
+    }
   }
 
   function randomInt(max) {
