@@ -120,9 +120,21 @@
   <div class="container-fluid">
     <svg class="d-lg-block d-none" width="100%" height="350">
       <g>
-        <circle cx="100%" cy="80%" r="500px" fill="#011316"></circle>
         <circle cx="70%" cy="80%" r="500px" fill="#011316"></circle>
+        <rect x="70%" width="50%" height="100%" fill="#011316"></rect>
         <text text-anchor="end" x="96%" y="200" class="leading fill-5 display-2">RAFLIE <tspan class="fill-light">ZAINUDDIN</tspan></text>
+        <text text-anchor="end" x="96%" y="240" class="alt-leading h6" fill="#AAA">I enjoy piping and shaping data into</text>
+        <text text-anchor="end" x="96%" y="260" class="alt-leading h6" fill="#AAA">a form that benefits you in <tspan class="fill-3 font-weight-bold" text-decoration="underline">productivity</tspan> and <tspan class="fill-3 font-weight-bold" text-decoration="underline">deliveries</tspan>.</text>
+      </g>
+      <g>
+        <rect id="role-box-1" class="fill-2" rx="15" ry="15" height="30"></rect>
+        <text id="role-text-1" class="small" text-anchor="middle" class="fill-dark">Data Science</text>
+
+        <rect id="role-box-2" class="fill-3" rx="15" ry="15" height="30"></rect>
+        <text id="role-text-2" class="small" text-anchor="middle" class="fill-dark">Data Engineering</text>
+
+        <rect id="role-box-3" class="fill-4" rx="15" ry="15" height="30"></rect>
+        <text id="role-text-3" class="small" text-anchor="middle" class="fill-dark">Web Application</text>
       </g>
     </svg>
   </div>
@@ -138,5 +150,39 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.0.15/svg.min.js" integrity="sha256-Ir9Jd+8Zy5+Y5B/sIg5UG94sUkiAfrI+JmJM/0x9vqY=" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
+  "use strict";
 
+  const WINDOW_WIDTH = $(window).width();
+  const SVG_HEIGHT = 350;
+
+  const ROLE_BOX_ATTR = {
+    WIDTH: 200,
+    FIXED_Y: 65,
+    RIGHT_OFFSET: 0.938,
+    SPACING: 20
+  }
+
+  function adjustRoleBoxes() {
+    adjustBoxXPosition("rect#role-box-1");
+    adjustBoxXPosition("rect#role-box-2", 2);
+    adjustBoxXPosition("rect#role-box-3", 3);
+
+    adjustBoxTextXPosition("text#role-text-1", "rect#role-box-1");
+    adjustBoxTextXPosition("text#role-text-2", "rect#role-box-2");
+    adjustBoxTextXPosition("text#role-text-3", "rect#role-box-3");
+  }
+
+  function adjustBoxXPosition(selector, multiplier=1) {
+    const roleBox = SVG(selector);
+    const finalX = WINDOW_WIDTH * ROLE_BOX_ATTR.RIGHT_OFFSET - ROLE_BOX_ATTR.WIDTH * multiplier - ROLE_BOX_ATTR.SPACING * (multiplier - 1);
+    roleBox.attr('width', ROLE_BOX_ATTR.WIDTH).attr('x', finalX).attr('y', ROLE_BOX_ATTR.FIXED_Y);
+  }
+
+  function adjustBoxTextXPosition(selector, relative, multiplier=1, marginX=20) {
+    const roleText = SVG(selector);
+    const finalX = SVG(relative).attr('x') + ROLE_BOX_ATTR.WIDTH * 0.5;
+    roleText.attr('x', finalX).attr('y', ROLE_BOX_ATTR.FIXED_Y + 20);
+  }
+
+  adjustRoleBoxes();
 </script>
