@@ -173,6 +173,12 @@
         <rect id="role-box-3" class="fill-4" rx="15" ry="15" height="30"></rect>
         <text id="role-text-3" class="small fill-dark" text-anchor="middle"><tspan class="font-weight-bold">Web</tspan> Application</text>
       </g>
+
+      <g>
+        <rect id="reduce-button-rect" class="fill-1" rx="20" ry="20" height="40"></rect>
+        <text id="reduce-button-text" class="alt-leading h4 fill-white" text-anchor="middle">reduce</text>
+        <rect id="reduce-button-front" class="fill-dark" opacity="0" rx="20" ry="20" height="40"></rect>
+      </g>
     </svg>
   </div>
 </body>
@@ -219,6 +225,29 @@
       adjustBoxXPosition(`rect#role-box-${i}`, i);
       adjustBoxTextXPosition(`text#role-text-${i}`, i);
     }
+  }
+
+  function adjustReduceButton() {
+    const width = 140;
+    const y = 305;
+    const x = WINDOW_WIDTH * 0.08;
+    const offsetY = 28;
+
+    d3.select("rect#reduce-button-rect").attr('x', x).attr('y', y).attr('width', width);
+    d3.select("rect#reduce-button-front").attr('x', x).attr('y', y).attr('width', width)
+    .on("mouseover", () => {
+      d3.select("rect#reduce-button-front").transition().duration(200).attr('opacity', "50%");
+    })
+    .on("mouseout", () => {
+      d3.select("rect#reduce-button-front").transition().duration(200).attr('opacity', "0%");
+    })
+    .on("click", reduceAction);
+
+    d3.select("text#reduce-button-text").attr('x', x + width * 0.5).attr('y', y + offsetY);
+  }
+
+  function reduceAction() {
+    
   }
 
   function adjustBoxXPosition(selector, multiplier=1) {
@@ -292,7 +321,6 @@
         "%": 0,
         "@": 0
       }
-      console.log(`Appending ${text} at position ${count}`);
       const marginTop = 75;
       const spacingY = 50 * DIRT_TYPE.indexOf(text);
       const marginLeft = WINDOW_WIDTH * 0.11;
@@ -316,6 +344,7 @@
 
 
   adjustRoleBoxes();
+  adjustReduceButton();
   setInterval(() => {
     let r = randomInt(5);
     for (let i = 0; i < r; i++) spawnDirtParticle();
