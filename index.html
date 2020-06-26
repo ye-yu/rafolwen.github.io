@@ -123,7 +123,40 @@
         <circle cx="70%" cy="80%" r="55%" fill="#011316"></circle>
         <rect x="70%" width="50%" height="100%" fill="#011316"></rect>
       </g>
-      <g id="particle">
+      <g id="particle-dollar-bin">
+        <text y="80" text-anchor="middle">
+          <tspan class="h1" x="7%">[</tspan>
+          <tspan class="h3" x="8.5%" dy="-3">$</tspan>
+          <tspan class="h1" x="10%" dy="3">]</tspan>
+        </text>
+      </g>
+      <g id="particle-hash-bin">
+        <text y="130" text-anchor="middle">
+          <tspan class="h1" x="7%">[</tspan>
+          <tspan class="h3" x="8.5%" dy="-3">#</tspan>
+          <tspan class="h1" x="10%" dy="3">]</tspan>
+        </text>
+      </g>
+      <g id="particle-amper-bin">
+        <text y="180" text-anchor="middle">
+          <tspan class="h1" x="7%">[</tspan>
+          <tspan class="h3" x="8.5%" dy="-3">&</tspan>
+          <tspan class="h1" x="10%" dy="3">]</tspan>
+        </text>
+      </g>
+      <g id="particle-percent-bin">
+        <text y="230" text-anchor="middle">
+          <tspan class="h1" x="7%">[</tspan>
+          <tspan class="h3" x="8.5%" dy="-3">%</tspan>
+          <tspan class="h1" x="10%" dy="3">]</tspan>
+        </text>
+      </g>
+      <g id="particle-at-bin">
+        <text y="280" text-anchor="middle">
+          <tspan class="h1" x="7%">[</tspan>
+          <tspan class="h3" x="8.5%" dy="-3">@</tspan>
+          <tspan class="h1" x="10%" dy="3">]</tspan>
+        </text>
       </g>
       <g>
         <text text-anchor="end" x="96%" y="200" class="leading fill-5 display-2">RAFLIE <tspan class="fill-light">ZAINUDDIN</tspan></text>
@@ -204,18 +237,37 @@
     return arr[randomInt(arr.length)];
   }
 
+  const DIRT_TYPE = "$#&%@".split("");
+  const DIRT_BIN_MAP = {
+    "$": "-dollar-bin",
+    "#": "-hash-bin",
+    "&": "-amper-bin",
+    "%": "-percent-bin",
+    "@": "-at-bin"
+  }
+
+  const DIRT_COUNT = {
+    "$": 0,
+    "#": 0,
+    "&": 0,
+    "%": 0,
+    "@": 0
+  }
+
   function spawnDirtParticle() {
-    const text = "#";
+    const text = choice(DIRT_TYPE);
     const cls = "fill-white h2";
     const x = randomRange(PARTICLE_ATTR.RIGHT_BOUND.MIN, PARTICLE_ATTR.RIGHT_BOUND.MAX);
     const y = randomRange(PARTICLE_ATTR.HEIGHT_BOUND.MIN, PARTICLE_ATTR.HEIGHT_BOUND.MAX);
-    const dirt = d3.select(PARTICLE_ATTR.CONTAINER_ID).append("text");
-    dirt.attr('x', x).attr('y', y).attr('class', cls).text(text);
-    animateParticle(dirt, x, y);
+    const dirt = d3.select(PARTICLE_ATTR.CONTAINER_ID + DIRT_BIN_MAP[text]).append("text");
+    dirt.attr('x', x).attr('y', y).attr('fill', '#011316').text(text);
+    dirt.transition().duration(500)
+    .attrTween('fill', () => (e) => d3.interpolateRgb("#011316", "#FFF")(d3.easeSinInOut(Math.min(e * 2, 1))))
+    .on('end', () => animateParticle(dirt, x, y));
   }
 
   function animateParticle(d3Elem, posX, posY) {
-    const threshold = PARTICLE_ATTR.RIGHT_BOUND.MIN;
+    const threshold = PARTICLE_ATTR.RIGHT_BOUND.MIN + 100;
     const timePerX = 5;
     if (posX > threshold) {
       // still on the right side
@@ -227,11 +279,29 @@
       .attr('x', newX)
       .attrTween('y', () => (e) => d3.interpolate(posY, randomY)(d3.easeSinInOut(e)))
       .on('end', () => {
-        console.log("Reanimating");
         animateParticle(d3Elem, newX, randomY);
       });
     } else {
-      console.log("Not moving");
+      const text = d3Elem.text();
+      const count = DIRT_COUNT[text]++;
+      const extraMaxCount = {
+        "$": 3,
+        "#": 2,
+        "&": 1,
+        "%": 0,
+        "@": 0
+      }
+      console.log(`Appending ${text} at position ${count}`);
+      const marginTop = 75;
+      const spacingY = 50 * DIRT_TYPE.indexOf(text);
+      const marginLeft = WINDOW_WIDTH * 0.11;
+      const spacingX = 12 * (count % (18 + (extraMaxCount[text])));
+      d3Elem.transition().ease(d3.easeLinear).duration(800)
+      .attrTween('fill', () => (e) => d3.interpolateRgb("#FFF", "#011316")(d3.easeSinInOut(Math.min(e * 2, 1))))
+      .attr('x', posX - 50)
+      .attrTween('y', () => (e) => d3.interpolate(posY, marginTop + spacingY)(d3.easeSinInOut(e)))
+      .transition().ease(d3.easeLinear).duration(1200)
+      .attr('x', marginLeft + spacingX);
     }
   }
 
