@@ -276,7 +276,7 @@
         });
       });
       console.log(`There are ${DIRT_COUNT[k]} of ${k} collected.`);
-      d3.select("#text" + DIRT_BIN_MAP[k]).text(DIRT_COUNT[k])
+      d3.select("#text" + DIRT_BIN_MAP[k]).text(DIRT_COUNT[k]).interrupt().attr('opacity', '0%')
       .transition().duration(300).attr('opacity', '100%').delay(800)
       .transition().duration(300).attr('opacity', '0%').delay(2000);
       DIRT_COUNT[k] = 0;
@@ -391,4 +391,6 @@
     let r = randomInt(5);
     for (let i = 0; i < r; i++) spawnDirtParticle();
   }, randomRange(200, 800));
+
+  setInterval(reduceAction, 1000 * 60); // clean up display after one minute
 </script>
