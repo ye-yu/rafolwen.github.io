@@ -200,6 +200,10 @@
     roleText.attr('x', finalX + ROLE_BOX_ATTR.WIDTH * 0.5).attr('y', ROLE_BOX_ATTR.FIXED_Y + 20);
   }
 
+  function choice(arr) {
+    return arr[randomInt(arr.length)];
+  }
+
   function spawnDirtParticle() {
     const text = "ASDFASDF";
     const cls = "fill-white h2";
