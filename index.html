@@ -175,9 +175,9 @@
       </g>
 
       <g>
-        <rect id="reduce-button-rect" class="fill-1" rx="20" ry="20" height="40"></rect>
+        <rect id="reduce-button-rect" fill="#7DBBC3" rx="18" ry="18" height="35"></rect>
         <text id="reduce-button-text" class="alt-leading h4 fill-white" text-anchor="middle">reduce</text>
-        <rect id="reduce-button-front" class="fill-dark" opacity="0" rx="20" ry="20" height="40"></rect>
+        <rect id="reduce-button-front" opacity="0" rx="23" ry="18" height="35"></rect>
       </g>
     </svg>
   </div>
@@ -199,7 +199,7 @@
   const SVG_HEIGHT = 350;
 
   const ROLE_BOX_ATTR = {
-    WIDTH: 200,
+    WIDTH: 180,
     FIXED_Y: 65,
     RIGHT_OFFSET: 0.938,
     SPACING: 20
@@ -229,17 +229,17 @@
 
   function adjustReduceButton() {
     const width = 140;
-    const y = 305;
+    const y = 310;
     const x = WINDOW_WIDTH * 0.08;
-    const offsetY = 28;
+    const offsetY = 25;
 
     d3.select("rect#reduce-button-rect").attr('x', x).attr('y', y).attr('width', width);
     d3.select("rect#reduce-button-front").attr('x', x).attr('y', y).attr('width', width)
     .on("mouseover", () => {
-      d3.select("rect#reduce-button-front").transition().duration(200).attr('opacity', "50%");
+      d3.select("rect#reduce-button-rect").transition().duration(200).attr('fill', "#5D9BA3");
     })
     .on("mouseout", () => {
-      d3.select("rect#reduce-button-front").transition().duration(200).attr('opacity', "0%");
+      d3.select("rect#reduce-button-rect").transition().duration(200).attr('fill', "#7DBBC3");
     })
     .on("click", reduceAction);
 
@@ -247,7 +247,7 @@
   }
 
   function reduceAction() {
-    
+
   }
 
   function adjustBoxXPosition(selector, multiplier=1) {
