@@ -262,7 +262,7 @@
     const dirt = d3.select(PARTICLE_ATTR.CONTAINER_ID + DIRT_BIN_MAP[text]).append("text");
     dirt.attr('x', x).attr('y', y).attr('fill', '#011316').text(text);
     dirt.transition().duration(500)
-    .attrTween('fill', () => (e) => d3.interpolateRgb("#011316", "#FFF")(d3.easeSinInOut(Math.min(e * 2, 1))))
+    .attrTween('fill', () => (e) => d3.interpolateRgb("#011316", "#FFF")(d3.easeSinInOut(e)))
     .on('end', () => animateParticle(dirt, x, y));
   }
 
@@ -271,7 +271,8 @@
     const timePerX = 5;
     if (posX > threshold) {
       // still on the right side
-      const randomY = 10 + randomRange(PARTICLE_ATTR.HEIGHT_BOUND.MIN + 20, PARTICLE_ATTR.HEIGHT_BOUND.MAX - 20);
+      const offsetY = 35;
+      const randomY = 10 + randomRange(Math.max(PARTICLE_ATTR.HEIGHT_BOUND.MIN, posY - offsetY),  Math.min(PARTICLE_ATTR.HEIGHT_BOUND.MAX - 10, posY + offsetY));
       const randomX = randomRange(30, 200);
       const duration = timePerX * randomX;
       const newX = posX - randomX;
@@ -315,5 +316,8 @@
 
 
   adjustRoleBoxes();
-  setInterval(spawnDirtParticle, randomRange(200, 800));
+  setInterval(() => {
+    let r = randomInt(5);
+    for (let i = 0; i < r; i++) spawnDirtParticle();
+  }, randomRange(200, 800));
 </script>
