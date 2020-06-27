@@ -207,10 +207,17 @@ if (SVG_WIDTH >= 992){
   adjustRoleBoxes();
   adjustReduceButton();
   setInterval(() => {
-    let r = randomInt(5);
-    for (let i = 0; i < r; i++) spawnDirtParticle();
+    if (!document.hidden) {
+        let r = randomInt(5);
+        for (let i = 0; i < r; i++) spawnDirtParticle();
+        if (!reduce_int) reduce_int = setInterval(reduceAction, 1000 * 60); // clean up display after one minute
+
+    }
   }, randomRange(200, 800));
-  reduce_int = setInterval(reduceAction, 1000 * 60); // clean up display after one minute
+  $(window).blur(() => {
+    clearInterval(reduce_int);
+    reduce_int = 0;
+  })
 } else {
   animateHeaderLines();
 }
