@@ -67,6 +67,7 @@ function reduceAction() {
     d3.select("#text" + DIRT_BIN_MAP[k]).text(DIRT_COUNT[k]).interrupt().attr('opacity', '0%')
     .transition().duration(300).attr('opacity', '100%').delay(800)
     .transition().duration(300).attr('opacity', '0%').delay(2000);
+    while(DIRT_DOMS[k].length) DIRT_DOMS[k].pop();
     DIRT_COUNT[k] = 0;
   });
   clearInterval(reduce_int);
