@@ -175,6 +175,33 @@ function randomRange(min, max) {
   return Math.random() * (max - min) + min;
 }
 
+const MOBILE_SVG_CONTAINER_ID = "svg#mobile-header";
+function animateHeaderLines() {
+  animateHeaderLine(randomInt(20) * 5, 18, 6, 12);
+  animateHeaderLine(randomInt(20) * 5, 35, 4, 8);
+}
+
+const MOBILE_SVG_WIDTH = $(MOBILE_SVG_CONTAINER_ID).width();
+function animateHeaderLine(width, y, thick, timePerX) {
+  const svg = d3.select(MOBILE_SVG_CONTAINER_ID);
+  const spacingX = 5;
+  width = Math.max(width, thick);
+  const firstDuration = timePerX * (width + spacingX);
+  const secondDuration = timePerX * (MOBILE_SVG_WIDTH - spacingX);
+  svg.append("rect").attr("class", "fill-white")
+  .attr("x", MOBILE_SVG_WIDTH).attr('y', y)
+  .attr('rx', thick / 2).attr('ry', thick / 2)
+  .attr('width', width).attr('height', thick)
+  .transition().duration(firstDuration).ease(d3.easeLinear)
+  .attr('x', MOBILE_SVG_WIDTH - width - spacingX)
+  .on('end', () => {
+    animateHeaderLine(50 + randomInt(100), y, thick, timePerX);
+  })
+  .transition().duration(secondDuration).ease(d3.easeLinear)
+  .attr('x', -width)
+  .transition().duration(1).remove()
+}
+
 let reduce_int;
 if (SVG_WIDTH >= 992){
   adjustRoleBoxes();
@@ -185,5 +212,5 @@ if (SVG_WIDTH >= 992){
   }, randomRange(200, 800));
   reduce_int = setInterval(reduceAction, 1000 * 60); // clean up display after one minute
 } else {
-  console.info("Small screen display. Not rendering animation.");
+  animateHeaderLines();
 }
