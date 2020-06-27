@@ -138,40 +138,40 @@
         <rect x="6.5%" y="45" class="fill-white" width="50" height="250"></rect>
         <text y="80" text-anchor="middle">
           <tspan class="h1" x="7%">[</tspan>
-          <tspan class="h3" x="8.5%" dy="-3">$</tspan>
-          <tspan class="h1" x="10%" dy="3">]</tspan>
+          <tspan class="h3" x="8.5%" dy="-5">$</tspan>
+          <tspan class="h1" x="10%" dy="5">]</tspan>
         </text>
         <text id="text-dollar-bin" y="80" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
       </g>
       <g id="particle-hash">
         <text y="130" text-anchor="middle">
           <tspan class="h1" x="7%">[</tspan>
-          <tspan class="h3" x="8.5%" dy="-3">#</tspan>
-          <tspan class="h1" x="10%" dy="3">]</tspan>
+          <tspan class="h3" x="8.5%" dy="-5">#</tspan>
+          <tspan class="h1" x="10%" dy="5">]</tspan>
         </text>
         <text id="text-hash-bin" y="130" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
       </g>
       <g id="particle-amper">
         <text y="180" text-anchor="middle">
           <tspan class="h1" x="7%">[</tspan>
-          <tspan class="h3" x="8.5%" dy="-3">&</tspan>
-          <tspan class="h1" x="10%" dy="3">]</tspan>
+          <tspan class="h3" x="8.5%" dy="-5">&</tspan>
+          <tspan class="h1" x="10%" dy="5">]</tspan>
         </text>
         <text id="text-amper-bin" y="180" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
       </g>
       <g id="particle-percent">
         <text y="230" text-anchor="middle">
           <tspan class="h1" x="7%">[</tspan>
-          <tspan class="h3" x="8.5%" dy="-3">%</tspan>
-          <tspan class="h1" x="10%" dy="3">]</tspan>
+          <tspan class="h3" x="8.5%" dy="-5">%</tspan>
+          <tspan class="h1" x="10%" dy="5">]</tspan>
         </text>
         <text id="text-percent-bin" y="230" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
       </g>
       <g id="particle-at">
         <text y="280" text-anchor="middle">
           <tspan class="h1" x="7%">[</tspan>
-          <tspan class="h3" x="8.5%" dy="-3">@</tspan>
-          <tspan class="h1" x="10%" dy="3">]</tspan>
+          <tspan class="h3" x="8.5%" dy="-5">@</tspan>
+          <tspan class="h1" x="10%" dy="5">]</tspan>
         </text>
         <text id="text-at-bin" y="280" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
       </g>
@@ -333,7 +333,7 @@
     const x = randomRange(PARTICLE_ATTR.RIGHT_BOUND.MIN, PARTICLE_ATTR.RIGHT_BOUND.MAX);
     const y = randomRange(PARTICLE_ATTR.HEIGHT_BOUND.MIN, PARTICLE_ATTR.HEIGHT_BOUND.MAX);
     const dirt = d3.select(PARTICLE_ATTR.CONTAINER_ID + DIRT_BIN_MAP[text]).append("text");
-    dirt.attr('x', x).attr('y', y).attr('fill', '#011316').text(text);
+    dirt.attr('x', x).attr('y', y).attr('class', 'mono').attr('fill', '#011316').text(text);
     dirt.transition().duration(500)
     .attrTween('fill', () => (e) => d3.interpolateRgb("#011316", "#FFF")(d3.easeSinInOut(e)))
     .on('end', () => animateParticle(dirt, x, y));
@@ -366,7 +366,7 @@
         "%": 0,
         "@": 0
       }
-      const marginTop = 75;
+      const marginTop = 70;
       const spacingY = 50 * DIRT_TYPE.indexOf(text);
       const marginLeft = SVG_WIDTH * 0.11;
       const spacingX = 12 * (count % (18 + (extraMaxCount[text])));
