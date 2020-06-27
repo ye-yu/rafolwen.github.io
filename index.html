@@ -120,8 +120,9 @@
   <div class="container-fluid">
     <svg class="d-lg-block d-none" width="100%" height="350">
       <g>
-        <circle cx="70%" cy="80%" r="55%" fill="#011316"></circle>
+        <circle cx="70%" cy="80%" r="55%" class="fill-dark"></circle>
         <rect x="70%" width="50%" height="100%" fill="#011316"></rect>
+        <circle cx="70%" cy="80%" r="48%" fill="#011316"></circle>
       </g>
       <g id="particle-dollar-bin">
       </g>
@@ -192,7 +193,7 @@
 
       <g>
         <rect id="reduce-button-rect" fill="#7DBBC3" rx="18" ry="18" height="35"></rect>
-        <text id="reduce-button-text" class="alt-leading h4 fill-white" text-anchor="middle">reduce</text>
+        <text id="reduce-button-text" class="alt-leading h6 fill-white" text-anchor="middle">reduce</text>
         <rect id="reduce-button-front" opacity="0" rx="23" ry="18" height="35"></rect>
       </g>
     </svg>
@@ -247,7 +248,7 @@
     const width = 140;
     const y = 310;
     const x = WINDOW_WIDTH * 0.08;
-    const offsetY = 25;
+    const offsetY = 23;
 
     d3.select("rect#reduce-button-rect").attr('x', x).attr('y', y).attr('width', width);
     d3.select("rect#reduce-button-front").attr('x', x).attr('y', y).attr('width', width)
