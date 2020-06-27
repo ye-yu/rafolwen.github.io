@@ -118,7 +118,7 @@
     </div>
   </div>
   <div class="container-fluid">
-    <svg class="d-lg-block d-none" width="100%" height="350">
+    <svg class="d-lg-block d-none" width="100%" height="350" id="header-animation">
       <g>
         <circle cx="70%" cy="80%" r="55%" class="fill-dark"></circle>
         <rect x="70%" width="50%" height="100%" fill="#011316"></rect>
@@ -212,13 +212,13 @@
 <script type="text/javascript">
   "use strict";
 
-  const WINDOW_WIDTH = $(window).width();
+  const SVG_WIDTH = $("#header-animation").width();
   const SVG_HEIGHT = 350;
 
   const ROLE_BOX_ATTR = {
     WIDTH: 180,
     FIXED_Y: 65,
-    RIGHT_OFFSET: 0.938,
+    RIGHT_OFFSET: 0.96,
     SPACING: 20
   }
 
@@ -227,10 +227,10 @@
       MIN: 0, MAX: SVG_HEIGHT
     },
     LEFT_BOUND: {
-      MIN: 0, MAX: WINDOW_WIDTH * 0.23
+      MIN: 0, MAX: SVG_WIDTH * 0.23
     },
     RIGHT_BOUND: {
-      MIN: WINDOW_WIDTH * 0.35, MAX: WINDOW_WIDTH
+      MIN: SVG_WIDTH * 0.35, MAX: SVG_WIDTH
     },
     CONTAINER_ID: "g#particle",
     create: (x, y, text, cls) => `<text text-anchor="middle" x="${x}" y="${y}" class="${cls}">${text}</text>`
@@ -247,7 +247,7 @@
   function adjustReduceButton() {
     const width = 140;
     const y = 310;
-    const x = WINDOW_WIDTH * 0.08;
+    const x = SVG_WIDTH * 0.08;
     const offsetY = 23;
 
     d3.select("rect#reduce-button-rect").attr('x', x).attr('y', y).attr('width', width);
@@ -271,7 +271,7 @@
         elem.interrupt();
         elem.transition().duration(randomRange(400, 800))
         .attr('y', marginTop + spacingY)
-        .attr('x', WINDOW_WIDTH * 0.07)
+        .attr('x', SVG_WIDTH * 0.07)
         .on('end', () => {
           elem.remove();
         });
@@ -288,13 +288,13 @@
 
   function adjustBoxXPosition(selector, multiplier=1) {
     const roleBox = d3.select(selector);
-    const finalX = WINDOW_WIDTH * ROLE_BOX_ATTR.RIGHT_OFFSET - ROLE_BOX_ATTR.WIDTH * multiplier - ROLE_BOX_ATTR.SPACING * (multiplier - 1);
+    const finalX = SVG_WIDTH * ROLE_BOX_ATTR.RIGHT_OFFSET - ROLE_BOX_ATTR.WIDTH * multiplier - ROLE_BOX_ATTR.SPACING * (multiplier - 1);
     roleBox.attr('width', ROLE_BOX_ATTR.WIDTH).attr('x', finalX).attr('y', ROLE_BOX_ATTR.FIXED_Y);
   }
 
   function adjustBoxTextXPosition(selector, multiplier=1, marginX=20) {
     const roleText = d3.select(selector);
-    const finalX = WINDOW_WIDTH * ROLE_BOX_ATTR.RIGHT_OFFSET - ROLE_BOX_ATTR.WIDTH * multiplier - ROLE_BOX_ATTR.SPACING * (multiplier - 1);
+    const finalX = SVG_WIDTH * ROLE_BOX_ATTR.RIGHT_OFFSET - ROLE_BOX_ATTR.WIDTH * multiplier - ROLE_BOX_ATTR.SPACING * (multiplier - 1);
     roleText.attr('x', finalX + ROLE_BOX_ATTR.WIDTH * 0.5).attr('y', ROLE_BOX_ATTR.FIXED_Y + 20);
   }
 
@@ -368,7 +368,7 @@
       }
       const marginTop = 75;
       const spacingY = 50 * DIRT_TYPE.indexOf(text);
-      const marginLeft = WINDOW_WIDTH * 0.11;
+      const marginLeft = SVG_WIDTH * 0.11;
       const spacingX = 12 * (count % (18 + (extraMaxCount[text])));
       d3Elem.transition().ease(d3.easeLinear).duration(800)
       .attrTween('fill', () => (e) => d3.interpolateRgb("#FFF", "#011316")(d3.easeSinInOut(Math.min(e * 2, 1))))
@@ -388,7 +388,7 @@
   }
 
   let reduce_int;
-  if (WINDOW_WIDTH >= 992){
+  if (SVG_WIDTH >= 992){
     adjustRoleBoxes();
     adjustReduceButton();
     setInterval(() => {
