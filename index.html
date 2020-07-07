@@ -151,7 +151,7 @@
           <div class="sub-leading">
             But You Can Call Me Your
           </div>
-          <div class="display-3 mb-auto leading color-1">
+          <div class="display-3 mb-auto leading color-1" id="role">
             Python Developer
           </div>
         </div>
@@ -195,5 +195,34 @@
 <!-- d3.js -->
 <script src="https://d3js.org/d3.v5.min.js"></script>
 
-<!-- particle.js -->
-<script src="particle.js" charset="utf-8"></script>
+<script type="text/javascript">
+"use strict";
+
+class RoleChange {
+  constructor(roles) {
+    this.roles = roles;
+    this.showing = 0;
+    this.interval = -1;
+  }
+
+  start() {
+    if (this.interval != -1) return;
+    this.interval = setInterval(() => {
+      this.show();
+    }, 2000);
+  }
+
+  show() {
+    this.showing = (++this.showing) % this.roles.length;
+    $("#role").text(this.roles[this.showing]);
+  }
+}
+
+new RoleChange([
+  "Python Developer",
+  "Java Developer",
+  "Node.js User",
+  "Data Engineer",
+  "Data Scientist"
+]).start();
+</script>
