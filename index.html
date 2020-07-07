@@ -140,9 +140,11 @@
 
   <div class="container-fluid color-0-bg">
     <div class="row bg-img">
-      <div class="col bg-light text-center" style='height:380px;'>
-        <div class="d-flex flex-column align-items-center" style="height:100%">
-          <div class="sub-leading mt-auto">
+      <div class="col-lg-1">
+      </div>
+      <div class="col bg-light" style='height:80vh;'>
+        <div class="d-flex flex-column pl-5 justify-content-end" style="height:100%">
+          <div class="sub-leading">
             Hello, I'm
           </div>
           <div class="display-3 leading mb-3">
@@ -151,34 +153,11 @@
           <div class="sub-leading">
             But You Can Call Me Your
           </div>
-          <div class="display-3 mb-auto leading color-1" id="role">
-            Python Developer
+          <div class="display-3 leading color-1" id="role">
+            <span class="color-5">Data</span> Scientist
           </div>
-        </div>
-      </div>
-      <div class="col-lg-7">
-        <div class="d-flex flex-column align-items-center" style="height:100%">
-          <div class="sub-leading my-auto color-0-bg rounded text-white d-flex flex-row" style="width:60%;height:60%">
-            <div class="d-flex flex-column align-items-stretch rounded-left" style="width: 80px;">
-              <a class="color-1-bg hover-opacity-50 d-flex h-100 flex-column" href="https://linkedin.com/in/raflie" style="border-radius: 15px 0 0 0;">
-                <img class="mt-auto" src="linkedin.svg" alt="">
-                <div class="small mx-auto mb-auto text-dark">
-                  <span>LinkedIn</span>
-                </div>
-              </a>
-              <a class="color-2-bg hover-opacity-50 d-flex h-100 flex-column" href="https://github.com/ye-yu">
-                <img class="mt-auto" src="github.svg" alt="">
-                <div class="small mx-auto mb-auto text-dark">
-                  <span>Github</span>
-                </div>
-              </a>
-              <a class="bg-light hover-opacity-50 d-flex h-100 flex-column" href="https://ye-yu.github.io/portfolio/resources/Resume%20-%20Raflie%20Zainuddin.pdf" style="border-radius: 0 0 0 15px;">
-                <img class="mt-auto" src="resume.svg" alt="">
-                <div class="small mx-auto mb-auto text-dark">
-                  <span>Resume</span>
-                </div>
-              </a>
-            </div>
+          <div class="small mb-5">
+            <a href="#" class="text-dark"><u>See projects below</u></a>
           </div>
         </div>
       </div>
@@ -214,15 +193,15 @@ class RoleChange {
 
   show() {
     this.showing = (++this.showing) % this.roles.length;
-    $("#role").text(this.roles[this.showing]);
+    $("#role").html(this.roles[this.showing]);
   }
 }
 
 new RoleChange([
-  "Python Developer",
-  "Java Developer",
-  "Node.js User",
-  "Data Engineer",
-  "Data Scientist"
+  `<span class="color-5">Python</span> Developer`,
+  `<span class="color-5">Java</span> Developer`,
+  `<span class="color-5">Node.js</span> Developer`,
+  `<span class="color-5">Data</span> Scientist`,
+  `<span class="color-5">Data</span> Engineer`,
 ]).start();
 </script>
