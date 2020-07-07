@@ -117,6 +117,11 @@
     fill: #343A40;
   }
 
+  .bg-img {
+    background-image: url('bg.jpg');
+    background-size: cover;
+  }
+
 </style>
 <!-- uncomment on deploy to master -->
 <!-- <base href="https://ye-yu.github.io/portfolio/" target="_blank"> -->
@@ -133,117 +138,26 @@
     </div>
   </div>
 
-  <div class="container-fluid">
-    <!-- Link: SVG -->
-    <svg class="d-lg-block d-none" width="100%" height="380" id="header-animation"  style="border-bottom: solid 5px #7DBBC3;"">
-      <g>
-        <circle cx="70%" cy="80%" r="55%" class="fill-dark"></circle>
-        <rect x="70%" width="50%" height="100%" fill="#011316"></rect>
-        <circle cx="70%" cy="80%" r="48%" fill="#011316"></circle>
-      </g>
-      <g id="particle-dollar-bin">
-      </g>
-      <g id="particle-hash-bin">
-      </g>
-      <g id="particle-amper-bin">
-      </g>
-      <g id="particle-percent-bin">
-      </g>
-      <g id="particle-at-bin">
-      </g>
-      <g id="particle-dollar">
-        <rect x="6.5%" y="45" class="fill-white" width="50" height="250"></rect>
-        <text y="80" text-anchor="middle">
-          <tspan class="h1" x="7%">[</tspan>
-          <tspan class="h3" x="8.5%" dy="-5">$</tspan>
-          <tspan class="h1" x="10%" dy="5">]</tspan>
-        </text>
-        <text id="text-dollar-bin" y="80" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
-      </g>
-      <g id="particle-hash">
-        <text y="130" text-anchor="middle">
-          <tspan class="h1" x="7%">[</tspan>
-          <tspan class="h3" x="8.5%" dy="-5">#</tspan>
-          <tspan class="h1" x="10%" dy="5">]</tspan>
-        </text>
-        <text id="text-hash-bin" y="130" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
-      </g>
-      <g id="particle-amper">
-        <text y="180" text-anchor="middle">
-          <tspan class="h1" x="7%">[</tspan>
-          <tspan class="h3" x="8.5%" dy="-5">&</tspan>
-          <tspan class="h1" x="10%" dy="5">]</tspan>
-        </text>
-        <text id="text-amper-bin" y="180" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
-      </g>
-      <g id="particle-percent">
-        <text y="230" text-anchor="middle">
-          <tspan class="h1" x="7%">[</tspan>
-          <tspan class="h3" x="8.5%" dy="-5">%</tspan>
-          <tspan class="h1" x="10%" dy="5">]</tspan>
-        </text>
-        <text id="text-percent-bin" y="230" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
-      </g>
-      <g id="particle-at">
-        <text y="280" text-anchor="middle">
-          <tspan class="h1" x="7%">[</tspan>
-          <tspan class="h3" x="8.5%" dy="-5">@</tspan>
-          <tspan class="h1" x="10%" dy="5">]</tspan>
-        </text>
-        <text id="text-at-bin" y="280" x="5%" class="h1" text-anchor="end" opacity="0%">NaN</text>
-      </g>
-      <g>
-        <text text-anchor="end" x="96%" y="200" class="leading fill-5 display-2">RAFLIE <tspan class="fill-light">ZAINUDDIN</tspan></text>
-        <text text-anchor="end" x="96%" y="240" class="alt-leading h6" fill="#AAA">I enjoy piping and shaping data into</text>
-        <text text-anchor="end" x="96%" y="260" class="alt-leading h6" fill="#AAA">a form that benefits you in <tspan class="fill-3 font-weight-bold" text-decoration="underline">productivity</tspan> and <tspan class="fill-3 font-weight-bold" text-decoration="underline">deliveries</tspan>.</text>
-      </g>
-      <g>
-        <rect id="role-box-1" class="fill-2" rx="15" ry="15" height="30"></rect>
-        <text id="role-text-1" class="small fill-dark" text-anchor="middle"><tspan class="font-weight-bold">Data</tspan> Science</text>
-
-        <rect id="role-box-2" class="fill-3" rx="15" ry="15" height="30"></rect>
-        <text id="role-text-2" class="small fill-dark" text-anchor="middle"><tspan class="font-weight-bold">Data</tspan> Engineering</text>
-
-        <rect id="role-box-3" class="fill-4" rx="15" ry="15" height="30"></rect>
-        <text id="role-text-3" class="small fill-dark" text-anchor="middle"><tspan class="font-weight-bold">Web</tspan> Application</text>
-      </g>
-
-      <g>
-        <rect id="reduce-button-rect" fill="#7DBBC3" rx="18" ry="18" height="35"></rect>
-        <text id="reduce-button-text" class="alt-leading h6 fill-white" text-anchor="middle">reduce</text>
-        <rect id="reduce-button-front" opacity="0" rx="23" ry="18" height="35"></rect>
-      </g>
-    </svg>
-    <!-- Link: Mobile Header -->
-    <div class="w-100 text-center py-3 d-lg-none d-block position-relative">
-      <svg id="mobile-header" width="100%" height="100%" class="position-absolute" style="left:0;top:0;z-index:-99">
-        <rect class="fill-0" width="100%" height="100%"></rect>
-      </svg>
-      <div class="display-4 leading pt-5 px-3">
-        <span class="color-5">RAFLIE</span>
-        <span class="text-white">ZAINUDDIN</span>
-      </div>
-      <div class="alt-leading small text-muted px-3">
-        I enjoy piping and shaping data into
-        a form that benefits you in
-        <u class="color-3 font-weight-bold text-decoration-underline">productivity</u>
-        and
-        <u class="color-3 font-weight-bold text-decoration-underlined">deliveries</u>.
-      </div>
-    </div>
-
-    <div class="row mx-1" style="height: 50px">
-      <div class="col-lg-3">
+  <div class="container-fluid color-0-bg">
+    <div class="row bg-img">
+      <div class="col-lg-7">
 
       </div>
-      <div class="col-lg-3">
-
-      </div>
-      <div class="col-lg-3">
-
-      </div>
-      <div class="col-lg-3">
-
+      <div class="col bg-light text-center" style='height:380px;'>
+        <div class="d-flex flex-column align-items-center" style="height:100%">
+          <div class="sub-leading mt-auto">
+            Hello, I'm
+          </div>
+          <div class="display-3 leading mb-3">
+            Raflie Zainuddin
+          </div>
+          <div class="sub-leading">
+            But You Can Call Me Your
+          </div>
+          <div class="display-3 mb-auto leading color-1">
+            Python Developer
+          </div>
+        </div>
       </div>
     </div>
   </div>

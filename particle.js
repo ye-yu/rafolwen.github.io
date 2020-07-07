@@ -204,20 +204,20 @@ function animateHeaderLine(width, y, thick, timePerX) {
 
 let reduce_int;
 if (SVG_WIDTH >= 992){
-  adjustRoleBoxes();
-  adjustReduceButton();
-  setInterval(() => {
-    if (!document.hidden) {
-        let r = randomInt(5);
-        for (let i = 0; i < r; i++) spawnDirtParticle();
-        if (!reduce_int) reduce_int = setInterval(reduceAction, 1000 * 60); // clean up display after one minute
-
-    }
-  }, randomRange(200, 800));
-  $(window).blur(() => {
-    clearInterval(reduce_int);
-    reduce_int = 0;
-  })
+  // adjustRoleBoxes();
+  // adjustReduceButton();
+  // setInterval(() => {
+  //   if (!document.hidden) {
+  //       let r = randomInt(5);
+  //       for (let i = 0; i < r; i++) spawnDirtParticle();
+  //       if (!reduce_int) reduce_int = setInterval(reduceAction, 1000 * 60); // clean up display after one minute
+  //
+  //   }
+  // }, randomRange(200, 800));
+  // $(window).blur(() => {
+  //   clearInterval(reduce_int);
+  //   reduce_int = 0;
+  // })
 } else {
   animateHeaderLines();
 }
