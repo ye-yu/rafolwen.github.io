@@ -189,20 +189,20 @@
       <b>I code. You code. Together, we <span class='color-0'>code</span>&sup2;.</b>
     </div>
 
-    <div class="container mt-5">
+    <div class="container mt-5" id="project-container">
       <div class="text-center font-weight-bold h2">
         <div class="py-3">
           Projects
         </div>
       </div>
 
-      <div class="row px-5">
+      <!-- <div class="row px-5">
         <div class="col-lg-3 py-3 px-3">
           <img class="card-img-top" src="def.jpg" style="width:10rem;height:10rem;">
         </div>
         <div class="col py-3 px-3">
           <div class="sub-leading h3">
-            Project title
+            <a href="post?id=demo" role="button" class="color-0"><u>Project title</u></a>
           </div>
           <div class="small text-muted alt-leading">
             <span class="mr-4">Category: Python</span> <span class="mr-4">Scope: Machine Learning</span>
@@ -215,7 +215,7 @@
             I did something here
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </body>
@@ -258,4 +258,54 @@ new RoleChange([
   `<span class="color-5">Java</span> Developer`,
   `<span class="color-5">Node.js</span> Developer`,
 ]).start();
+
+function joinURI(...paths) {
+  paths.unshift(document.baseURI)
+  return paths.join("/")
+}
+
+function pushToProject(entries) {
+
+  for(let entry of entries) {
+    let title = entry['title']
+    let category = entry['category']
+    let scope = entry['scope']
+    let date = entry['date']
+    let description = entry['description']
+    let imgsrc = joinURI("projects", entry['hash'], "thumbnail.jpg")
+    let href = joinURI(`post?id=${entry['hash']}`)
+    let html = `
+    <div class="row px-5">
+      <div class="col-lg-3 py-3 px-3">
+        <img class="card-img-top" src="${imgsrc}" style="width:10rem;height:10rem;">
+      </div>
+      <div class="col py-3 px-3">
+        <div class="sub-leading h3">
+          <a href="${href}" role="button" class="color-0"><u>${title}</u></a>
+        </div>
+        <div class="small text-muted alt-leading">
+          Category: ${category}, Scope: ${scope}
+        </div>
+        <div class="small text-muted alt-leading">
+          Date: ${date}
+        </div>
+
+        <div class="mt-2 border-top border-dark sub-leading pt-3 small">
+          ${description}
+        </div>
+      </div>
+    </div>
+    `;
+    $("#project-container").append(html)
+  }
+}
+
+$.ajax({
+  url: joinURI("projects", "projects.json"),
+  dataType: "json",
+  success: function (data) {
+    console.log(data)
+    pushToProject(data)
+  }
+});
 </script>
