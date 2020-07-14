@@ -18,7 +18,7 @@
   {
     "title": "Portfolio",
     "date": "2020-06-01 00:00:00",
-    "category": "Python",
+    "category": "Javascript",
     "description": "I present the structure of the web site and future features that I would like to add into my portfolio.",
     "scope": "Web Design",
     "hash": "d4f859a96c13f551a2771b7fc3a78d38"
@@ -26,7 +26,7 @@
   {
     "title": "Minecraft Modding Experience",
     "date": "2020-06-01 00:00:00",
-    "category": "Python",
+    "category": "Java",
     "description": "I really LOVE Minecraft and its simplistic yet dynamic gameplay. Here, I participated in modding Minecraft and summarises my whole experience.",
     "scope": "Programming",
     "hash": "ed0000dd493ea2cb9ed94eba9494e05a"
@@ -34,7 +34,7 @@
   {
     "title": "Music Singing Voice Generation",
     "date": "2020-06-01 00:00:00",
-    "category": "Python",
+    "category": "Javascript",
     "description": "I trained a MIDI model with scale-invariant music encoding and then transformed my singing voice into MIDI for the model to generate continuation from the input.",
     "scope": "Data Science",
     "hash": "be931ba53c2d9d41e57b4af460467b27"
@@ -42,7 +42,7 @@
   {
     "title": "Google Assistant Youtube Player",
     "date": "2020-06-01 00:00:00",
-    "category": "Python",
+    "category": "Javascript",
     "description": "I used PushBullet and IFTTT to fetch commands from Google Assistant and then opened a console browser to play youtube media.",
     "scope": "Programming",
     "hash": "a71d33a4bd658647bb4dd145399c9fb9"
