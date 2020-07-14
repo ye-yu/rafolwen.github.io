@@ -10,6 +10,10 @@
 
 <style media="screen">
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans&family=Varela+Round&display=swap');
+  
+  html {
+    scroll-behavior: smooth;
+  }
 
   .color-0 {
     color: #011316;
@@ -171,7 +175,7 @@
                 </div>
                 <div class="mt-3 mb-4 d-flex flex-column d-lg-block text-lg-left text-center">
                   <a class="btn color-5-bg text-white rounded-pill px-5 py-1" href="resources/Resume%20-%20Raflie%20Zainuddin.pdf" role="button">See Resume</a>
-                  <a href="#" class="text-dark py-2 px-5"><u>See projects below</u></a>
+                  <a href="#tagline-header" class="text-dark py-2 px-5"><u>See projects below</u></a>
                 </div>
               </div>
               <div class="col d-none d-lg-block">
@@ -195,27 +199,6 @@
           Projects
         </div>
       </div>
-
-      <!-- <div class="row px-5">
-        <div class="col-lg-3 py-3 px-3">
-          <img class="card-img-top" src="def.jpg" style="width:10rem;height:10rem;">
-        </div>
-        <div class="col py-3 px-3">
-          <div class="sub-leading h3">
-            <a href="post?id=demo" role="button" class="color-0"><u>Project title</u></a>
-          </div>
-          <div class="small text-muted alt-leading">
-            <span class="mr-4">Category: Python</span> <span class="mr-4">Scope: Machine Learning</span>
-          </div>
-          <div class="small text-muted alt-leading">
-            Date: 2020-06-01
-          </div>
-
-          <div class="mt-2 border-top border-dark sub-leading pt-3 small">
-            I did something here
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
 </body>
@@ -260,7 +243,7 @@ new RoleChange([
 ]).start();
 
 function joinURI(...paths) {
-  paths.unshift(document.baseURI)
+  paths.unshift(document.baseURI.split("#")[0])
   return paths.join("/")
 }
 
@@ -270,10 +253,10 @@ function pushToProject(entries) {
     let title = entry['title']
     let category = entry['category']
     let scope = entry['scope']
-    let date = entry['date']
+    let date = entry['date'].split(' ')[0]
     let description = entry['description']
     let imgsrc = joinURI("projects", entry['hash'], "thumbnail.jpg")
-    let href = joinURI(`post?id=${entry['hash']}`)
+    let href = joinURI(`post.html?id=${entry['hash']}`)
     let html = `
     <div class="row px-5">
       <div class="col-lg-3 py-3 px-3">
