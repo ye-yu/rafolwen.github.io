@@ -109,6 +109,17 @@
     return paths.join("/")
   }
 
+  function fixMarkdownImg() {
+    console.log("Fixing markdown img")
+    $("#container-body img").each((e, v) => wrapCorrectImgUrl($(v)))
+  }
+
+  function wrapCorrectImgUrl(elem) {
+    const actualSrc = elem.attr("src");
+    elem.attr("src", joinURI("projects", getQueryObj()['id'], actualSrc))
+    console.log("Changed", actualSrc)
+  }
+
   $.ajax({
     url: joinURI("projects", "projects.json"),
     dataType: "json",
@@ -135,6 +146,7 @@
           ${MD_OBJ.render(data)}
           </div>`);
           paintCode();
+          fixMarkdownImg();
         },
         error: function (e, status, errStr) {
           $("#projects").append('<p>Sorry! Project description not available yet.</p>')
