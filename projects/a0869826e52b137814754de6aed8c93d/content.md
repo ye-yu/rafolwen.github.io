@@ -2,9 +2,9 @@ Python List Stream
 ---
 ([Related code snippet][1])
 
-I did some data engineering tasks during the duration of my internship, and I was introduced to the data stream from Spark. I was amazed on how clean and easily the code became when using stream instead of using for-loop. In fact, the semantic of stream has always been a part of the Java library through their stream API.
+I did some data engineering tasks during the duration of my internship, and I was introduced to the data stream from Spark. I was amazed on how clean and easily-read the code became when using stream instead of using for-loop. In fact, the semantic of stream has always been a part of the Java library through their stream API.
 
-In python, there is a feature called a list comprehension. We can easily create a list and performing various actions such as filter, map, and so on.
+In Python, there is a feature called a list comprehension. We can easily create a list and perform various actions such as filter, map, and so on.
 
 ```python
 a = [i for i in range(5)] # creates [0, 1, 2, 3, 4]
@@ -28,7 +28,7 @@ filter(some_function, iter(the_original_iterable))
 ```
 , and this will be passed into `list` to create a new list.
 
-The advantage of stream is that the collect operation can be postpone and all operations can be made dynamic.
+The advantage of stream is that the collect operation can be postponed and all operations can be made dynamic.
 
 ```python
 stream = Stream.of(...)
