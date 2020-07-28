@@ -32,6 +32,14 @@
     "hash": "ed0000dd493ea2cb9ed94eba9494e05a"
   },
   {
+    "title": "Animal Shelter Data Visualisation",
+    "date": "2019-12-05 00:00:00",
+    "category": "Javascript",
+    "description": "A web visualisation application to tell the story of the animal in the shelter from their first rescue.",
+    "scope": "Data Visualisation, Data Cleaning",
+    "hash": "37eda5cecd9b21547074ae308c1ca7b9"
+  },
+  {
     "title": "Music Singing Voice Generation",
     "date": "2019-06-01 00:00:00",
     "category": "Javascript",
@@ -41,7 +49,7 @@
   },
   {
     "title": "Satellite Image Classification",
-    "date": "2019-05-01 00:00:00",
+    "date": "2020-06-01 00:00:00",
     "category": "Python",
     "description": "The classification dataset is obtained from Northwestern Polytechnical University (NWPU) that originally contains 45 classes of images. This project is an exploration to the right CNN model that is simple yet effective in classifying these images. The following image is the original classes in the dataset.",
     "scope": "Data Science, Image Analysis, Minecraft",
