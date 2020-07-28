@@ -46,5 +46,13 @@
     "description": "I used PushBullet and IFTTT to fetch commands from Google Assistant and then opened a console browser to play youtube media.",
     "scope": "Programming",
     "hash": "a71d33a4bd658647bb4dd145399c9fb9"
+  },
+  {
+    "title": "Satellite Image Classification",
+    "date": "2020-06-01 00:00:00",
+    "category": "Python",
+    "description": "The classification dataset is obtained from Northwestern Polytechnical University (NWPU) that originally contains 45 classes of images. This project is an exploration to the right CNN model that is simple yet effective in classifying these images. The following image is the original classes in the dataset.",
+    "scope": "Data Science, Image Analysis, Minecraft",
+    "hash": "a172c78dabdb530834996a5c277c5ee0"
   }
 ]
