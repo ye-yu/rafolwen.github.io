@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Welcome to your interactive web portfolio. I present my major in Data Engineering/Data Science while doing a lot of Java + Web App as hobby projects.">
+<meta name="description" content="Welcome to my web portfolio.">
 <meta property="og:title" content="Raflie Zainuddin | A Portfolio">
 <!-- <meta property="og:image" content="https://ye-yu.github.io/fast-read/favicon.png"> -->
 
@@ -34,10 +34,10 @@
       <div class="col px-0 bg-light">
         <div class="shadow d-flex flex-column w-100 bg-light" style="height: 65px; position: fixed !important; z-index:999;">
           <div class="d-flex flex-row align-items-center mx-auto my-0 h-100">
-            <div class="d-flex my-0 flex-column justify-content-center h-100 hover-bg-dark pointer kerning h6 px-4 font-weight-bold border-bottom" style="border-width: 3px !important; border-color: #45f9c3 !important" onclick="window.location.hash=`home`">Home</div>
-            <div class="d-flex my-0 flex-column justify-content-center h-100 hover-bg-dark pointer kerning h6 px-4" onclick="window.location.hash=`projects`">Discover</div>
-            <div class="d-flex my-0 flex-column justify-content-center h-100 hover-bg-dark pointer kerning h6 px-4" onclick="window.location =`/about.html`">Reach Out</div>
-            <div class="d-flex my-0 flex-column justify-content-center h-100 hover-bg-dark pointer kerning h6 px-4">Resume</div>
+            <div class="d-flex my-0 flex-column justify-content-center h-100 hover-bg-dark pointer kerning h6 px-4 font-weight-bold border-bottom" style="border-width: 3px !important; border-color: #45f9c3 !important" onclick="window.location.hash=`home`" id="navbar-top-home">Home</div>
+            <div class="d-flex my-0 flex-column justify-content-center h-100 hover-bg-dark pointer kerning h6 px-4" onclick="window.location.hash=`discover`" id="navbar-top-discover">Discover</div>
+            <div class="d-flex my-0 flex-column justify-content-center h-100 hover-bg-dark pointer kerning h6 px-4" onclick="window.location =`/about.html`" id="navbar-top-reach-out">Reach Out</div>
+            <div class="d-flex my-0 flex-column justify-content-center h-100 hover-bg-dark pointer kerning h6 px-4" id="navbar-top-resume">Resume</div>
           </div>
         </div>
         <div class="text-center" style="height: 80vh">
@@ -60,7 +60,7 @@
       </div>
     </div>
 
-    <div class="breathing" style="margin= -40px; padding: 40px" id="projects"></div>
+    <div class="breathing" style="margin= -40px; padding: 40px" id="discover"></div>
     <div class="container my-5">
       <div class="breathing"></div>
       <div class="text-center py-3 ml-5">
@@ -227,6 +227,32 @@ $.ajax({
       let projects = data.filter(x => x.section == e);
       pushToProject(projects, section);
     });
+  }
+});
+
+const ALL_NAVBAR = ["home", "discover", "reach-out", "resume"];
+function clearStyle() {
+  ALL_NAVBAR.forEach(e => {
+    let element = $(`#navbar-top-${e}`);
+    element.removeClass("border-bottom");
+    element.removeClass("font-weight-bold");
+    element.attr("style", "");
+  });
+}
+
+function highlightNavbarButton(element) {
+  element.attr("style", "border-width: 3px !important; border-color: #45f9c3 !important");
+  element.addClass("border-bottom");
+  element.addClass("font-weight-bold");
+}
+
+$(document).scroll(() => {
+  for(let nav of ALL_NAVBAR) {
+    let section = $(`#${nav}`).offset() || {"top": 9999999999};
+    if ($(document).scrollTop() >= section.top) {
+      clearStyle();
+      highlightNavbarButton($(`#navbar-top-${nav}`));
+    }
   }
 });
 </script>
