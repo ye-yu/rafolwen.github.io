@@ -26,3 +26,7 @@ html {
   background-image: url('../bg.jpg');
   background-size: cover;
 }
+
+#navbar-top-home, #navbar-top-discover, #navbar-top-reach-out, #navbar-top-resume{
+    transition: all 0.1s ease;
+}
