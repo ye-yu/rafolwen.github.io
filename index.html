@@ -13,6 +13,7 @@
 
 <title>Raflie Zainuddin | Portfolio</title>
 <link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/cursor.css">
 <body>
   <!-- Link: SQL app -->
   <div class="d-none">
@@ -27,48 +28,32 @@
   </div>
 
   <div class="container-fluid">
-    <div class="row bg-img">
-      <div class="col-lg-1 d-lg-block d-none">
-      </div>
-      <div class="col-lg-11 px-0 bg-light" style='height:100vh;'>
-        <div class="d-flex flex-column">
-          <div class="shadow w-100 d-lg-flex d-none flex-row justify-content-end align-items-stretch" style="height:60px;">
-            <a target="_self" href="https://linkedin.com/in/raflie" class='text-dark hover-bg-dark px-5 pt-3'> LinkedIn </a>
-            <a target="_self" href="https://github.com/ye-yu" class='text-dark hover-bg-dark px-5 pt-3'> GitHub </a>
-            <a target="_self" href="about.html" class='text-white color-0-bg px-5 pt-3'> Looking for a Talent? </a>
-          </div>
-          <div class="container-fluid">
-            <div class="row" style="height:540px;">
-              <div class="col d-flex flex-column justify-content-end mx-4 mx-lg-5">
-                <div class="mt-auto sub-leading">
-                  Hello, I'm
-                </div>
-                <div class="display-3 leading mb-3">
-                  Raflie Zainuddin
-                </div>
-                <div class="sub-leading">
-                  But You Can Call Me Your
-                </div>
-                <div class="display-3 leading color-1" id="role">
-                </div>
-                <div class="mt-5 mb-4 d-flex flex-column d-lg-block text-lg-left text-center">
-                  <a class="btn color-5-bg text-white rounded-pill px-5 py-1 h5" href="resources/Resume%20-%20Raflie%20Zainuddin%20(June%202020).pdf" role="button">See Resume</a>
-                  <a target="_self" href="#tagline-header" class="text-dark py-2 px-5 h5"><u>See projects below</u></a>
-                </div>
-              </div>
-              <div class="col d-none d-lg-block">
-                <div class="text-right pr-3" style="font-size:200px;opacity:50%">
-                  &lt;<span class="color-3">?</span>&gt;
-                </div>
-              </div>
-            </div>
+    <div class="row">
+      <div class="col px-0 bg-light">
+        <div class="shadow d-flex flex-column w-100" style="height: 65px">
+          <div class="d-flex align-items-center flex-row mx-auto h-100">
+            <span class="pointer kerning font-weight-bold h6 mx-4">Home</span>
+            <span class="pointer kerning h6 mx-4" onclick="window.location.hash=`project-container`">Projects</span>
+            <span class="pointer kerning h6 mx-4">Contact</span>
+            <span class="pointer kerning h6 mx-4">Resume</span>
           </div>
         </div>
-      </div>
-    </div>
+        <div class="text-center" style="height: 80vh">
+          <div class="breathing"></div>
+          <div class="breathing"></div>
+          <div class="breathing"></div>
+          <div class="mt-5 display-1 leading">
+            Hey, there
+          </div>
+          <div class="leading h5 mt-3">
+            &gt; &nbsp; I'm looking for <u>you</u> :)
+          </div>
+          <div class="leading h5 mt-3">
+            Just scroll down and take a tour of my portfolio
+          </div>
 
-    <div class="my-5 pt-5 text-center h5" id="tagline-header">
-      <b>I code. You code. Together, we <span class='color-0'>code</span>&sup2;.</b>
+        </div>
+      </div>
     </div>
 
     <div class="container px-5">
@@ -94,33 +79,6 @@
 
 <script type="text/javascript">
 "use strict";
-
-class RoleChange {
-  constructor(roles) {
-    this.roles = roles;
-    this.showing = 0;
-    this.interval = -1;
-  }
-
-  start() {
-    if (this.interval != -1) return;
-    this.show();
-    this.interval = setInterval(() => {
-      this.show();
-    }, 2000);
-  }
-
-  show() {
-    this.showing = (++this.showing) % this.roles.length;
-    $("#role").html(this.roles[this.showing]);
-  }
-}
-
-new RoleChange([
-  `<span class="color-5">Python</span> Developer`,
-  `<span class="color-5">Java</span> Developer`,
-  `<span class="color-5">Node.js</span> Developer`,
-]).start();
 
 function joinURI(...paths) {
   paths.unshift(document.baseURI.split("#")[0])
