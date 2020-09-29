@@ -5,105 +5,9 @@ html {
   font-style: "Lato", sans-serif;
 }
 
-.color-0 {
-  color: #011316;
-}
-
-.color-0-bg {
-  background-color: #011316;
-}
-
-.fill-0 {
-  fill: #011316;
-}
-
-.color-1 {
-  color: #7DBBC3;
-}
-
-.color-1-bg {
-  background-color: #7DBBC3;
-}
-
-.fill-1 {
-  fill: #7DBBC3;
-}
-
-.color-2 {
-  color: #DAEDBD;
-}
-
-.color-2-bg {
-  background-color: #DAEDBD;
-}
-
-.fill-2 {
-  fill: #DAEDBD;
-}
-
-.color-3 {
-  color: #F4B9B2;
-}
-
-.color-3-bg {
-  background-color: #F4B9B2;
-}
-
-.fill-3 {
-  fill: #F4B9B2;
-}
-
-.color-4 {
-  color: #E5B181;
-}
-
-.color-4-bg {
-  background-color: #E5B181;
-}
-
-.fill-4 {
-  fill: #E5B181;
-}
-
-.color-5 {
-  color: #DE6B48;
-}
-
-.color-5-bg {
-  background-color: #DE6B48;
-}
-
-.fill-5 {
-  fill: #DE6B48;
-}
-
-.leading {
-  font-family: 'Lustria', cursive, serif;
-}
-
-.sub-leading {
-  font-family: 'Open Sans', sans-serif;
-}
-
-.alt-leading {
-  font-family: 'Varela Round', sans-serif;
-}
-
-.mono {
-  font-family: 'Source Code Pro', monospace;
-}
-
-.kerning {
-  letter-spacing: 1px;
-}
-
 .breathing {
   margin-top: 50px;
   height: 1px;
-}
-
-.line-spacing-more {
-  line-height: 1.85rem;
 }
 
 .hover-opacity-50:hover {
@@ -116,18 +20,6 @@ html {
   background-color: #EEE;
   transition-timing-function: ease-in-out;
   transition-duration: 0.1s;
-}
-
-.fill-white {
-  fill: #FFF;
-}
-
-.fill-light {
-  fill: #F8F9FA;
-}
-
-.fill-dark {
-  fill: #343A40;
 }
 
 .bg-img {

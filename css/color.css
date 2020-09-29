@@ -1,47 +1,83 @@
-/* background-related colours */
-.bg-black{
-  background-color: black;
+.color-0 {
+  color: #011316;
 }
 
-.bg-white-translucent{
-  background-color: #FFFFFFDD;
+.color-0-bg {
+  background-color: #011316;
 }
 
-.bg-dark-translucent{
-  background-color: #343a40DD;
+.fill-0 {
+  fill: #011316;
 }
 
-.bg-black-translucent{
-  background-color: #111111DD;
+.color-1 {
+  color: #7DBBC3;
 }
 
-/* text-related colours */
-.text-yellow{
-  color: yellow
+.color-1-bg {
+  background-color: #7DBBC3;
 }
 
-.text-body a {
-  color: #343a40;
+.fill-1 {
+  fill: #7DBBC3;
 }
 
-.text-body a:visited {
-  color: black;
+.color-2 {
+  color: #DAEDBD;
 }
 
-a {
-  color: black;
+.color-2-bg {
+  background-color: #DAEDBD;
 }
 
-a:hover {
-  color: #333;
+.fill-2 {
+  fill: #DAEDBD;
 }
 
-a:active {
-  border: none;
-  color: darkgray;
+.color-3 {
+  color: #F4B9B2;
 }
 
-.project-markdown a {
-  color: black;
-  text-decoration: underline;
+.color-3-bg {
+  background-color: #F4B9B2;
+}
+
+.fill-3 {
+  fill: #F4B9B2;
+}
+
+.color-4 {
+  color: #E5B181;
+}
+
+.color-4-bg {
+  background-color: #E5B181;
+}
+
+.fill-4 {
+  fill: #E5B181;
+}
+
+.color-5 {
+  color: #DE6B48;
+}
+
+.color-5-bg {
+  background-color: #DE6B48;
+}
+
+.fill-5 {
+  fill: #DE6B48;
+}
+
+.fill-white {
+  fill: #FFF;
+}
+
+.fill-light {
+  fill: #F8F9FA;
+}
+
+.fill-dark {
+  fill: #343A40;
 }
