@@ -56,6 +56,9 @@
           <div class="breathing"></div>
           <div class="breathing"></div>
           <div class="breathing"></div>
+          <a href="#discover" class="leading h5 mt-3 btn btn-outline-dark border-left-0 border-right-0 border-top-0 rounded-0">
+            begin
+          </a>
         </div>
       </div>
     </div>
@@ -72,6 +75,9 @@
           <br>
           Take a look at my models below.
         </div>
+        <a href="#discover-data-engineering" class="leading h5 mt-3 btn btn-outline-dark border-left-0 border-right-0 border-top-0 rounded-0">
+          &#709;
+        </a>
       </div>
 
       <div class="" id="data-science-list-container">
@@ -79,11 +85,14 @@
       </div>
     </div>
 
-    <div class="breathing"></div>
+    <div class="breathing" style="margin= -40px; padding: 40px" id="discover-data-engineering"></div>
     <div class="container my-5">
       <div class="breathing"></div>
       <div class="text-center py-3 ml-5">
-        <div class="leading h1">
+        <a href="#discover" class="leading h5 mt-3 btn btn-outline-dark border-left-0 border-right-0 border-top-0 rounded-0">
+          &#708;
+        </a>
+        <div class="leading h1 mt-3">
           I pipe and collect data
         </div>
         <div class="leading line-spacing h5 py-3">
@@ -91,6 +100,9 @@
           <br>
           Take a look at my data strategies below.
         </div>
+        <a href="#discover-apps" class="leading h5 mt-3 btn btn-outline-dark border-left-0 border-right-0 border-top-0 rounded-0">
+          &#709;
+        </a>
       </div>
 
       <div class="" id="data-engineering-list-container">
@@ -98,11 +110,14 @@
       </div>
     </div>
 
-    <div class="breathing"></div>
+    <div class="breathing" style="margin= -40px; padding: 40px" id="discover-apps"></div>
     <div class="container my-5">
       <div class="breathing"></div>
       <div class="text-center py-3 ml-5">
-        <div class="leading h1">
+        <a href="#discover-data-engineering" class="leading h5 mt-3 btn btn-outline-dark border-left-0 border-right-0 border-top-0 rounded-0">
+          &#708;
+        </a>
+        <div class="leading h1 mt-3">
           I develop software
         </div>
         <div class="leading line-spacing h5 py-3">
@@ -110,6 +125,9 @@
           <br>
           Take a look at my apps below.
         </div>
+        <a href="#discover-minecraft" class="leading h5 mt-3 btn btn-outline-dark border-left-0 border-right-0 border-top-0 rounded-0">
+          &#709;
+        </a>
       </div>
 
       <div class="" id="apps-list-container">
@@ -117,11 +135,14 @@
       </div>
     </div>
 
-    <div class="breathing"></div>
+    <div class="breathing" style="margin= -40px; padding: 40px" id="discover-minecraft"></div>
     <div class="container my-5">
       <div class="breathing"></div>
       <div class="text-center py-3 ml-5">
-        <div class="leading h1">
+        <a href="#discover-apps" class="leading h5 mt-3 btn btn-outline-dark border-left-0 border-right-0 border-top-0 rounded-0">
+          &#708;
+        </a>
+        <div class="leading h1 mt-3">
           I mod Minecraft
         </div>
         <div class="leading line-spacing h5 py-3">
@@ -129,6 +150,9 @@
           <br>
           Minecraft Modding is a modification of the vanilla gameplay.
         </div>
+        <a href="#discover-music" class="leading h5 mt-3 btn btn-outline-dark border-left-0 border-right-0 border-top-0 rounded-0">
+          &#709;
+        </a>
       </div>
 
       <div class="" id="minecraft-list-container">
@@ -136,11 +160,14 @@
       </div>
     </div>
 
-    <div class="breathing"></div>
+    <div class="breathing" style="margin= -40px; padding: 40px" id="discover-music"></div>
     <div class="container my-5">
       <div class="breathing"></div>
       <div class="text-center py-3 ml-5">
-        <div class="leading h1">
+        <a href="#discover-minecraft" class="leading h5 mt-3 btn btn-outline-dark border-left-0 border-right-0 border-top-0 rounded-0">
+          &#708;
+        </a>
+        <div class="leading h1 mt-3">
           I compose music
         </div>
         <div class="leading line-spacing h5 py-3">
@@ -152,7 +179,7 @@
 
       <div class="" id="music-list-container">
         <div class="text-center">
-          &lt; not yet available but they will be here :)&gt;
+          &lt;not yet available but they will be here :)&gt;
         </div>
       </div>
     </div>
@@ -249,7 +276,7 @@ function highlightNavbarButton(element) {
 $(document).scroll(() => {
   for(let nav of ALL_NAVBAR) {
     let section = $(`#${nav}`).offset() || {"top": 9999999999};
-    if ($(document).scrollTop() >= section.top) {
+    if ($(document).scrollTop() >= section.top - 40) {
       clearStyle();
       highlightNavbarButton($(`#navbar-top-${nav}`));
     }
