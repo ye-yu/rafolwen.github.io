@@ -46,23 +46,31 @@
             Hey, there
           </div>
           <div class="leading h5 mt-3">
-            &gt; &nbsp; I'm looking for <u>you</u> :)
+            &gt; &nbsp;I'm looking for <u>you</u> &nbsp;:)
           </div>
           <div class="leading h5 mt-3">
-            Just scroll down and take a tour of my portfolio
+            Just scroll down, and take a tour of my portfolio
           </div>
-
+          <div class="breathing"></div>
+          <div class="breathing"></div>
+          <div class="breathing"></div>
         </div>
       </div>
     </div>
 
-    <div class="container px-5">
-      <div class="container mt-5 px-5" id="project-container">
-        <div class="text-center font-weight-bold h2">
-          <div class="py-3">
-            Projects
-          </div>
+    <div class="container mt-5" id="project">
+      <div class="breathing"></div>
+      <div class="text-center py-3 ml-5">
+        <div class="leading h1">
+          I develop software
         </div>
+        <div class="leading h5">
+          Take a look at my apps below
+        </div>
+      </div>
+
+      <div class="" id="project-container">
+
       </div>
     </div>
   </div>
@@ -86,7 +94,8 @@ function joinURI(...paths) {
 }
 
 function pushToProject(entries) {
-
+  var alternate = true
+  var elements = ``;
   for(let entry of entries) {
     let title = entry['title']
     let category = entry['category']
@@ -95,13 +104,12 @@ function pushToProject(entries) {
     let description = entry['description']
     let imgsrc = joinURI("projects", entry['hash'], "thumbnail.jpg")
     let href = joinURI(`post.html?id=${entry['hash']}`)
-    let html = `<hr>
-    <div class="row px-5 py-3">
-      <div class="col-lg-3 py-3 px-3">
-        <img class="card-img-top" src="${imgsrc}" style="width:10rem;height:10rem;">
-      </div>
-      <div class="col py-3 px-3">
-        <div class="sub-leading h3">
+    if (alternate) elements += `<div class="row border-top">`;
+
+    elements += `
+      <div class="col-lg-6 d-flex flex-column align-items-center px-5 py-5 hover-bg-dark">
+        <img class="rounded-circle mt-5" src="${imgsrc}" style="width:10rem;height:10rem;">
+        <div class="sub-leading h3 my-3">
           <a target="_self" href="${href}" role="button" class="color-0"><u>${title}</u></a>
         </div>
         <div class="small text-muted alt-leading">
@@ -111,14 +119,17 @@ function pushToProject(entries) {
           Date: ${date}
         </div>
 
-        <div class="mt-2 border-top border-dark sub-leading pt-4 h6">
+        <div class="mt-2 line-spacing-more border-top sub-leading pt-4 h5 text-center">
           ${description}
         </div>
       </div>
-    </div>
     `;
-    $("#project-container").append(html)
+
+    if (!alternate) elements += `</div>`;
+    alternate = !alternate
   }
+  if (alternate) elements += `</div>`;
+  $("#project-container").append(elements);
 }
 
 $.ajax({

@@ -102,6 +102,10 @@ html {
   height: 1px;
 }
 
+.line-spacing-more {
+  line-height: 1.85rem;
+}
+
 .hover-opacity-50:hover {
   opacity: 50%;
   transition-timing-function: ease-in-out;
