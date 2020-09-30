@@ -82,11 +82,18 @@
   fill: #343A40;
 }
 
-.nav-link {
-  background-color: #F8F9FA !important;
-  color: #283947 !important;
-}
-.nav-link.active {
+.nav-about.nav-link.active {
   background-color: #283947 !important;
   color: #F8F9FA !important;
+  border-bottom: unset;
+  border-radius: unset;
+  transition: all 0.2s ease;
+}
+
+.nav-about.nav-link {
+  background-color: #F8F9FA !important;
+  color: #283947 !important;
+  border-bottom: solid 1px black;
+  border-radius: unset;
+  transition: all 0.2s ease;
 }
