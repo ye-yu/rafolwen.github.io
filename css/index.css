@@ -30,3 +30,13 @@ html {
 #navbar-top-home, #navbar-top-discover, #navbar-top-reach-out, #navbar-top-resume{
     transition: all 0.1s ease;
 }
+
+.h6-lg {
+  font-size: unset;
+}
+
+@media screen and (max-width: 1200px) {
+  .h6-lg {
+    font-size:0.75rem;
+  }
+}
