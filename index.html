@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="css/cursor.css">
 <link rel="stylesheet" href="css/color.css">
 <link rel="stylesheet" href="css/font.css">
-<body id="home">
+<body id="home" style="overflow-x: hidden">
   <!-- Connect Modal -->
   <div class="modal fade" id="connect-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -441,14 +441,12 @@ function pushToProject(entries, section="apps") {
     if (alternate) elements += `<div class="row border-top">`;
 
     elements += `
-      <div class="col-lg-6 d-flex flex-column align-items-center px-5 py-5 hover-bg-dark">
-        <img class="rounded-circle mt-5" src="${imgsrc}" style="width:10rem;height:10rem;">
-        <div class="sub-leading h3 my-3">
+      <div class="col-lg-6 d-flex flex-column align-items-center px-5 py-3 hover-bg-dark">
+        <img class="rounded-circle mt-3" src="${imgsrc}" style="width:10rem;height:10rem;">
+        <div class="sub-leading h3 mb-1 mt-3">
           <a target="_self" href="${href}" role="button" class="color-0"><u>${title}</u></a>
         </div>
         <div class="small text-center text-muted alt-leading">
-          Category: ${category}
-          <br>
           Scope: ${scope}
         </div>
         <div class="small text-muted alt-leading">
