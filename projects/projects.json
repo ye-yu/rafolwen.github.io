@@ -61,5 +61,41 @@
     "description": "The classification dataset is obtained from Northwestern Polytechnical University (NWPU) that originally contains 45 classes of images. This project is an exploration to the right CNN model that is simple yet effective in classifying these images. The following image is the original classes in the dataset.",
     "scope": "Data Science, Image Analysis, Minecraft",
     "hash": "a172c78dabdb530834996a5c277c5ee0"
+  },
+  {
+    "title": "Fast Read",
+    "date": "2020-06-01 00:00:00",
+    "category": "Python",
+    "section": "Apps",
+    "description": "Just another RSVP application. Supports Chinese text, Arabic text, momentum controlling, and word highlighting.",
+    "scope": "Web Application",
+    "hash": "88e2e817fea3eeb0d9ea0f87156aa6bc"
+  },
+  {
+    "title": "Minecraft Play Data",
+    "date": "2020-07-01 00:00:00",
+    "category": "Python",
+    "section": "Data Engineering",
+    "description": "A Fabric client-side mod that captures the client-side perspective of Minecraft gameplay.",
+    "scope": "Data Collection, Kotlin",
+    "hash": "25cdecbae8f75810692e1787ae56c171"
+  },
+  {
+    "title": "Jeasing Library",
+    "date": "2020-07-01 00:00:00",
+    "category": "Python",
+    "section": "Apps",
+    "description": "An easing library that enables easing animation with one function call",
+    "scope": "Library, Kotlin",
+    "hash": "b0a508045829c9c05a60a9f713b3f6a8"
+  },
+  {
+    "title": "Image Hand Signature Extractor",
+    "date": "2019-07-01 00:00:00",
+    "category": "Python",
+    "section": "Apps",
+    "description": "Produces a PNG with transparency of the hand signature",
+    "scope": "Image Processing, Python",
+    "hash": "4e0704a3f19a8540b6b234f28ef8fe24"
   }
 ]
