@@ -81,3 +81,12 @@
 .fill-dark {
   fill: #343A40;
 }
+
+.nav-link.active {
+  background-color: #283947 !important;
+  color: #F8F9FA !important;
+}
+.nav-link {
+  background-color: #F8F9FA !important;
+  color: #283947 !important;
+}
