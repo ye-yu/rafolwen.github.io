@@ -32,11 +32,19 @@ html {
 }
 
 .h6-lg {
-  font-size: unset;
+  font-size:0.75rem;
 }
 
-@media screen and (max-width: 1200px) {
+.width-responsive {
+  width: 100%;
+}
+
+@media screen and (min-width: 1200px) {
   .h6-lg {
-    font-size:0.75rem;
+    font-size: unset;
+  }
+
+  .width-responsive {
+    width: 50%;
   }
 }
