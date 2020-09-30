@@ -47,7 +47,7 @@
   {
     "title": "Music Singing Voice Generation",
     "date": "2019-06-01 00:00:00",
-    "category": "Javascript",
+    "category": "Python",
     "section": "Data Science",
     "description": "I trained a MIDI model with scale-invariant music encoding and then transformed my singing voice into MIDI for the model to generate continuation from the input.",
     "scope": "Data Science",
