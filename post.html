@@ -14,34 +14,32 @@
 
 <title>Raflie Zainuddin | Portfolio</title>
 <link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/cursor.css">
+<link rel="stylesheet" href="css/color.css">
+<link rel="stylesheet" href="css/font.css">
 
 <body>
   <div class="container-fluid">
-    <div class="row bg-img">
-      <div class="col-lg-1 d-lg-block d-none">
-      </div>
-      <div class="col-lg-11 px-0 bg-light" style='height:100vh;overflow-y:scroll'>
-        <div class="d-flex flex-column">
-          <div class="shadow w-100 d-lg-flex d-none flex-row justify-content-end align-items-stretch" style="height:60px;">
-            <a target="_self" href="https://ye-yu.github.io/portfolio/" class='text-dark hover-bg-dark px-5 pt-3'> <u>Home</u> </a>
-            <a target="_self" href="https://linkedin.com/in/raflie" class='text-dark hover-bg-dark px-5 pt-3'> LinkedIn </a>
-            <a target="_self" href="https://github.com/ye-yu" class='text-dark hover-bg-dark px-5 pt-3'> GitHub </a>
-            <a target="_self" href="../about.html" class='text-white color-0-bg px-5 pt-3'> Looking for a Talent? </a>
-          </div>
-          <div class="container">
-            <div class="py-5 border-bottom" id="container-header">
-
-            </div>
-            <div class="row">
-              <div class="col-lg-2">
-              </div>
-              <div class="col-lg-8 markdown" id="container-body">
-              </div>
-              <div class="col-lg-2">
-              </div>
-            </div>
+    <div class="row">
+      <div class="col px-0">
+        <div class="shadow d-flex flex-column w-100 responsive-text-lg" style="height: 65px; position: fixed !important; z-index:999; background-color:#f4f7fc;">
+          <div class="d-flex flex-row align-items-center mx-auto my-0 h-100">
+            <div class="d-flex my-0 flex-column justify-content-center h-100 hover-bg-dark pointer kerning text-center h6-lg px-4 font-weight-bold" onclick="window.location=`https://ye-yu.github.io/portfolio/`" id="navbar-top-home">Home</div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="py-5 border-bottom" id="container-header">
+      <div class="breathing"></div>
+    </div>
+    <div class="row">
+      <div class="col-lg-2">
+      </div>
+      <div class="col-lg-8 markdown" id="container-body">
+      </div>
+      <div class="col-lg-2">
       </div>
     </div>
 </body>
@@ -132,7 +130,7 @@
     success: function (data) {
       console.log(data)
       let meta = getProjectMeta(data)
-      if (meta !== undefined)
+      if (typeof meta !== 'undefined')
         createHeader(meta)
         fetchMarkdown(meta['hash'])
     }
