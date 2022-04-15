@@ -9504,6 +9504,11 @@ url-to-options@^1.0.1:
   resolved "https://registry.yarnpkg.com/url-to-options/-/url-to-options-1.0.1.tgz#1505a03a289a48cbd7a434efbaeec5055f5633a9"
   integrity sha1-FQWgOiiaSMvXpDTvuu7FBV9WM6k=
 
+use-breakpoint@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/use-breakpoint/-/use-breakpoint-3.0.2.tgz#584368298d92c64a533b63a3e5599fe08920032f"
+  integrity sha512-O7qfp6QOOQI3CqLnJg6e5TgV2lSuLv3jQT48RAtScYTPbYjuGogPDQUS+Bz/MC0ZCYdZge262rKBi+jgZgCSHw==
+
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
