@@ -8,6 +8,11 @@ const stylesheet = {
   FlexItemGrow: {
     flex: 1,
   } as React.CSSProperties,
+  RowFlex: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly"
+  } as React.CSSProperties,
 }
 
 export default stylesheet
