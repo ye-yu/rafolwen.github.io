@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react';
 import { Display } from '../components/Display';
+import { HighlightButton } from '../components/HighlightButton';
 import useBreakpoint from '../hooks/useBreakpoint';
 import stylesheet from '../styles';
 
@@ -16,6 +17,9 @@ function Header() {
       }}>
         Raflie Zainuddin
       </Display>
+      <HighlightButton size={1.5}>
+        Hello
+      </HighlightButton>
     </div>
   </div>
 }
