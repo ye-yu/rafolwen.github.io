@@ -7,8 +7,10 @@ type ButtonProps = {
 }
 
 export function HighlightButton(props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & ButtonProps) {
-  return <a className={"highlight-button" + (props.active ? "-active" : "")}>
-    <span>{props.children}</span>
-    <span></span>
-  </a>
+  return <div style={props.style}>
+    <a className={"highlight-button" + (props.active ? "-active" : "")}>
+      <span>{props.children}</span>
+      <span></span>
+    </a>
+  </div>
 }

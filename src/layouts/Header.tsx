@@ -19,17 +19,17 @@ function Header() {
         Raflie Zainuddin
       </Display>
       <div style={stylesheet.RowFlex}>
-        <HighlightButton size={1.5} active>
-          Hello
+        <HighlightButton size={1.5} style={breakpoint === "desktop" ? {} : stylesheet.FlexItemCouple} active>
+          Backend
         </HighlightButton>
-        <HighlightButton size={1.5}>
-          Hello
+        <HighlightButton size={1.5} style={breakpoint === "desktop" ? {} : stylesheet.FlexItemCouple}>
+          Cloud
         </HighlightButton>
-        <HighlightButton size={1.5}>
-          Hello
+        <HighlightButton size={1.5} style={breakpoint === "desktop" ? {} : stylesheet.FlexItemCouple}>
+          Data
         </HighlightButton>
-        <HighlightButton size={1.5}>
-          Hello
+        <HighlightButton size={1.5} style={breakpoint === "desktop" ? {} : stylesheet.FlexItemCouple}>
+          Contact
         </HighlightButton>
       </div>
     </div>

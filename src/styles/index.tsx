@@ -11,7 +11,14 @@ const stylesheet = {
   RowFlex: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-evenly"
+    justifyContent: "space-evenly",
+    flexWrap: "wrap",
+  } as React.CSSProperties,
+  FlexItemCouple: {
+    flex: "0 0 50%",
+    width: "fit-content",
+    textAlign: "center",
+    marginTop: "1rem",
   } as React.CSSProperties,
 }
 
