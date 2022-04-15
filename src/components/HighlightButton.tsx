@@ -3,11 +3,14 @@ import "./index.css";
 
 type ButtonProps = {
   size: number
+  active?: boolean
 }
 
 export function HighlightButton(props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & ButtonProps) {
-  return <span className="highlight-button">
-    <div className="bg" />
+  return <span className={"highlight-button" + (props.active ? " active" : "")}>
+    <div className="bg" style={ props.active ? {
+      flexBasis: `${props.size}rem`,
+    } : {}} />
     <div className="text"
       {...props}
       style={{

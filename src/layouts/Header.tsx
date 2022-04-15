@@ -17,7 +17,7 @@ function Header() {
       }}>
         Raflie Zainuddin
       </Display>
-      <HighlightButton size={1.5}>
+      <HighlightButton size={1.5} active>
         Hello
       </HighlightButton>
     </div>
