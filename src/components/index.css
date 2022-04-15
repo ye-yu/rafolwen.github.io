@@ -1,5 +1,5 @@
 .highlight-button, .highlight-button-active {
-  text-decoration: none;
+  text-decoration: underline;
   color: inherit;
   position: relative;
   margin: auto;
