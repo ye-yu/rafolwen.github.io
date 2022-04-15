@@ -1,24 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
+import BGIMG from './assets/bg.jpg';
 import './App.css';
+import Header from './layouts/Header';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{
+      backgroundImage: `url(${BGIMG})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      margin: 0,
+      padding: 0,
+      minHeight: "100vh",
+      minWidth: "100vw",
+      display: "flex",
+      fontFamily: "'Inter', sans-serif",
+    }}>
+      <div style={{
+        backgroundColor: "rgba(255,255,255,0.6)",
+        flex: 1,
+      }}>
+        <Header />
+      </div>
     </div>
   );
 }
