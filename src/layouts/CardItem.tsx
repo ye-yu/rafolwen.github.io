@@ -1,4 +1,5 @@
 import { Display } from "../components/Display"
+import { Pill } from "../components/Pill"
 import stylesheet from "../styles"
 
 interface CardProps extends Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "children"> {
@@ -9,7 +10,7 @@ interface CardProps extends Omit<React.DetailedHTMLProps<React.HTMLAttributes<HT
 }
 
 
-export function CardItem({ title, style = {}, center = false }: CardProps) {
+export function CardItem({ title, style = {}, center = false, pills, content }: CardProps) {
   return <div style={{
     ...stylesheet.ColumnFlex,
     ...style,
@@ -20,5 +21,22 @@ export function CardItem({ title, style = {}, center = false }: CardProps) {
       letterSpacing: "0.1rem",
       textAlign: center ? "center" : "left",
     }}>{title}</Display>
+    <div style={{
+      ...stylesheet.RowFlex,
+      justifyContent: center ? "center" : "left",
+      marginTop: "1rem",
+    }}>
+      {
+        pills.map(e => <Pill key={e}>{e}</Pill>)
+      }
+    </div>
+    <div style={{
+      fontSize: "1rem",
+      textAlign: "justify",
+      color: "#4f4f4f",
+      marginTop: "1rem",
+    }}>
+      {content}
+    </div>
   </div>
 }
