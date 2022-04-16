@@ -16,12 +16,18 @@ function Header() {
     <div style={stylesheet.FlexItemGrow}>
       <Display style={{
         textAlign: "center",
-        marginTop: breakpoint === "mobile" ? "2rem" : "9rem",
+        marginTop: breakpoint === "mobile" ? "5rem" : "9rem",
         marginBottom: breakpoint === "mobile" ? "1rem" : "3rem",
+        maxWidth: breakpoint === "mobile" ? "50%" : "100%",
+        margin: "auto",
       }}>
         Raflie Zainuddin
       </Display>
-      <div style={stylesheet.RowFlex}>
+      <div style={{
+        ...stylesheet.RowFlex,
+        maxWidth: breakpoint === "mobile" ? "100%" : breakpoint === "tablet" ? 600 : 900,
+        margin: "auto",
+      }}>
         <HighlightButton
           size={1.5}
           style={breakpoint === "desktop" ? {} : stylesheet.FlexItemCouple}
@@ -53,13 +59,14 @@ function Header() {
       </div>
       <div style={{
         ...(breakpoint === "mobile" ? stylesheet.ColumnFlex : stylesheet.RowFlex),
-        maxWidth: breakpoint === "mobile" ? "100%" : breakpoint === "tablet" ? 900 : 1100,
-        margin: "3rem auto 1rem",
+        width: breakpoint === "mobile" ? "80%" : breakpoint === "tablet" ? 900 : 1200,
+        margin: "5rem auto 1rem",
       }}>
         <CardItem
           center={breakpoint === "tablet"}
           style={{
             flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
+            marginBottom: breakpoint === "mobile" ? "3rem" : "unset",
           }}
           title="Project Title"
           pills={["javascript"]}
@@ -69,6 +76,7 @@ function Header() {
           center={breakpoint === "tablet"}
           style={{
             flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
+            marginBottom: breakpoint === "mobile" ? "3rem" : "unset",
           }}
           title="Project Title"
           pills={["javascript"]}
@@ -78,6 +86,7 @@ function Header() {
           center={breakpoint === "tablet"}
           style={{
             flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
+            marginBottom: breakpoint === "mobile" ? "3rem" : "unset",
           }}
           title="Project Title"
           pills={["javascript"]}
