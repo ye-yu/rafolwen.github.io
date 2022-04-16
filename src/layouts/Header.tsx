@@ -80,12 +80,12 @@ function Header() {
               }}
             >
               <img style={{
-                maxWidth: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 210 : 250,
+                maxWidth: breakpoint === "mobile" ? 200 : breakpoint === "tablet" ? 210 : 250,
                 border: "solid",
                 borderWidth: 5,
                 borderColor: "white",
                 borderRadius: "100%",
-                margin: "auto",
+                margin: breakpoint === "mobile" ? "auto auto 3rem" : "auto",
               }} src={AVATAR} alt="avatar" />
             </div>
             <Contact
