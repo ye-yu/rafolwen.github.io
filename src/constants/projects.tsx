@@ -45,7 +45,7 @@ export const project = {
       pills: ["node.js"],
       content: <div>
         <p>
-          Customising nodebb as a general purpose forum server, and developing plugins using Typescript 
+          Customising nodebb as a general purpose forum server, and developing plugins using Typescript
           for highest type-safeness.
         </p>
         <p>
@@ -63,8 +63,12 @@ export const project = {
       pills: ["cloud computing"],
       content: <div>
         <p>
-          Provisioning EC2 for VM instances. 
-          Fargate for scalable service cluster. 
+          Provisioning EC2 for VM instances.
+        </p>
+        <p>
+          Fargate with Dockerised image for scalable service cluster.
+        </p>
+        <p>
           S3 & Cloudfront & Route53 for static webpages hosting.
         </p>
       </div>,
@@ -74,7 +78,7 @@ export const project = {
       pills: ["cloud computing"],
       content: <div>
         <p>
-          Smaller cloud instances provider, perfect for small-scale business 
+          Smaller cloud instances provider, perfect for small-scale business and application.
         </p>
       </div>,
     },
@@ -93,58 +97,36 @@ export const project = {
   ],
   Data: [
     {
-      title: "Restful API",
-      pills: ["express.js", "typescript"],
+      title: "Engineering",
+      pills: ["spark", "hadoop"],
       content: <div>
         <p>
-          Sequelize as the ORM, Redis for hot data storage, CRUD api design, Joi for schema validation.
-          Using intuitive versioning and route naming to ensure long term maintainability.
-        </p>
-        <p>
-          Projects related to backend development:
-          <ul>
-            <li>User management module</li>
-            <li>Microservices</li>
-            <li>Worker applications</li>
-          </ul>
+          Using Spark for fast batch data preprocessing & transformation. HDFS storage configuration with Hadoop.
+
         </p>
       </div>,
     },
     {
-      title: "Chatbot",
-      pills: ["typescript"],
+      title: "Data Collection",
+      pills: ["java", "kotlin"],
       content: <div>
         <p>
-          Using npm package <code>node-nlp</code> to perform keyword entity extraction and basic neural network to
-          respond to user free text. Application design is perfect for frequently asked questions and business flows
-          that is keyword-sensitive.
+          Using byte buffers to periodically encode Minecraft player activities for fast quick data recording.
+          Using single-threaded queue to ensure correct data collection sequence. Using Kotlin for fun.
         </p>
         <p>
-          Optimisations include:
-          <ul>
-            <li>
-              text filtering with synonyms dictionaries
-            </li>
-            <li>
-              action-object groupings
-            </li>
-          </ul>
         </p>
       </div>,
     },
     {
-      title: "NodeBB Forums",
-      pills: ["node.js"],
+      title: "Image Analysis",
+      pills: ["python", "tensorflow"],
       content: <div>
         <p>
-          Customising nodebb as a general purpose forum server, and developing plugins using Typescript 
-          for highest type-safeness.
+          Using KNN to <a href="https://ye-yu.github.io/portfolio//post.html?id=33f3bcc44304996e65a748352c78baaa" target="_blank" rel="noreferrer">preprocess image dataset</a> that has a very similar feature.
         </p>
         <p>
-          Plugin includes:
-          <ul>
-            <li>Authentication integration with Auth0</li>
-          </ul>
+          CNN model exploration to find the fit model for classification with <a href="https://ye-yu.github.io/portfolio//post.html?id=a172c78dabdb530834996a5c277c5ee0" target="_blank" rel="noreferrer">satelite images</a>.
         </p>
       </div>,
     },
