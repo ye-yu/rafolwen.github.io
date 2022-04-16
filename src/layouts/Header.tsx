@@ -80,7 +80,7 @@ function Header() {
               title={title}
               pills={pills}
               content={content}
-              key={`Backend-${i}`}
+              key={`${headerSelection}-${i}`}
             />)
         }
       </div>
