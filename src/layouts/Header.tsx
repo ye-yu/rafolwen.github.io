@@ -6,6 +6,8 @@ import useBreakpoint from '../hooks/useBreakpoint';
 import stylesheet from '../styles';
 import { CardItem } from './CardItem';
 import { project } from '../constants/projects';
+import AVATAR from '../assets/avatar.jpg';
+import { Contact } from './Contact';
 
 function Header() {
   const [headerSelection, setHeaderSelection] = React.useState<keyof typeof project | "Contact">("Backend")
@@ -17,7 +19,7 @@ function Header() {
     <div style={stylesheet.FlexItemGrow}>
       <Display style={{
         textAlign: "center",
-        marginTop: breakpoint === "mobile" ? "5rem" : "9rem",
+        marginTop: breakpoint === "mobile" ? "5rem" : "8rem",
         marginBottom: breakpoint === "mobile" ? "1rem" : "3rem",
         marginLeft: "auto",
         marginRight: "auto",
@@ -70,7 +72,28 @@ function Header() {
       }}>
         {
           headerSelection === "Contact" ?
-            <div>HELLO</div>
+          <>
+            <div
+              style={{
+                flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
+                textAlign: "center",
+              }}
+            >
+              <img style={{
+                maxWidth: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 210 : 250,
+                border: "solid",
+                borderWidth: 5,
+                borderColor: "white",
+                borderRadius: "100%",
+                margin: "auto",
+              }} src={AVATAR} alt="avatar" />
+            </div>
+            <Contact
+              style={{
+                flexBasis: breakpoint === "mobile" ? "unset" : 2 * (breakpoint === "tablet" ? 280 : 310),
+              }}
+            />
+          </>
             : project[headerSelection].map(({ title, pills, content }, i) => <CardItem
               center={breakpoint === "tablet"}
               style={{

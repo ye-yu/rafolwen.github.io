@@ -1,4 +1,3 @@
-import React from 'react';
 import BGIMG from './assets/bg.jpg';
 import './App.css';
 import Header from './layouts/Header';
