@@ -8,7 +8,7 @@ import { CardItem } from './CardItem';
 import { project } from '../constants/projects';
 
 function Header() {
-  const [headerSelection, setHeaderSelection] = React.useState("Backend")
+  const [headerSelection, setHeaderSelection] = React.useState<keyof typeof project | "Contact">("Backend")
   const { breakpoint } = useBreakpoint()
 
   return <div style={stylesheet.ColumnFlex}>
@@ -69,17 +69,19 @@ function Header() {
         margin: "5rem auto 1rem",
       }}>
         {
-          project.Backend.map(({ title, pills, content }, i) => <CardItem
-            center={breakpoint === "tablet"}
-            style={{
-              flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
-              marginBottom: breakpoint === "mobile" ? "3rem" : "unset",
-            }}
-            title={title}
-            pills={pills}
-            content={content}
-            key={`Backend-${i}`}
-          />)
+          headerSelection === "Contact" ?
+            <div>HELLO</div>
+            : project[headerSelection].map(({ title, pills, content }, i) => <CardItem
+              center={breakpoint === "tablet"}
+              style={{
+                flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
+                marginBottom: breakpoint === "mobile" ? "3rem" : "unset",
+              }}
+              title={title}
+              pills={pills}
+              content={content}
+              key={`Backend-${i}`}
+            />)
         }
       </div>
     </div>
