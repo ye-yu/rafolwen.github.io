@@ -18,8 +18,9 @@ function Header() {
         textAlign: "center",
         marginTop: breakpoint === "mobile" ? "5rem" : "9rem",
         marginBottom: breakpoint === "mobile" ? "1rem" : "3rem",
+        marginLeft: "auto",
+        marginRight: "auto",
         maxWidth: breakpoint === "mobile" ? "50%" : "100%",
-        margin: "auto",
       }}>
         Raflie Zainuddin
       </Display>
