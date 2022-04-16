@@ -35,6 +35,7 @@ export function CardItem({ title, style = {}, center = false, pills, content }: 
       textAlign: "justify",
       color: "#4f4f4f",
       marginTop: "1rem",
+      lineHeight: "1.5rem",
     }}>
       {content}
     </div>
