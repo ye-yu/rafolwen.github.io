@@ -1,8 +1,8 @@
 export function Contact({ style = {}}: Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "children">) {
   return <div
     style={{
-      lineHeight: "2rem",
-      fontSize: "1.2rem",
+      lineHeight: "1.5rem",
+      fontSize: "1rem",
       ...style,
     }}
   >

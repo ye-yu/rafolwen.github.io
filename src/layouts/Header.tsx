@@ -19,7 +19,7 @@ function Header() {
     <div style={stylesheet.FlexItemGrow}>
       <Display style={{
         textAlign: "center",
-        marginTop: breakpoint === "mobile" ? "5rem" : "8rem",
+        marginTop: breakpoint === "mobile" ? "5rem" : "5rem",
         marginBottom: breakpoint === "mobile" ? "1rem" : "3rem",
         marginLeft: "auto",
         marginRight: "auto",
@@ -77,6 +77,7 @@ function Header() {
               style={{
                 flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
                 textAlign: "center",
+                alignSelf: "center",
               }}
             >
               <img style={{
@@ -90,6 +91,7 @@ function Header() {
             </div>
             <Contact
               style={{
+                alignSelf: "center",
                 flexBasis: breakpoint === "mobile" ? "unset" : 2 * (breakpoint === "tablet" ? 280 : 310),
               }}
             />
@@ -113,7 +115,7 @@ function Header() {
         size={1.5}
         style={{
           textAlign: "center",
-          marginTop: "5rem",
+          margin: "5rem auto",
         }}
         onClick={() => window.open("https://github.com/ye-yu/", "_blank")}
       >
