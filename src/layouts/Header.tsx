@@ -24,6 +24,8 @@ function Header() {
       }}>
         Raflie Zainuddin
       </Display>
+    </div>
+    <div style={stylesheet.FlexItemGrow}>
       <div style={{
         ...stylesheet.RowFlex,
         maxWidth: breakpoint === "mobile" ? "100%" : breakpoint === "tablet" ? 600 : 900,
@@ -58,6 +60,8 @@ function Header() {
           Contact
         </HighlightButton>
       </div>
+    </div>
+    <div style={stylesheet.FlexItemGrow}>
       <div style={{
         ...(breakpoint === "mobile" ? stylesheet.ColumnFlex : stylesheet.RowFlex),
         width: breakpoint === "mobile" ? "80%" : breakpoint === "tablet" ? 900 : 1200,
