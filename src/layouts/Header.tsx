@@ -99,6 +99,18 @@ function Header() {
         />
       </div>
     </div>
+    <div style={stylesheet.FlexItemGrow}>
+      <HighlightButton
+        size={1.5}
+        style={{
+          textAlign: "center",
+          marginTop: "5rem",
+        }}
+        onClick={() => window.open("https://github.com/ye-yu/", "_blank")}
+      >
+        Browse for more project
+      </HighlightButton>
+    </div>
   </div>
 }
 
