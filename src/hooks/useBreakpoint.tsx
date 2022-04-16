@@ -3,5 +3,6 @@ import useBP from 'use-breakpoint';
 const BREAKPOINTS = { mobile: 400, tablet: 900, desktop: 1280 }
 
 export default function useBreakpoint() {
-  return useBP(BREAKPOINTS, 'desktop');
+  const vpWidth = window.visualViewport.width
+  return useBP(BREAKPOINTS, vpWidth > BREAKPOINTS.desktop ? "desktop" : vpWidth > BREAKPOINTS.tablet ? "tablet" : "mobile");
 }
