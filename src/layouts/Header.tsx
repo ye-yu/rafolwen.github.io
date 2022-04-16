@@ -4,6 +4,7 @@ import { Display } from '../components/Display';
 import { HighlightButton } from '../components/HighlightButton';
 import useBreakpoint from '../hooks/useBreakpoint';
 import stylesheet from '../styles';
+import { CardItem } from './CardItem';
 
 function Header() {
   const [headerSelection, setHeaderSelection] = React.useState("Backend")
@@ -49,6 +50,39 @@ function Header() {
           onClick={() => setHeaderSelection("Contact")}>
           Contact
         </HighlightButton>
+      </div>
+      <div style={{
+        ...(breakpoint === "mobile" ? stylesheet.ColumnFlex : stylesheet.RowFlex),
+        maxWidth: breakpoint === "mobile" ? "100%" : breakpoint === "tablet" ? 900 : 1100,
+        margin: "3rem auto 1rem",
+      }}>
+        <CardItem
+          center={breakpoint === "tablet"}
+          style={{
+            flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
+          }}
+          title="Project Title"
+          pills={["javascript"]}
+          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, assumenda quisquam? Ex, rem quia maiores delectus sequi quas praesentium ipsa voluptatibus minima sed velit molestias cumque dolorum similique accusamus voluptas."
+        />
+        <CardItem
+          center={breakpoint === "tablet"}
+          style={{
+            flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
+          }}
+          title="Project Title"
+          pills={["javascript"]}
+          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, assumenda quisquam? Ex, rem quia maiores delectus sequi quas praesentium ipsa voluptatibus minima sed velit molestias cumque dolorum similique accusamus voluptas."
+        />
+        <CardItem
+          center={breakpoint === "tablet"}
+          style={{
+            flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
+          }}
+          title="Project Title"
+          pills={["javascript"]}
+          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, assumenda quisquam? Ex, rem quia maiores delectus sequi quas praesentium ipsa voluptatibus minima sed velit molestias cumque dolorum similique accusamus voluptas."
+        />
       </div>
     </div>
   </div>

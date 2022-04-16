@@ -1,4 +1,4 @@
-export function Display(props: any) {
+export function Display(props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>) {
   return <div
     {...props}
     style={{
