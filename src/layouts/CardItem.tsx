@@ -5,7 +5,7 @@ import stylesheet from "../styles"
 interface CardProps extends Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "children"> {
   title: string
   pills: string[]
-  content: string
+  content: React.ReactNode
   center?: boolean
 }
 
@@ -27,7 +27,7 @@ export function CardItem({ title, style = {}, center = false, pills, content }: 
       marginTop: "1rem",
     }}>
       {
-        pills.map(e => <Pill key={e}>{e}</Pill>)
+        pills.map(e => <Pill style={{marginRight: "0.5rem"}} key={e}>{e}</Pill>)
       }
     </div>
     <div style={{

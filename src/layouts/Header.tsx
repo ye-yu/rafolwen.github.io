@@ -5,6 +5,7 @@ import { HighlightButton } from '../components/HighlightButton';
 import useBreakpoint from '../hooks/useBreakpoint';
 import stylesheet from '../styles';
 import { CardItem } from './CardItem';
+import { project } from '../constants/projects';
 
 function Header() {
   const [headerSelection, setHeaderSelection] = React.useState("Backend")
@@ -67,36 +68,19 @@ function Header() {
         width: breakpoint === "mobile" ? "80%" : breakpoint === "tablet" ? 900 : 1200,
         margin: "5rem auto 1rem",
       }}>
-        <CardItem
-          center={breakpoint === "tablet"}
-          style={{
-            flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
-            marginBottom: breakpoint === "mobile" ? "3rem" : "unset",
-          }}
-          title="Project Title"
-          pills={["javascript"]}
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, assumenda quisquam? Ex, rem quia maiores delectus sequi quas praesentium ipsa voluptatibus minima sed velit molestias cumque dolorum similique accusamus voluptas."
-        />
-        <CardItem
-          center={breakpoint === "tablet"}
-          style={{
-            flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
-            marginBottom: breakpoint === "mobile" ? "3rem" : "unset",
-          }}
-          title="Project Title"
-          pills={["javascript"]}
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, assumenda quisquam? Ex, rem quia maiores delectus sequi quas praesentium ipsa voluptatibus minima sed velit molestias cumque dolorum similique accusamus voluptas."
-        />
-        <CardItem
-          center={breakpoint === "tablet"}
-          style={{
-            flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
-            marginBottom: breakpoint === "mobile" ? "3rem" : "unset",
-          }}
-          title="Project Title"
-          pills={["javascript"]}
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, assumenda quisquam? Ex, rem quia maiores delectus sequi quas praesentium ipsa voluptatibus minima sed velit molestias cumque dolorum similique accusamus voluptas."
-        />
+        {
+          project.Backend.map(({ title, pills, content }, i) => <CardItem
+            center={breakpoint === "tablet"}
+            style={{
+              flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
+              marginBottom: breakpoint === "mobile" ? "3rem" : "unset",
+            }}
+            title={title}
+            pills={pills}
+            content={content}
+            key={`Backend-${i}`}
+          />)
+        }
       </div>
     </div>
     <div style={stylesheet.FlexItemGrow}>
