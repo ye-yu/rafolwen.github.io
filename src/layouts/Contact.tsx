@@ -13,7 +13,7 @@ export function Contact({ style = {}}: Omit<React.DetailedHTMLProps<React.HTMLAt
       If you want to contact me for any employment or freelancing opportunity, feel free to contact me here:
       <ul>
       <li>
-          Email: <a href="mailto:contact@raflie.cc?cc=rafolwen98@gmail.com">contact@raflie.cc</a>
+          Email: <a href="mailto:contact@raflie.cc?cc=rafolwen98@gmail.com" target="_blank" rel="noreferrer">contact@raflie.cc</a>
         </li>
         <li>
           LinkedIn: <a href="https://linkedin.com/in/raflie" target="_blank" rel="noreferrer">Raflie Zainuddin</a>
