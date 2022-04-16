@@ -8,6 +8,7 @@ import { CardItem } from './CardItem';
 import { project } from '../constants/projects';
 import AVATAR from '../assets/avatar.jpg';
 import { Contact } from './Contact';
+import FadeIn from 'react-fade-in';
 
 function Header() {
   const [headerSelection, setHeaderSelection] = React.useState<keyof typeof project | "Contact">("Backend")
@@ -65,50 +66,53 @@ function Header() {
       </div>
     </div>
     <div style={stylesheet.FlexItemGrow}>
-      <div style={{
-        ...(breakpoint === "mobile" ? stylesheet.ColumnFlex : stylesheet.RowFlex),
-        width: breakpoint === "mobile" ? "80%" : breakpoint === "tablet" ? 900 : 1200,
-        margin: "5rem auto 1rem",
-      }}>
-        {
-          headerSelection === "Contact" ?
-          <>
-            <div
-              style={{
-                flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
-                textAlign: "center",
-                alignSelf: "center",
-              }}
-            >
-              <img style={{
-                maxWidth: breakpoint === "mobile" ? 200 : breakpoint === "tablet" ? 210 : 250,
-                border: "solid",
-                borderWidth: 5,
-                borderColor: "white",
-                borderRadius: "100%",
-                margin: breakpoint === "mobile" ? "auto auto 3rem" : "auto",
-              }} src={AVATAR} alt="avatar" />
-            </div>
-            <Contact
-              style={{
-                alignSelf: "center",
-                flexBasis: breakpoint === "mobile" ? "unset" : 2 * (breakpoint === "tablet" ? 280 : 310),
-              }}
-            />
-          </>
-            : project[headerSelection].map(({ title, pills, content }, i) => <CardItem
-              center={breakpoint === "tablet"}
-              style={{
-                flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
-                marginBottom: breakpoint === "mobile" ? "3rem" : "unset",
-              }}
-              title={title}
-              pills={pills}
-              content={content}
-              key={`${headerSelection}-${i}`}
-            />)
-        }
-      </div>
+      <FadeIn key={headerSelection}>
+        <div style={{
+          ...(breakpoint === "mobile" ? stylesheet.ColumnFlex : stylesheet.RowFlex),
+          width: breakpoint === "mobile" ? "80%" : breakpoint === "tablet" ? 900 : 1200,
+          margin: "5rem auto 1rem",
+        }}>
+          {
+            headerSelection === "Contact" ?
+              <>
+                <div
+                  style={{
+                    flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
+                    textAlign: "center",
+                    alignSelf: "center",
+                  }}
+                >
+                  <img style={{
+                    maxWidth: breakpoint === "mobile" ? 200 : breakpoint === "tablet" ? 210 : 250,
+                    border: "solid",
+                    borderWidth: 5,
+                    borderColor: "white",
+                    borderRadius: "100%",
+                    margin: breakpoint === "mobile" ? "auto auto 3rem" : "auto",
+                  }} src={AVATAR} alt="avatar" />
+                </div>
+                <Contact
+                  style={{
+                    alignSelf: "center",
+                    flexBasis: breakpoint === "mobile" ? "unset" : 2 * (breakpoint === "tablet" ? 280 : 310),
+                  }}
+                />
+              </>
+              : project[headerSelection].map(({ title, pills, content }, i) => <CardItem
+                center={breakpoint === "tablet"}
+                style={{
+                  flexBasis: breakpoint === "mobile" ? "unset" : breakpoint === "tablet" ? 280 : 310,
+                  marginBottom: breakpoint === "mobile" ? "3rem" : "unset",
+                }}
+                title={title}
+                pills={pills}
+                content={content}
+                key={`${headerSelection}-${i}`}
+              />)
+          }
+        </div>
+
+      </FadeIn>
     </div>
     <div style={stylesheet.FlexItemGrow}>
       <HighlightButton
