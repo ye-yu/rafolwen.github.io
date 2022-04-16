@@ -16,7 +16,7 @@ export function Contact({ style = {}}: Omit<React.DetailedHTMLProps<React.HTMLAt
           Email: <a href="mailto:contact@raflie.cc?cc=rafolwen98@gmail.com">contact@raflie.cc</a>
         </li>
         <li>
-          LinkedIn: <a href="https://linkedin.com/in/raflie">Raflie Zainuddin</a>
+          LinkedIn: <a href="https://linkedin.com/in/raflie" target="_blank" rel="noreferrer">Raflie Zainuddin</a>
         </li>
       </ul>
     </p>
