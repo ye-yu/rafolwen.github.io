@@ -15,6 +15,7 @@ code {
 a {
   text-decoration: underline;
   font-weight: bold;
+  color: #4f4f4f;
 }
 
 a:hover {
@@ -22,5 +23,5 @@ a:hover {
 }
 
 a:visited {
-  color: #4f4f4f4f;
+  color: #757575;
 }
