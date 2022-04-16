@@ -23,6 +23,9 @@ function App() {
       }}>
         <Header />
       </div>
+      <div className="build-name">{
+        process.env.REACT_APP_BUILD_NAME ?? "development"
+      }</div>
     </div>
   );
 }
