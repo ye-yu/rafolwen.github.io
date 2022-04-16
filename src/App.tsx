@@ -17,7 +17,7 @@ function App() {
       fontFamily: "'Inter', sans-serif",
     }}>
       <div style={{
-        backgroundColor: "rgba(255,255,255,0.6)",
+        backgroundColor: "rgba(255,255,255,0.8)",
         flex: 1,
       }}>
         <Header />
