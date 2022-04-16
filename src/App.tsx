@@ -11,14 +11,16 @@ function App() {
       backgroundSize: "cover",
       margin: 0,
       padding: 0,
-      minHeight: "100vh",
-      minWidth: "100vw",
+      height: "100vh",
+      width: "100vw",
       display: "flex",
       fontFamily: "'Inter', sans-serif",
     }}>
       <div style={{
         backgroundColor: "rgba(255,255,255,0.8)",
         flex: 1,
+        overflowY: "auto",
+        overflowX: "hidden",
       }}>
         <Header />
       </div>
