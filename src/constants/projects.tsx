@@ -10,12 +10,12 @@ export const project = {
         </p>
         <p>
           Projects related to backend development:
-          <ul>
-            <li>User management module</li>
-            <li>Microservices</li>
-            <li>Worker applications</li>
-          </ul>
         </p>
+        <ul>
+          <li>User management module</li>
+          <li>Microservices</li>
+          <li>Worker applications</li>
+        </ul>
       </div>,
     },
     {
@@ -29,15 +29,15 @@ export const project = {
         </p>
         <p>
           Optimisations include:
-          <ul>
-            <li>
-              text filtering with synonyms dictionaries
-            </li>
-            <li>
-              action-object groupings
-            </li>
-          </ul>
         </p>
+        <ul>
+          <li>
+            text filtering with synonyms dictionaries
+          </li>
+          <li>
+            action-object groupings
+          </li>
+        </ul>
       </div>,
     },
     {
@@ -50,10 +50,11 @@ export const project = {
         </p>
         <p>
           Plugin includes:
-          <ul>
-            <li>Authentication integration with Auth0</li>
-          </ul>
         </p>
+        <ul>
+          <li>Authentication integration with Auth0</li>
+        </ul>
+
       </div>,
     },
   ],
