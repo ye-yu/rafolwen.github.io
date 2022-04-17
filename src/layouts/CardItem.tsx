@@ -1,5 +1,7 @@
+import { observer } from "mobx-react"
 import { Display } from "../components/Display"
 import { Pill } from "../components/Pill"
+import { useStores } from "../stores"
 import stylesheet from "../styles"
 
 interface CardProps extends Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "children"> {
@@ -10,7 +12,9 @@ interface CardProps extends Omit<React.DetailedHTMLProps<React.HTMLAttributes<HT
 }
 
 
-export function CardItem({ title, style = {}, center = false, pills, content }: CardProps) {
+function CardItem({ title, style = {}, center = false, pills, content }: CardProps) {
+  const { appState: { theme: mode }} = useStores()
+
   return <div style={{
     ...stylesheet.ColumnFlex,
     ...style,
@@ -27,7 +31,7 @@ export function CardItem({ title, style = {}, center = false, pills, content }: 
       marginTop: "1rem",
     }}>
       {
-        pills.map(e => <Pill style={{marginRight: "0.5rem"}} key={e}>{e}</Pill>)
+        pills.map(e => <Pill style={{marginRight: "0.5rem"}} key={e} mode={mode}>{e}</Pill>)
       }
     </div>
     <div style={{
@@ -41,3 +45,5 @@ export function CardItem({ title, style = {}, center = false, pills, content }: 
     </div>
   </div>
 }
+
+export default observer(CardItem)

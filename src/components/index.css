@@ -24,11 +24,19 @@
   left: -0.2rem;
   display: block;
   border-radius: 0;
-  background: yellow;
   width: calc(100% + 0.4rem);
   height: 0px;
-  transition: all .3s ease;
+  transition: all 1s ease;
 }
+
+.highlight-button.light:before, .highlight-button-active.light:before {
+  background: yellow;
+}
+
+.highlight-button.dark:before, .highlight-button-active.dark:before {
+  background: blue;
+}
+
 
 .highlight-button:hover:before {
   height: 8px;

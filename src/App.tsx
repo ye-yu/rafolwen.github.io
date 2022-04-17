@@ -3,8 +3,11 @@ import './App.css';
 import Header from './layouts/Header';
 import Toolbar from './layouts/Toolbar';
 import { observer } from 'mobx-react';
+import { useStores } from './stores';
 
 function App() {
+  const { appState: { theme } } = useStores()
+
   return (
     <div style={{
       backgroundImage: `url(${BGIMG})`,
@@ -18,10 +21,12 @@ function App() {
       fontFamily: "'Inter', sans-serif",
     }}>
       <div style={{
-        backgroundColor: "rgba(255,255,255,0.8)",
+        backgroundColor: theme === "light" ? "rgba(255,255,255,0.8)" : "rgba(20,20,20,0.8)",
+        color: theme === "light" ? "black" : "#DFDFDF",
         flex: 1,
         overflowY: "auto",
         overflowX: "hidden",
+        transition: "all ease 1s",
       }}>
         <Toolbar />
         <Header />

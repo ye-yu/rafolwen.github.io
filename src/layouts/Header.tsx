@@ -4,13 +4,15 @@ import { Display } from '../components/Display';
 import { HighlightButton } from '../components/HighlightButton';
 import useBreakpoint from '../hooks/useBreakpoint';
 import stylesheet from '../styles';
-import { CardItem } from './CardItem';
+import CardItem from './CardItem';
 import { project } from '../constants/projects';
 import AVATAR from '../assets/avatar.jpg';
 import { Contact } from './Contact';
 import FadeIn from 'react-fade-in';
+import { useStores } from '../stores';
 
 function Header() {
+  const { appState: { theme: mode } } = useStores()
   const [headerSelection, setHeaderSelection] = React.useState<keyof typeof project | "Contact">("Backend")
   const { breakpoint } = useBreakpoint()
 
@@ -36,6 +38,7 @@ function Header() {
         margin: "auto",
       }}>
         <HighlightButton
+          mode={mode}
           size={1.5}
           style={breakpoint === "desktop" ? {} : stylesheet.FlexItemCouple}
           key="Backend" active={headerSelection === "Backend"}
@@ -43,6 +46,7 @@ function Header() {
           Backend
         </HighlightButton>
         <HighlightButton
+          mode={mode}
           size={1.5}
           style={breakpoint === "desktop" ? {} : stylesheet.FlexItemCouple}
           key="Cloud" active={headerSelection === "Cloud"}
@@ -50,6 +54,7 @@ function Header() {
           Cloud
         </HighlightButton>
         <HighlightButton
+          mode={mode}
           size={1.5}
           style={breakpoint === "desktop" ? {} : stylesheet.FlexItemCouple}
           key="Data" active={headerSelection === "Data"}
@@ -57,6 +62,7 @@ function Header() {
           Data
         </HighlightButton>
         <HighlightButton
+          mode={mode}
           size={1.5}
           style={breakpoint === "desktop" ? {} : stylesheet.FlexItemCouple}
           key="Contact" active={headerSelection === "Contact"}
@@ -116,6 +122,7 @@ function Header() {
     </div>
     <div style={stylesheet.FlexItemGrow}>
       <HighlightButton
+        mode={mode}
         size={1.5}
         style={{
           textAlign: "center",

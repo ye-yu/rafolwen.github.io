@@ -6,11 +6,12 @@ interface ButtonProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLD
   active?: boolean
   link?: string
   newTab?: boolean
+  mode?: "light" | "dark"
 }
 
 export function HighlightButton(props: ButtonProps) {
   return <div style={props.style} onClick={props.onClick}>
-    <button className={"highlight-button" + (props.active ? "-active" : "")}>
+    <button className={"highlight-button" + (props.active ? "-active" : "") + ` ${props.mode ?? "light"}`}>
       <span>{props.children}</span>
       <span></span>
     </button>
