@@ -1,7 +1,8 @@
 import BGIMG from './assets/bg.jpg';
 import './App.css';
 import Header from './layouts/Header';
-import { Toolbar } from './layouts/Toolbar';
+import Toolbar from './layouts/Toolbar';
+import { observer } from 'mobx-react';
 
 function App() {
   return (
@@ -32,4 +33,4 @@ function App() {
   );
 }
 
-export default App;
+export default observer(App);
