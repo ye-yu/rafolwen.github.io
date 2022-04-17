@@ -37,7 +37,7 @@ function CardItem({ title, style = {}, center = false, pills, content }: CardPro
     <div style={{
       fontSize: "1rem",
       textAlign: "justify",
-      color: "#4f4f4f",
+      color: mode === "dark" ? "#8f8f8f" : "#4f4f4f",
       marginTop: "1rem",
       lineHeight: "1.5rem",
     }}>
