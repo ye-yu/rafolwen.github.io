@@ -1,6 +1,7 @@
 import BGIMG from './assets/bg.jpg';
 import './App.css';
 import Header from './layouts/Header';
+import { Toolbar } from './layouts/Toolbar';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         overflowY: "auto",
         overflowX: "hidden",
       }}>
+        <Toolbar />
         <Header />
       </div>
       <div className="build-name">{

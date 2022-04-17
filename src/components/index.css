@@ -37,3 +37,11 @@
 .highlight-button-active:before {
   height: 1.6rem;
 }
+
+.feather-sun {
+  stroke: black;
+}
+
+.feather-moon {
+  stroke: white;
+}
