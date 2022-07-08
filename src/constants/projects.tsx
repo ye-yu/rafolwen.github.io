@@ -41,18 +41,20 @@ export const project = {
       </div>,
     },
     {
-      title: "NodeBB Forums",
-      pills: ["node.js"],
+      title: "GraphQL with Nest.js",
+      pills: ["graphql", "nest.js"],
       content: <div>
         <p>
-          Customising nodebb as a general purpose forum server, and developing plugins using Typescript
-          for highest type-safeness.
+          Code-first approach with graphql + nest.js. Using prisma as db ORM.
+          Honestly, I am surprised why did I not find this framework earlier in my career.
         </p>
         <p>
-          Plugin includes:
+          Custom modules includes:
         </p>
         <ul>
-          <li>Authentication integration with Auth0</li>
+          <li>Error reporter integration with decorator</li>
+          <li>Input field for specific role validation</li>
+          <li>Unit + E2E testing with jest</li>
         </ul>
 
       </div>,
@@ -61,7 +63,7 @@ export const project = {
   Cloud: [
     {
       title: "AWS",
-      pills: ["cloud computing"],
+      pills: ["VM", "saas"],
       content: <div>
         <p>
           Provisioning EC2 for VM instances.
@@ -75,11 +77,14 @@ export const project = {
       </div>,
     },
     {
-      title: "OVH Cloud",
-      pills: ["cloud computing"],
+      title: "Google Cloud",
+      pills: ["VM", "saas"],
       content: <div>
         <p>
-          Smaller cloud instances provider, perfect for small-scale business and application.
+          Google transcoder API: dispatch jobs and save compressed videos
+        </p>
+        <p>
+          Google storage: Presigned URL upload with extension headers
         </p>
       </div>,
     },
@@ -87,6 +92,9 @@ export const project = {
       title: "Others",
       pills: ["DNS", "Nginx"],
       content: <div>
+        <p>
+          Generate certs for HTTPS using Let's Encrypt.
+        </p>
         <p>
           Configuring DNS for email forwarding and linking domain name with IP (using Dynadot and OVH Cloud technology).
         </p>
