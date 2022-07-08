@@ -31,8 +31,9 @@ export function ProjectCard({ breakpoint, project, mode, numbering }: { breakpoi
       alignSelf: "flex-start",
       width: "100%",
     }}>
-      <Titlelink href={"https://ye-yu.github.io/portfolio/post.html?id=" + project.hash}>[{numbering}] {project.title}</Titlelink>
+      <Titlelink mode={mode} href={"https://ye-yu.github.io/portfolio/post.html?id=" + project.hash}>[{numbering}] {project.title}</Titlelink>
       <br />
+      <div style={{ color: "#6f6f6f", marginBottom: ".4rem" }}>{project.date}</div>
       <div style={{
         ...stylesheet.RowFlex,
         justifyContent: "flex-start",
@@ -44,7 +45,6 @@ export function ProjectCard({ breakpoint, project, mode, numbering }: { breakpoi
             mode={mode}
             style={{ marginRight: ".3rem" }}>{t}</Pill>)
         }
-        <div>{project.date}</div>
       </div>
       <div style={{
         fontSize: "1rem",
