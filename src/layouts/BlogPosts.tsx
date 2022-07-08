@@ -2,11 +2,18 @@ import { observer } from "mobx-react";
 import { Display } from "../components/Display";
 import useBreakpoint from "../hooks/useBreakpoint";
 import stylesheet from "../styles";
+import projectJson from "../assets/projects/projects.json";
+import { useStores } from "../stores";
+import { ProjectCard } from "../components/ProjectCard";
 
 function BlogPosts() {
   const { breakpoint } = useBreakpoint()
+  const { appState: { theme: mode } } = useStores()
 
-  return <div style={stylesheet.ColumnFlex}>
+  return <div style={{
+    ...stylesheet.ColumnFlex,
+    marginBottom: "5rem",
+  }}>
     <div style={stylesheet.FlexItemGrow}>
       <Display style={stylesheet.CenteredResponsive(breakpoint)}>
         Blog Posts
@@ -16,8 +23,17 @@ function BlogPosts() {
       </div>
     </div>
     <div>
-      
     </div>
+
+    {
+      projectJson.map((project, index) => <ProjectCard
+        numbering={index + 1}
+        key={project.hash}
+        mode={mode}
+        project={project}
+        breakpoint={breakpoint}
+      />)
+    }
   </div>
 }
 
