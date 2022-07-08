@@ -4,6 +4,7 @@ import Header from './layouts/Header';
 import Toolbar from './layouts/Toolbar';
 import { observer } from 'mobx-react';
 import { useStores } from './stores';
+import BlogPosts from './layouts/BlogPosts';
 
 function App() {
   const { appState: { theme } } = useStores()
@@ -30,6 +31,7 @@ function App() {
       }}>
         <Toolbar />
         <Header />
+        <BlogPosts />
       </div>
       <div className="build-name">{
         process.env.REACT_APP_BUILD_NAME ?? "development"
