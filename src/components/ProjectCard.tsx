@@ -15,13 +15,14 @@ export function ProjectCard({ breakpoint, project, mode, numbering }: { breakpoi
         flexBasis: 200,
         paddingLeft: breakpoint === "mobile" ? "unset" : "4rem",
         paddingRight: breakpoint === "mobile" ? "unset" : "4rem",
+        marginBottom: breakpoint === "mobile" ? "2rem" : "unset",
       }
     }>
       <img style={{
         ...stylesheet.RoundImage(breakpoint),
         width: 200,
         height: 200,
-        marginBottom: "1rem",
+        marginBottom: breakpoint === "mobile" ? "1rem" : "2rem",
       }} src={process.env.PUBLIC_URL + '/projects/' + project.hash + '/thumbnail.jpg'} alt="project" />
       <div style={{
         textTransform: "uppercase",
