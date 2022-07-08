@@ -20,6 +20,16 @@ const stylesheet = {
     textAlign: "center",
     marginTop: "1rem",
   } as React.CSSProperties,
+  CenteredResponsive(breakpoint: string): React.CSSProperties {
+    return {
+      textAlign: "center",
+      marginTop: breakpoint === "mobile" ? "5rem" : "5rem",
+      marginBottom: breakpoint === "mobile" ? "1rem" : "3rem",
+      marginLeft: "auto",
+      marginRight: "auto",
+      maxWidth: breakpoint === "mobile" ? "80%" : "100%",
+    };
+  },
 }
 
 export default stylesheet

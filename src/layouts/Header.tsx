@@ -20,14 +20,7 @@ function Header() {
 
     {/* TITLE */}
     <div style={stylesheet.FlexItemGrow}>
-      <Display style={{
-        textAlign: "center",
-        marginTop: breakpoint === "mobile" ? "5rem" : "5rem",
-        marginBottom: breakpoint === "mobile" ? "1rem" : "3rem",
-        marginLeft: "auto",
-        marginRight: "auto",
-        maxWidth: breakpoint === "mobile" ? "80%" : "100%",
-      }}>
+      <Display style={stylesheet.CenteredResponsive(breakpoint)}>
         Raflie Zainuddin
       </Display>
     </div>
