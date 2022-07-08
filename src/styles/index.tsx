@@ -30,6 +30,16 @@ const stylesheet = {
       maxWidth: breakpoint === "mobile" ? "80%" : "100%",
     };
   },
+  RoundImage(breakpoint: string): React.CSSProperties {
+    return {
+      maxWidth: breakpoint === "mobile" ? 200 : breakpoint === "tablet" ? 210 : 250,
+      border: "solid",
+      borderWidth: 5,
+      borderColor: "white",
+      borderRadius: "100%",
+      margin: breakpoint === "mobile" ? "auto auto 3rem" : "auto",
+    };
+  }
 }
 
 export default stylesheet

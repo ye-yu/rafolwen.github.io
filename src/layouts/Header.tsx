@@ -81,14 +81,7 @@ function Header() {
                     alignSelf: "center",
                   }}
                 >
-                  <img style={{
-                    maxWidth: breakpoint === "mobile" ? 200 : breakpoint === "tablet" ? 210 : 250,
-                    border: "solid",
-                    borderWidth: 5,
-                    borderColor: "white",
-                    borderRadius: "100%",
-                    margin: breakpoint === "mobile" ? "auto auto 3rem" : "auto",
-                  }} src={AVATAR} alt="avatar" />
+                  <img style={stylesheet.RoundImage(breakpoint)} src={AVATAR} alt="avatar" />
                 </div>
                 <Contact
                   style={{
