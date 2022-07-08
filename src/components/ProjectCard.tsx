@@ -21,8 +21,12 @@ export function ProjectCard({ breakpoint, project, mode, numbering }: { breakpoi
         ...stylesheet.RoundImage(breakpoint),
         width: 200,
         height: 200,
+        marginBottom: "1rem",
       }} src={process.env.PUBLIC_URL + '/projects/' + project.hash + '/thumbnail.jpg'} alt="project" />
-      <div>{project.category}</div>
+      <div style={{
+        textTransform: "uppercase",
+        fontWeight: 700,
+      }}>{project.category}</div>
       <div>{project.section}</div>
     </div>
     <div style={{
@@ -33,7 +37,7 @@ export function ProjectCard({ breakpoint, project, mode, numbering }: { breakpoi
     }}>
       <Titlelink mode={mode} href={"https://ye-yu.github.io/portfolio/post.html?id=" + project.hash}>[{numbering}] {project.title}</Titlelink>
       <br />
-      <div style={{ color: "#6f6f6f", marginBottom: ".4rem" }}>{project.date}</div>
+      <div style={{ color: "#6f6f6f", marginBottom: ".4rem" }}>{new Date(project.date).toLocaleString()}</div>
       <div style={{
         ...stylesheet.RowFlex,
         justifyContent: "flex-start",
