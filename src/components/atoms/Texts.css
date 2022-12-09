@@ -1,0 +1,41 @@
+.primary-text {
+  font-family: "Fira Sans Extra Condensed", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.secondary-text {
+  font-family: "Hind Madurai", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+}
+
+.font-size-petite {
+  font-size: 0.8rem;
+}
+
+.font-size-small {
+  font-size: 1rem;
+}
+
+.font-size-medium {
+  font-size: 1.3rem;
+}
+
+.font-size-large {
+  font-size: 2rem;
+}
+
+.font-size-humongous {
+  font-size: 3rem;
+}
+
+.font-weight-light {
+  font-weight: light;
+}
+.font-weight-regular {
+  font-weight: normal;
+}
+.font-weight-bold {
+  font-weight: bold;
+}
