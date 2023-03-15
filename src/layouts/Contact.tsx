@@ -14,8 +14,10 @@ export function Contact({
     >
       <p>
         Hi, I am Raflie Zainuddin. I mainly do backend development and simple
-        cloud server management, but in my free time, I do Minecraft mod
-        development because they are just my favourite.
+        cloud server management. Currently, I am very interested in
+        collaborating with teams and pioneering projects that is industry-ready.
+        In my free time, I used to do Minecraft mod development because they are
+        just my favourite.
       </p>
       <p>
         If you want to contact me for any employment or freelancing opportunity,
