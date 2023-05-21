@@ -2,17 +2,19 @@ import { glob } from "glob";
 import path from "path";
 import Handlebars from "handlebars";
 import { mkdir, readFile, stat, writeFile } from "fs/promises";
-import {marked} from "marked";
-import {markedHighlight} from "marked-highlight";
-import hljs from 'highlight.js';
+import { marked } from "marked";
+import { markedHighlight } from "marked-highlight";
+import hljs from "highlight.js";
 
-marked.use(markedHighlight({
-  langPrefix: 'hljs language-',
-  highlight(code, lang) {
-    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-    return hljs.highlight(code, { language }).value;
-  }
-}));
+marked.use(
+  markedHighlight({
+    langPrefix: "hljs language-",
+    highlight(code, lang) {
+      const language = hljs.getLanguage(lang) ? lang : "plaintext";
+      return hljs.highlight(code, { language }).value;
+    },
+  })
+);
 
 const blogsDir = "blogs";
 const blogTemplatesPattern = path.join(blogsDir, "template.*");
@@ -35,11 +37,15 @@ const templatesContent = await Promise.all(
 const templatable = templatesContent.map((e) => ({
   ...e,
   template: (context) => {
-    if (e.filename.includes('.html') || e.filename.includes('.json') || e.filename.includes('.txt')) {
-      return Handlebars.compile(bufferToString(e.content))(context)
+    if (
+      e.filename.includes(".html") ||
+      e.filename.includes(".json") ||
+      e.filename.includes(".txt")
+    ) {
+      return Handlebars.compile(bufferToString(e.content))(context);
     } else {
       // e.g. images
-      return e.content
+      return e.content;
     }
   },
 }));
@@ -74,7 +80,7 @@ const validatedBlogItems = await Promise.all(
       .catch(readFailedFactory(blogPath));
 
     /** @type {string} */
-    const cleanedContent = content instanceof Error ? "" : content
+    const cleanedContent = content instanceof Error ? "" : content;
     const meta = await readFile(metaPath)
       .then(bufferToJson)
       .catch(readFailedFactory(metaPath));
@@ -87,7 +93,7 @@ const validatedBlogItems = await Promise.all(
             time: new Date(meta?.time ?? Date.now()),
             markdown: marked.parse(cleanedContent, {
               mangle: false,
-            })
+            }),
           };
 
     /** @type {Array<Error>} */
@@ -135,29 +141,30 @@ const logPromiseCatch = (err) => {
   console.error(error);
 };
 
-const blogsTask = validBlogItems
-  .map(async (blog, taskItem) => {
-    const publicBlogsPath = path.join("public", blog.blog);
-    console.log(`:: [${taskItem}] Creating directory ${publicBlogsPath}`);
-    await mkdir(publicBlogsPath, { recursive: true });
-    const templateTasks = templatable.map(
-      async (template, templateTaskItem) => {
-        const publicBlogsItem = path.join(publicBlogsPath, template.filename);
-        console.log(
-          `:: [${taskItem}.${templateTaskItem}] Writing ${publicBlogsItem}`
-        );
-        const templated = template.template(blog.meta);
-        await writeFile(publicBlogsItem, templated).catch(chainedPromiseCause);
-      }
+const blogsTask = validBlogItems.map(async (blog, taskItem) => {
+  const publicBlogsPath = path.join("public", blog.blog);
+  console.log(`:: [${taskItem}] Creating directory ${publicBlogsPath}`);
+  await mkdir(publicBlogsPath, { recursive: true });
+  const templateTasks = templatable.map(async (template, templateTaskItem) => {
+    const publicBlogsItem = path.join(publicBlogsPath, template.filename);
+    console.log(
+      `:: [${taskItem}.${templateTaskItem}] Writing ${publicBlogsItem}`
     );
-    await Promise.all(templateTasks);
-  })
+    const templated = template.template(blog.meta);
+    await writeFile(publicBlogsItem, templated).catch(chainedPromiseCause);
+  });
+  await Promise.all(templateTasks);
+});
 
-
-await Promise.all(blogsTask).catch(logPromiseCatch);;
+await Promise.all(blogsTask).catch(logPromiseCatch);
 
 const blogsJsonAsset = path.join("src", "assets", "blogs.json");
 console.log(`:: Writing to ${blogsJsonAsset}`);
-await writeFile(blogsJsonAsset, JSON.stringify(blogsJson, null, 2)).catch(
-  logPromiseCatch
-);
+await writeFile(
+  blogsJsonAsset,
+  JSON.stringify(
+    blogsJson,
+    (key, value) => (key === "markdown" ? void 0 : value),
+    2
+  )
+).catch(logPromiseCatch);
