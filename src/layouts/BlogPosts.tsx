@@ -2,9 +2,9 @@ import { observer } from "mobx-react";
 import { Display } from "../components/Display";
 import useBreakpoint from "../hooks/useBreakpoint";
 import stylesheet from "../styles";
-import projectJson from "../assets/projects/projects.json";
+import projectJson from "../assets/blogs.json";
 import { useStores } from "../stores";
-import { ProjectCard } from "../components/ProjectCard";
+import { ProjectCardNew } from "../components/ProjectCardNew";
 
 function BlogPosts() {
   const { breakpoint } = useBreakpoint()
@@ -26,9 +26,9 @@ function BlogPosts() {
     </div>
 
     {
-      projectJson.map((project, index) => <ProjectCard
+      projectJson.map((project, index) => <ProjectCardNew
         numbering={index + 1}
-        key={project.hash}
+        key={project.link}
         mode={mode}
         project={project}
         breakpoint={breakpoint}
