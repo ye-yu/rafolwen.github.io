@@ -31,7 +31,7 @@
     "build": "node build-blog.mjs && REACT_APP_BUILD_NAME=$(git rev-parse --short HEAD) craco build && node postbuild.mjs",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "new:Blog": "node new-blog.mjs",
+    "new:blog": "node new-blog.mjs",
     "postinstall": "node build-blog.mjs",
     "watch": "concurrently -n \"blog,app\" \"npm run watch:blog\" \"npm start\"",
     "watch:blog": "chokidar \"blogs/**\" -c \"node build-blog.mjs\""
