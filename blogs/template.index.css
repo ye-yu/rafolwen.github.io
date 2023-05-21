@@ -26,7 +26,8 @@ div.content {
 }
 
 div.body {
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 div.body.light {
@@ -166,6 +167,15 @@ button {
   }
 }
 
+.markdown {
+  padding-bottom: 2rem;
+  line-height: 1.5rem;
+}
+
+.markdown p {
+  margin-bottom: 1.5rem;
+}
+
 /* Dracula Theme v1.2.5
  *
  * https://github.com/dracula/highlightjs
@@ -183,6 +193,7 @@ button {
   overflow-x: auto;
   padding: 0.5em;
   background: #282a36;
+  border-radius: 5px;
 }
 
 .hljs-built_in,
