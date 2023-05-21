@@ -1,5 +1,5 @@
 import './index.css';
-import App from './App';
+import Render from './Import';
 import reportWebVitals from './reportWebVitals';
 import { ContextProvider } from './stores';
 
@@ -9,7 +9,7 @@ if (container === null) {
   console.error("No element with id = 'root' is in the page!")
 } else {
   const root = createRoot(container);
-  root.render(<ContextProvider><App /></ContextProvider>);  
+  root.render(<ContextProvider><Render /></ContextProvider>);  
 }
 
 // If you want to start measuring performance in your app, pass a function
