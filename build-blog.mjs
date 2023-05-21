@@ -93,6 +93,8 @@ const validatedBlogItems = await Promise.all(
             time: new Date(meta?.time ?? Date.now()),
             markdown: marked.parse(cleanedContent, {
               mangle: false,
+              headerIds: false,
+              headerPrefix: false,
             }),
           };
 
