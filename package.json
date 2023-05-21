@@ -34,7 +34,8 @@
     "eject": "react-scripts eject",
     "postinstall": "npm run import:App",
     "import:App": "cp src/imports/home/Import.tsx src/Import.tsx",
-    "import:Blog": "cp src/imports/blog/Import.tsx src/Import.tsx"
+    "import:Blog": "cp src/imports/blog/Import.tsx src/Import.tsx",
+    "new:Blog": "node new-blog.mjs"
   },
   "eslintConfig": {
     "extends": [
@@ -59,7 +60,9 @@
   },
   "devDependencies": {
     "@craco/craco": "^7.0.0",
+    "@types/prompts": "^2.4.4",
     "craco-esbuild": "^0.5.2",
-    "esbuild": "^0.16.3"
+    "esbuild": "^0.16.3",
+    "prompts": "^2.4.2"
   }
 }
