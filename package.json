@@ -25,16 +25,10 @@
     "web-vitals": "^3.1.0"
   },
   "scripts": {
-    "start": "npm run start:App",
-    "build": "npm run build:App",
-    "start:App": "npm run import:App && craco start",
-    "build:App": "npm run import:App && REACT_APP_BUILD_NAME=$(git rev-parse --short HEAD) craco build && node postbuild",
-    "start:Blog": "npm run import:Blog && craco start",
-    "build:Blog": "npm run import:Blog && REACT_APP_BUILD_NAME=$(git rev-parse --short HEAD) craco build && node postbuild",
+    "start": "craco start",
+    "build": "REACT_APP_BUILD_NAME=$(git rev-parse --short HEAD) craco build && node postbuild",
+    "test": "craco test",
     "eject": "react-scripts eject",
-    "postinstall": "npm run import:App",
-    "import:App": "cp src/imports/home/Import.tsx src/Import.tsx",
-    "import:Blog": "cp src/imports/blog/Import.tsx src/Import.tsx",
     "new:Blog": "node new-blog.mjs"
   },
   "eslintConfig": {

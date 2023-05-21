@@ -1,1 +1,0 @@
-This directory defines copyable files for multiple page configuration.
