@@ -44,7 +44,7 @@ const meta = {
   title: name,
   description: "",
   thumbnail: "",
-  time: now.toISOString(),
+  timestamp: now.toISOString(),
   categories: [],
 };
 await writeFile(metaPath, JSON.stringify(meta, null, 2));

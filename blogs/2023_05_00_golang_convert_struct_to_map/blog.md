@@ -1,5 +1,8 @@
-[Golang] Convert struct to map
+Converting struct to `map[string]interface{}`
 ---
+
+Using the recent 
+
 
 This is a sample golang code
 
@@ -7,6 +10,6 @@ This is a sample golang code
 package main
 
 func main() {
-  println("hello world!")
+  println("hello world! hehe")
 }
 ```
