@@ -1,5 +1,17 @@
 [
   {
+    "link": "/blogs/2023_05_00_python_list_stream",
+    "title": "Python List Stream",
+    "description": " Inspired by Java Streams util, I built a similar utility class that is lightweight and has less lines of code",
+    "thumbnail": "https://ye-yu.github.io/portfolio/projects/a0869826e52b137814754de6aed8c93d/thumbnail.jpg",
+    "timestamp": "2023-05-21T06:42:32.628Z",
+    "categories": [
+      "python",
+      "stream",
+      "gist"
+    ]
+  },
+  {
     "link": "/blogs/2023_05_00_golang_convert_struct_to_map",
     "title": "[Golang] Convert struct to map",
     "description": "I demonstrate how to use Golang reflect package to retrieve exported struct fields and value to convert them into a map of key string recursively",
