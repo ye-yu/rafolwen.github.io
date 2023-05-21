@@ -2,6 +2,17 @@ import { glob } from "glob";
 import path from "path";
 import Handlebars from "handlebars";
 import { mkdir, readFile, stat, writeFile } from "fs/promises";
+import {marked} from "marked";
+import {markedHighlight} from "marked-highlight";
+import hljs from 'highlight.js';
+
+marked.use(markedHighlight({
+  langPrefix: 'hljs language-',
+  highlight(code, lang) {
+    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+    return hljs.highlight(code, { language }).value;
+  }
+}));
 
 const blogsDir = "blogs";
 const blogTemplatesPattern = path.join(blogsDir, "template.*");
@@ -58,10 +69,12 @@ const validatedBlogItems = await Promise.all(
       statCommandFailedFactory(metaPath)
     );
 
-    /** @type {string} */
     const content = await readFile(blogPath)
       .then(bufferToString)
       .catch(readFailedFactory(blogPath));
+
+    /** @type {string} */
+    const cleanedContent = content instanceof Error ? "" : content
     const meta = await readFile(metaPath)
       .then(bufferToJson)
       .catch(readFailedFactory(metaPath));
@@ -72,6 +85,9 @@ const validatedBlogItems = await Promise.all(
         : {
             ...meta,
             time: new Date(meta?.time ?? Date.now()),
+            markdown: marked.parse(cleanedContent, {
+              mangle: false,
+            })
           };
 
     /** @type {Array<Error>} */
@@ -85,7 +101,7 @@ const validatedBlogItems = await Promise.all(
       errors: maybeError.filter((e) => e instanceof Error),
       blogPath,
       metaPath,
-      content: content instanceof Error ? "" : content,
+      content: cleanedContent,
       meta: cleanedMeta,
     };
   })

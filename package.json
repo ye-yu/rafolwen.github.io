@@ -59,6 +59,9 @@
     "esbuild": "^0.16.3",
     "glob": "^10.2.6",
     "handlebars": "^4.7.7",
+    "highlight.js": "^11.8.0",
+    "marked": "^5.0.2",
+    "marked-highlight": "^2.0.0",
     "prompts": "^2.4.2"
   }
 }
