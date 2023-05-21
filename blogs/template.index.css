@@ -25,26 +25,6 @@ div.content {
   display: none;
 }
 
-
-@media only screen and (max-width: 850px) {
-  .slim {
-    width: 85%;
-    margin: auto;
-  }
-
-  .go-back-header {
-    display: none;
-  }
-
-  .go-back-toolbar {
-    display: block;
-  }
-
-  .thumbnail {
-    margin-top: 2rem;
-  }
-}
-
 div.body {
   min-height: 100vh;
 }
@@ -52,13 +32,11 @@ div.body {
 div.body.light {
   background-color: rgba(255, 255, 255, 0.8);
   color: black;
-  transition: all ease 1s;
 }
 
 div.body.dark {
   background-color: rgba(20, 20, 20, 0.8);
   color: #dfdfdf;
-  transition: all ease 1s;
 }
 
 .header {
@@ -107,8 +85,7 @@ div.body.dark {
 .header .header-toolbar {
   position: absolute;
   top: 1rem;
-  width: 100%;
-  left: 0;
+  right: 0;
   display: flex;
 }
 
@@ -165,6 +142,30 @@ button {
   transition: all 0.2s ease;
 }
 
+@media only screen and (max-width: 850px) {
+  .slim {
+    width: 85%;
+    margin: auto;
+  }
+
+  .go-back-header {
+    display: none;
+  }
+
+  .go-back-toolbar {
+    display: block;
+  }
+
+  .thumbnail {
+    margin-top: 2rem;
+  }
+
+  .header .header-toolbar {
+    width: 100%;
+    left: 0;
+  }
+}
+
 /* Dracula Theme v1.2.5
  *
  * https://github.com/dracula/highlightjs
@@ -203,7 +204,7 @@ button {
 .hljs-title,
 .hljs-attr,
 .hljs-meta-keyword {
-  font-style: italic;
+  /* font-style: italic; */
   color: #50fa7b;
 }
 
