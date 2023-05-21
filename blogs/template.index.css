@@ -17,6 +17,34 @@ div.content {
   margin: auto;
 }
 
+.go-back-header {
+  display: block;
+}
+
+.go-back-toolbar {
+  display: none;
+}
+
+
+@media only screen and (max-width: 850px) {
+  .slim {
+    width: 85%;
+    margin: auto;
+  }
+
+  .go-back-header {
+    display: none;
+  }
+
+  .go-back-toolbar {
+    display: block;
+  }
+
+  .thumbnail {
+    margin-top: 2rem;
+  }
+}
+
 div.body {
   min-height: 100vh;
 }
@@ -40,16 +68,19 @@ div.body.dark {
 }
 
 .header .thumbnail {
-  flex: 0 0 13rem;
+  flex: 0 0 auto;
+  width: 30vw;
+  height: 30vw;
+  max-width: 15rem;
+  max-height: 15rem;
   overflow: hidden;
   display: flex;
-  min-height: 13rem;
   background-size: cover;
   background-position: center;
 }
 
 .header-info {
-  padding-left: 1rem;
+  padding-left: 1.5rem;
   padding-top: 1rem;
 }
 

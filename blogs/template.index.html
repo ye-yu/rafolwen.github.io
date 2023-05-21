@@ -62,34 +62,48 @@
     </template>
     <div class="body light" id="themeable">
       <div class="content light">
-        <div class="header">
-          <div
-            class="thumbnail"
-            style="background-image: url({{thumbnail}}); background-repeat: no-repeat"
-          ></div>
-          <div class="header-info">
-            <div class="header-link">
-              <a href="https://raflie.cc">&larr; Go back</a>
-            </div>
-            <div class="header-title">{{title}}</div>
-            <div class="header-subtitle">
-              Author: <a href="https://raflie.cc">Raflie Zainuddin</a>
-            </div>
-            <div class="header-subtitle">
-              Category: {{#each categories}}<span class="categories"
-                >{{this}}</span
-              >{{/each}}
-            </div>
-            <div class="header-subtitle" id="header-time" time="{{timestamp}}">
-              Date: {{timestamp}}
-            </div>
-            <div class="header-toolbar">
-              <span class="theme-mode" id="theme-mode" onclick="toggleThemeMode()"></span>
+        <div class="slim">
+          <div class="header">
+            <div
+              class="thumbnail"
+              style="background-image: url({{thumbnail}}); background-repeat: no-repeat"
+            ></div>
+            <div class="header-info">
+              <div class="header-link go-back-header">
+                <a href="https://raflie.cc">&larr; Go back</a>
+              </div>
+              <div class="header-title">{{title}}</div>
+              <div class="header-subtitle">
+                Author: <a href="https://raflie.cc">Raflie Zainuddin</a>
+              </div>
+              <div class="header-subtitle">
+                Category: {{#each categories}}<span class="categories"
+                  >{{this}}</span
+                >{{/each}}
+              </div>
+              <div
+                class="header-subtitle"
+                id="header-time"
+                time="{{timestamp}}"
+              >
+                Date: {{timestamp}}
+              </div>
+              <div class="header-toolbar">
+                <div class="header-link go-back-toolbar">
+                  <a href="https://raflie.cc">&larr; Go back</a>
+                </div>
+  
+                <span
+                  class="theme-mode"
+                  id="theme-mode"
+                  onclick="toggleThemeMode()"
+                ></span>
+              </div>
             </div>
           </div>
+          <hr style="margin: 2rem auto" />
+          <div>{{{markdown}}}</div>
         </div>
-        <hr style="margin: 2rem auto" />
-        <div>{{{markdown}}}</div>
       </div>
     </div>
   </body>
@@ -104,7 +118,7 @@
       try {
         const stateJSON = localStorage.getItem("AppState");
         return JSON.parse(stateJSON)?.theme ?? "light";
-      } catch(error) {
+      } catch (error) {
         return "light";
       }
     }
