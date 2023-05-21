@@ -90,7 +90,7 @@ const validatedBlogItems = await Promise.all(
         ? {}
         : {
             ...meta,
-            time: new Date(meta?.time ?? Date.now()),
+            timestamp: new Date(meta?.timestamp ?? Date.now()).toISOString(),
             markdown: marked.parse(cleanedContent, {
               mangle: false,
               headerIds: false,
