@@ -84,7 +84,7 @@ const validatedBlogItems = await Promise.all(
     const meta = await readFile(metaPath)
       .then(bufferToJson)
       .catch(readFailedFactory(metaPath));
-    /** @type {Record<string, string> & { time: Date }} */
+    /** @type {Record<string, string> & { timestamp: string }} */
     const cleanedMeta =
       meta instanceof Error
         ? {}
@@ -165,7 +165,7 @@ console.log(`:: Writing to ${blogsJsonAsset}`);
 await writeFile(
   blogsJsonAsset,
   JSON.stringify(
-    blogsJson,
+    blogsJson.sort((a, b) => b.timestamp.localeCompare(a.timestamp)),
     (key, value) => (key === "markdown" ? void 0 : value),
     2
   )
