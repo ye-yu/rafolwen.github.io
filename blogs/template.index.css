@@ -172,8 +172,20 @@ button {
   line-height: 1.5rem;
 }
 
-.markdown p {
-  padding-bottom: 1.5rem;
+.markdown h1 {
+  padding-bottom: 0.8rem;
+  padding-top: 1.2rem;
+}
+
+.markdown blockquote {
+  border-left: 3px solid orange;
+  padding-left: 2rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.01rem;
+  margin: 0rem;
+  background: #AAF;
+  font-style: italic;
+  color: #333;
 }
 
 /* Dracula Theme v1.2.5
