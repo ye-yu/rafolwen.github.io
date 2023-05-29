@@ -1,5 +1,16 @@
 [
   {
+    "link": "/blogs/2023_05_01_nestjs_event_listener_abstract_class_factory",
+    "title": "[NestJS] Event Listener Abstract Class Factory",
+    "description": "In this blog post, I discover a new technique in instantiating an event listener class in NestJS with the help of NestJS Event Emitter package. This helps in TypeScript compiler to notify missing implemented property with the correct event data class.",
+    "thumbnail": "https://images.unsplash.com/photo-1557064262-6acc904bffbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=40",
+    "timestamp": "2023-05-29T05:31:01.732Z",
+    "categories": [
+      "TypeScript",
+      "NestJS"
+    ]
+  },
+  {
     "link": "/blogs/2023_05_00_python_list_stream",
     "title": "Python List Stream",
     "description": " Inspired by Java Streams util, I built a similar utility class that is lightweight and has less lines of code",
@@ -15,7 +26,7 @@
     "link": "/blogs/2023_05_00_golang_convert_struct_to_map",
     "title": "[Golang] Convert struct to map",
     "description": "I demonstrate how to use Golang reflect package to retrieve exported struct fields and value to convert them into a map of key string recursively",
-    "thumbnail": "https://images.unsplash.com/photo-1642367340318-96fdbc5d30f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=570&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1478860409698-8707f313ee8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=40",
     "timestamp": "2023-05-21T01:43:39.785Z",
     "categories": [
       "golang",
