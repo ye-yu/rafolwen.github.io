@@ -152,7 +152,10 @@ const blogsTask = validBlogItems.map(async (blog, taskItem) => {
     console.log(
       `:: [${taskItem}.${templateTaskItem}] Writing ${publicBlogsItem}`
     );
-    const templated = template.template(blog.meta);
+    const templated = template.template({
+        ...blog.meta,
+        link: new URL(path.join("/", blog.blog), "https://raflie.cc").toString(),
+    });
     await writeFile(publicBlogsItem, templated).catch(chainedPromiseCause);
   });
   await Promise.all(templateTasks);
