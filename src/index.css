@@ -2,8 +2,7 @@
   scroll-behavior: smooth;
 }
 
-body,
-button {
+body {
   margin: 0;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
     "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -39,29 +38,36 @@ a:visited {
   color: #757575;
 }
 
-button {
-  cursor: pointer;
+a.button {
+  display: inline-flex;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  line-height: 0;
+  align-items: center;
 }
 
-.button-light {
-  background-color: white;
-  border: none;
-  transition: all 1s ease;
+a.button div {
+  display: block;
 }
 
-.button-light:hover {
-  background-color: lightyellow;
-  transition: all 0.2s ease;
+a.button .icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-.button-dark {
-  background-color: blue;
-  border: none;
+.mobile a.button {
+  font-size: 0.8rem;
+}
+
+a.button.primary {
   color: white;
-  transition: all 1s ease;
+  background-color: var(--primary-light);
 }
 
-.button-dark:hover {
-  background-color: navy;
-  transition: all 0.2s ease;
+a.button.secondary {
+  color: var(--gray-1);
+  background-color: white;
 }
