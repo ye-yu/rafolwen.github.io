@@ -39,6 +39,21 @@
   transition: background-color 500ms ease, color 500ms ease;
 }
 
+.fixed-top {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  padding-top: 1rem;
+}
+
+.light .fixed-top {
+  background-color: var(--bg-light);
+}
+
+.dark .fixed-top {
+  background-color: var(--bg-dark);
+}
+
 .header {
   display: flex;
   flex-direction: row;
@@ -47,9 +62,6 @@
   width: 100%;
   margin: auto;
   font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 0;
 }
 
 .desktop .header,
@@ -62,11 +74,14 @@
 }
 
 .desktop .header,
-.tablet .header {
+.tablet .header,
+.desktop .section,
+.tablet .section {
   max-width: 80vw;
 }
 
-.mobile .header {
+.mobile .header,
+.mobile .section {
   max-width: 90vw;
 }
 
@@ -182,4 +197,44 @@
   border-color: var(--primary-light);
   border-radius: 50px;
   width: 100%;
+}
+
+.desktop .spacing,
+.tablet .spacing {
+  margin-top: 10rem;
+}
+
+.mobile .spacing {
+  margin-top: 12rem;
+}
+
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  gap: 2rem;
+}
+
+.section .section-name {
+  font-weight: bold;
+  text-align: center;
+}
+
+.desktop .section .section-name,
+.tablet .section .section-name {
+  width: 100px;
+}
+
+.desktop .section .content,
+.tablet .section .content {
+  flex: 1;
+  margin-bottom: 3rem;
+}
+
+.mobile .section .section-name,
+.mobile .section .content {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  width: 80vw;
 }
