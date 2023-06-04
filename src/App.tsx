@@ -18,6 +18,18 @@ import LOGO_EXPRESSJS from "./assets/logos/expressjs.png";
 import LOGO_MYSQL from "./assets/logos/mysql.svg";
 import LOGO_POSTGRESQL from "./assets/logos/postgresql.svg";
 import LOGO_REDIS from "./assets/logos/redis.svg";
+import PROJECTS_UNTYPED from "./assets/blogs.json";
+
+type Projects = {
+  link: string;
+  title: string;
+  description: string;
+  thumbnail: string;
+  timestamp: string;
+  categories: string[];
+};
+
+const projects: Projects[] = PROJECTS_UNTYPED;
 
 function App() {
   const { appState } = useStores();
@@ -325,7 +337,39 @@ function App() {
       </div>
       <div className="section blogs" id="blogs">
         <div className="section-name">blogs</div>
-        <div className="content">content</div>
+        <div className="content">
+          <div className="blogs-content">
+            {projects.map((e, i) => (
+              <div className="blogs-item" key={e.link}>
+                <div
+                  className="thumbnail"
+                  style={{
+                    background: `url(${e.thumbnail})`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  {" "}
+                </div>
+                <div className="item">
+                  <div className="title">
+                    <a href={e.link}>
+                      [{i + 1}] {e.title}
+                    </a>
+                  </div>
+                  <div className="timestamp">
+                    {new Date(e.timestamp).toLocaleString()}
+                  </div>
+                  <div className="categories">
+                    {e.categories.map((e) => (
+                      <span key={e}>{e}</span>
+                    ))}
+                  </div>
+                  <div className="description">{e.description}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
