@@ -10,7 +10,7 @@
 
 .desktop {
   padding-top: 2.5rem;
-  min-height: 100vh;
+  min-height: 300vh;
 }
 
 .tablet {
@@ -20,7 +20,7 @@
 
 .mobile {
   padding-top: 2.5rem;
-  min-height: 100vh;
+  min-height: 300vh;
 }
 
 .light {
@@ -43,22 +43,47 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 4rem;
   justify-content: center;
-  max-width: 80vw;
   width: 100%;
   margin: auto;
   font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+.desktop .header,
+.tablet .header {
+  gap: 4rem;
+}
+
+.mobile .header {
+  gap: 1rem;
+}
+
+.desktop .header,
+.tablet .header {
+  max-width: 80vw;
+}
+
+.mobile .header {
+  max-width: 90vw;
 }
 
 .header-info {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
-.header-info .avatar img {
+.desktop .header-info .avatar img,
+.tablet .header-info .avatar img {
   width: 150px;
   height: 150px;
+}
+
+.mobile .header-info .avatar img {
+  width: 100px;
+  height: 100px;
 }
 
 .header-info .name-contact {

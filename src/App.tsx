@@ -4,19 +4,44 @@ import { observer } from "mobx-react";
 import { useStores } from "./stores";
 import stylesheet from "./styles";
 import useBreakpoint from "./hooks/useBreakpoint";
+import { useState, useEffect } from "react";
 
 function App() {
   const { appState } = useStores();
   const { theme } = appState;
   const { breakpoint } = useBreakpoint();
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleScroll = () => {
+        const position = window.scrollY;
+        setScrollPosition(position);
+      };
+
+      window.addEventListener("scroll", handleScroll);
+
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
 
   return (
     <div className={`${breakpoint} ${theme}`}>
       <div className="header">
         <div className="header-info">
-          <div className="avatar">
+          <div
+            className="avatar"
+            style={{
+              display: scrollPosition > 100 ? "none" : undefined,
+            }}
+          >
             <img
-              style={stylesheet.RoundImage(breakpoint)}
+              style={{
+                // ...stylesheet.RoundImage(breakpoint),
+                borderRadius: "100%",
+                width: Math.max(0, 100 - scrollPosition),
+                height: Math.max(0, 100 - scrollPosition),
+              }}
               src={AVATAR}
               alt="Avatar of Raflie Zainuddin"
             />
@@ -26,7 +51,14 @@ function App() {
               <div className="raflie">raflie</div>
               <div className="zainuddin">zainuddin</div>
             </div>
-            <div className="contact">contact@raflie.cc</div>
+            <div
+              className="contact"
+              style={{
+                display: scrollPosition > 100 ? "none" : undefined,
+              }}
+            >
+              contact@raflie.cc
+            </div>
           </div>
         </div>
         <div className="header-navbar">
