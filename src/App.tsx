@@ -17,7 +17,7 @@ function App() {
       return null;
     }
 
-    return dom.clientHeight;
+    return dom.clientHeight - 200;
   }, []);
 
   const passedAboutHeight = true;
@@ -109,7 +109,7 @@ function App() {
                     : ""
                 }
               >
-                about
+                <a href="#">about</a>
               </li>
               <li
                 className={
@@ -120,7 +120,7 @@ function App() {
                     : ""
                 }
               >
-                skillset
+                <a href="#skillset">skillset</a>
               </li>
               <li
                 className={
@@ -129,7 +129,7 @@ function App() {
                     : ""
                 }
               >
-                blogs
+                <a href="#blogs">blogs</a>
               </li>
               <li
                 style={{
