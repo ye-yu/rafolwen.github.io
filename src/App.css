@@ -10,7 +10,7 @@
 
 .desktop {
   padding-top: 2.5rem;
-  min-height: 300vh;
+  min-height: 100vh;
 }
 
 .tablet {
@@ -20,7 +20,7 @@
 
 .mobile {
   padding-top: 2.5rem;
-  min-height: 300vh;
+  min-height: 100vh;
 }
 
 .light {
