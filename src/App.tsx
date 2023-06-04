@@ -11,6 +11,14 @@ import {
   MouseEventHandler,
 } from "react";
 
+import LOGO_TS from "./assets/logos/typescript.svg";
+import LOGO_ESBUILD from "./assets/logos/esbuild.svg";
+import LOGO_NESTJS from "./assets/logos/nestjs.svg";
+import LOGO_EXPRESSJS from "./assets/logos/expressjs.png";
+import LOGO_MYSQL from "./assets/logos/mysql.svg";
+import LOGO_POSTGRESQL from "./assets/logos/postgresql.svg";
+import LOGO_REDIS from "./assets/logos/redis.svg";
+
 function App() {
   const { appState } = useStores();
   const { theme } = appState;
@@ -190,8 +198,7 @@ function App() {
         <div
           className="section-name"
           style={{ display: breakpoint === "mobile" ? "none" : undefined }}
-        >
-        </div>
+        ></div>
         <div className="content">
           <div className="hello">
             Hi, I am a software engineer,
@@ -242,7 +249,78 @@ function App() {
       <div className="section skillset" id="skillset">
         <div className="section-name">skillset</div>
         <div className="content">
-          <div className="spacing">content</div>
+          <div className="cards">
+            <div className="card">
+              <div className="logos">
+                <img src={LOGO_TS} alt="TypeScript" />
+                <img src={LOGO_ESBUILD} alt="ESBuild" />
+              </div>
+              <div className="title">Plain TypeScript (w esbuild)</div>
+              <div className="description">
+                <p>
+                  <span className="bold">TypeScript</span> is my strongest skill
+                  in application development. I use{" "}
+                  <span className="bold">esbuild</span> for blazingly-fast TS to
+                  JS compilation while also making use of `tsc --noEmit` for
+                  typechecking utility.
+                </p>
+                <p>
+                  See how I also transfer the similar technique to{" "}
+                  <span className="bold">Deno</span> application.
+                </p>
+              </div>
+              <div className="cta">
+                <a href="/">see related projects &rarr;</a>
+              </div>
+            </div>
+            <div className="card">
+              <div className="logos">
+                <img src={LOGO_NESTJS} alt="NestJS" />
+                <img src={LOGO_EXPRESSJS} alt="ExpressJS" />
+              </div>
+              <div className="title">NestJS API Server</div>
+              <div className="description">
+                <p>
+                  For battle-tested production API server, my first choice would
+                  be creating a <span className="bold">NestJS</span>{" "}
+                  application. Each endpoint would be module-scoped to ensure
+                  high maintainability for production and testing environment.
+                </p>
+                <p>
+                  I also have experience using both{" "}
+                  <span className="bold">ExpressJS</span> and{" "}
+                  <span className="bold">Fastify</span> platform as the API
+                  engine.
+                </p>
+              </div>
+              <div className="cta">
+                <a href="/">see related projects &rarr;</a>
+              </div>
+            </div>
+            <div className="card">
+              <div className="logos">
+                <img src={LOGO_MYSQL} alt="MySQL" />
+                <img src={LOGO_POSTGRESQL} alt="PostgreSQL" />
+                <img src={LOGO_REDIS} alt="Redis" />
+              </div>
+              <div className="title">MySQL, PostgreSQL, & Redis</div>
+              <div className="description">
+                <p>
+                  For basic data storage, I will usually utilize{" "}
+                  <span className="bold">MySQL</span> and
+                  <span className="bold">PostgresSQL</span> as the primary
+                  databases, allowing efficient storage and retrieval of data.
+                  Additionally, I am well-versed in implementing{" "}
+                  <span className="bold">Redis</span> as a hot data storage
+                  solution, enhancing performance and responsiveness in my
+                  applications.
+                </p>
+              </div>
+              <div className="cta">
+                <a href="/">see related projects &rarr;</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div className="section blogs" id="blogs">

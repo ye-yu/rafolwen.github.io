@@ -72,3 +72,7 @@ a.button.secondary.no-visited:visited {
   background-color: white;
   color: #333;
 }
+
+.bold {
+  font-weight: bold;
+}

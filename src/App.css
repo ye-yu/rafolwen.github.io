@@ -259,7 +259,7 @@
 }
 
 .about {
-  padding-bottom: 5rem;
+  padding-bottom: 15rem;
 }
 
 .about .hello {
@@ -308,4 +308,58 @@
 
 .mobile .cta {
   justify-content: space-between;
+}
+
+.skillset {
+  padding-bottom: 10rem;
+}
+
+.cards {
+  display: flex;
+  gap: 4rem;
+}
+
+.desktop .cards,
+.tablet .cards {
+  flex-direction: row;
+}
+
+.mobile .cards {
+  flex-direction: column;
+}
+
+.cards .card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+}
+
+.cards .card .logos {
+  display: flex;
+  gap: 1rem;
+}
+
+.cards .card .logos img {
+  display: block;
+  width: auto;
+  height: 30px;
+}
+
+.cards .card .title {
+  font-weight: bold;
+}
+
+.dark .cards .title {
+  color: white;
+}
+
+.cards .card .description {
+  color: var(--gray-2);
+  text-align: justify;
+  line-height: 1.5rem;
+}
+
+.dark .cards .description {
+  color: var(--gray-1);
 }
