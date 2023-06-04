@@ -187,7 +187,11 @@ function App() {
       </div>
       <div className="spacing"></div>
       <div className="section about" id="about">
-        <div className="section-name">about</div>
+        <div
+          className="section-name"
+          style={{ display: breakpoint === "mobile" ? "none" : undefined }}
+        >
+        </div>
         <div className="content">
           <div className="hello">
             Hi, I am a software engineer,
@@ -200,11 +204,14 @@ function App() {
             through API servers, scheduled jobs, and optimizations.
           </div>
           <div className="cta">
-            <a className="button primary" href="mailto:contact@raflie.cc">
+            <a
+              className="button primary no-visited"
+              href="mailto:contact@raflie.cc"
+            >
               <div>contact@raflie.cc</div>
             </a>
             <a
-              className="button secondary"
+              className="button secondary no-visited"
               href="/resumes/Raflie Zainuddin - Backend Developer March 2023.pdf"
             >
               <div className="icon">

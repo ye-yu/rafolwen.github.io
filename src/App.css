@@ -46,6 +46,10 @@
   padding-top: 1rem;
 }
 
+.desktop .fixed-top {
+  padding-top: 1.5rem;
+}
+
 .light .fixed-top {
   background-color: var(--bg-light);
 }
@@ -227,6 +231,14 @@
   text-align: center;
 }
 
+.light .section .section-name {
+  color: black;
+}
+
+.dark .section .section-name {
+  color: white;
+}
+
 .desktop .section .section-name,
 .tablet .section .section-name {
   width: 100px;
@@ -255,6 +267,14 @@
   margin-bottom: 3rem;
 }
 
+.light .about .hello {
+  color: black;
+}
+
+.dark .about .hello {
+  color: white;
+}
+
 .desktop .about .hello,
 .tablet .about .hello {
   font-size: 40px;
@@ -268,8 +288,13 @@
 
 .about .description {
   color: var(--gray-1);
-  font-size: 18px;
+  font-size: 22px;
   margin-bottom: 3rem;
+  line-height: 2rem;
+}
+
+.desktop .about .description {
+  max-width: 55vw;
 }
 
 .cta {

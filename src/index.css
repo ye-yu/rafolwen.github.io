@@ -15,7 +15,7 @@ body {
   --primary-light: #21a73e;
   --bg-light: #dbdbdb;
   --gray-1: #7d7d7d;
-
+  --gray-2: #4B4B4B;
   --bg-dark: #1e1e1e;
 }
 
@@ -44,9 +44,9 @@ a.button {
   padding: 0.5rem 1rem;
   text-decoration: none;
   letter-spacing: 1px;
-  vertical-align: middle;
   line-height: 0;
   align-items: center;
+  font-size: 0.9rem;
 }
 
 a.button div {
@@ -67,7 +67,8 @@ a.button.primary {
   background-color: var(--primary-light);
 }
 
-a.button.secondary {
-  color: var(--gray-1);
+a.button.secondary,
+a.button.secondary.no-visited:visited {
   background-color: white;
+  color: #333;
 }
