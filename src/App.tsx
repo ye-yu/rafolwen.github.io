@@ -2,7 +2,6 @@ import AVATAR from "./assets/avatar.jpg";
 import "./App.css";
 import { observer } from "mobx-react";
 import { useStores } from "./stores";
-import stylesheet from "./styles";
 import useBreakpoint from "./hooks/useBreakpoint";
 import { useState, useEffect } from "react";
 
@@ -27,6 +26,7 @@ function App() {
 
   return (
     <div className={`${breakpoint} ${theme}`}>
+      {/* TODO: refactor into header component */}
       <div className="header">
         <div className="header-info">
           <div
