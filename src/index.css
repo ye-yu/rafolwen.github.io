@@ -1,3 +1,7 @@
+* {
+  scroll-behavior: smooth;
+}
+
 body,
 button {
   margin: 0;

@@ -3,7 +3,13 @@ import "./App.css";
 import { observer } from "mobx-react";
 import { useStores } from "./stores";
 import useBreakpoint from "./hooks/useBreakpoint";
-import { useState, useEffect, useCallback, useMemo } from "react";
+import {
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  MouseEventHandler,
+} from "react";
 
 function App() {
   const { appState } = useStores();
@@ -11,14 +17,17 @@ function App() {
   const { breakpoint } = useBreakpoint();
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  const getScrollHeightForDom = useCallback((domId: string): number | null => {
-    const dom = document.getElementById(domId);
-    if (!dom) {
-      return null;
-    }
+  const getScrollHeightForDom = useCallback(
+    (domId: string, offset = 200): number | null => {
+      const dom = document.getElementById(domId);
+      if (!dom) {
+        return null;
+      }
 
-    return dom.clientHeight - 200;
-  }, []);
+      return dom.clientHeight - offset;
+    },
+    []
+  );
 
   const passedAboutHeight = true;
 
@@ -59,6 +68,26 @@ function App() {
       return () => window.removeEventListener("scroll", handleScroll);
     }
   }, [getScrollHeightForDom]);
+
+  const scrollTo = (
+    domName: "about" | "skillset" | "blogs"
+  ): MouseEventHandler => {
+    return (event) => {
+      let scrollToHeight = 0;
+      switch (domName) {
+        // allow fallthrough
+        // @ts-expect-error
+        case "blogs":
+          scrollToHeight += getScrollHeightForDom("skillset", 150) ?? 0;
+        // eslint-disable-next-line no-fallthrough
+        case "skillset":
+          scrollToHeight += getScrollHeightForDom("about", 100) ?? 0;
+      }
+
+      event.preventDefault();
+      window.scrollTo({ top: scrollToHeight });
+    };
+  };
 
   return (
     <div className={`${breakpoint} ${theme}`}>
@@ -109,7 +138,9 @@ function App() {
                     : ""
                 }
               >
-                <a href="#">about</a>
+                <a href="#top" onClick={scrollTo("about")}>
+                  about
+                </a>
               </li>
               <li
                 className={
@@ -120,7 +151,9 @@ function App() {
                     : ""
                 }
               >
-                <a href="#skillset">skillset</a>
+                <a href="#skillset" onClick={scrollTo("skillset")}>
+                  skillset
+                </a>
               </li>
               <li
                 className={
@@ -129,7 +162,9 @@ function App() {
                     : ""
                 }
               >
-                <a href="#blogs">blogs</a>
+                <a href="#blogs" onClick={scrollTo("blogs")}>
+                  blogs
+                </a>
               </li>
               <li
                 style={{
