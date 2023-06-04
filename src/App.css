@@ -262,6 +262,10 @@
   padding-bottom: 15rem;
 }
 
+.desktop .about {
+  padding-top: 12rem;
+}
+
 .about .hello {
   font-weight: lighter;
   margin-bottom: 3rem;
@@ -291,6 +295,11 @@
   font-size: 22px;
   margin-bottom: 3rem;
   line-height: 2rem;
+}
+
+.mobile .about .description {
+  font-size: 18px;
+  line-height: 1.5rem;
 }
 
 .desktop .about .description {
@@ -404,14 +413,14 @@
 }
 
 .blogs-content .blogs-item .item .title a {
-  font-size: 30px;
+  font-size: 18px;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: 500;
+  letter-spacing: 1px;
+  font-weight: bold;
 }
 
 .light .blogs-content .blogs-item .item .title a {
-  color: #333;
+  color: black;
 }
 
 .dark .blogs-content .blogs-item .item .title a {
