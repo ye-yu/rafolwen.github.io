@@ -133,33 +133,23 @@
   letter-spacing: 5%;
 }
 
-.header-theme {
-  flex: 0;
-  display: block;
-  width: 30px;
-  height: 15px;
-  background-color: var(--gray-1);
-  border: 1px solid #333;
-  border-radius: 50px;
-  cursor: pointer;
-  position: relative;
+.theme-switch {
+  position: fixed;
+  top: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.header-theme .light,
-.header-theme .dark {
-  display: block;
-  width: 13px;
-  height: 13px;
-  background-color: white;
-  border: 1px solid white;
-  border-radius: 50px;
-  margin-right: 15px;
-  transition: margin-left 200ms ease-in-out;
+.tablet .theme-switch,
+.mobile .theme-switch {
+  top: 1rem;
+  width: 100%;
 }
 
-.header-theme .dark {
-  margin-left: 15px;
-  transition: margin-left 200ms ease-in-out;
+.mobile .theme-switch svg {
+  display: block;
+  margin-left: auto;
+  margin-right: 1rem;
 }
 
 .desktop .header-navbar,
