@@ -219,7 +219,7 @@
   flex-wrap: wrap;
   margin: -10rem auto auto;
   padding-top: 10rem;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .section .section-name {
@@ -244,4 +244,43 @@
   margin-right: auto;
   text-align: left;
   width: 80vw;
+}
+
+.about {
+  margin-bottom: 5rem;
+}
+
+.about .hello {
+  font-weight: lighter;
+  margin-bottom: 3rem;
+}
+
+.desktop .about .hello,
+.tablet .about .hello {
+  font-size: 40px;
+  line-height: 4rem;
+}
+
+.mobile .about .hello {
+  font-size: 38px;
+  line-height: 3rem;
+}
+
+.about .description {
+  color: var(--gray-1);
+  font-size: 18px;
+  margin-bottom: 3rem;
+}
+
+.cta {
+  display: flex;
+}
+
+.desktop .cta,
+.tablet .cta {
+  gap: 2rem;
+}
+
+.mobile .cta {
+  justify-content: space-between;
 }
