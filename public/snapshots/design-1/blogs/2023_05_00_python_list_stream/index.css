@@ -1,0 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap");
+
+body {
+  background-image: url("https://raflie.cc/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  width: 100vw;
+  font-family: "Inter", sans-serif;
+}
+
+div.content {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+}
+
+.go-back-header {
+  display: block;
+}
+
+.go-back-toolbar {
+  display: none;
+}
+
+div.body {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+div.body.light {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+}
+
+div.body.dark {
+  background-color: rgba(20, 20, 20, 0.8);
+  color: #dfdfdf;
+}
+
+.header {
+  display: flex;
+  padding-top: 1.5rem;
+  position: relative;
+}
+
+.header .thumbnail {
+  flex: 0 0 auto;
+  width: 30vw;
+  height: 30vw;
+  max-width: 15rem;
+  max-height: 15rem;
+  overflow: hidden;
+  display: flex;
+  background-size: cover;
+  background-position: center;
+}
+
+.header-info {
+  padding-left: 1.5rem;
+  padding-top: 1rem;
+}
+
+.header-info .header-title {
+  font-weight: bold;
+  font-size: 2rem;
+  padding-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.header-info .header-subtitle {
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.05rem;
+}
+
+.header-info .categories {
+  color: #666;
+  margin-right: 0.5rem;
+  border-bottom: 2px lightgray dashed;
+}
+
+.header .header-toolbar {
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  display: flex;
+}
+
+.theme-mode {
+  margin-left: auto;
+  display: block;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+a {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #4f4f4f;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #757575;
+}
+
+button {
+  cursor: pointer;
+}
+
+.button-light {
+  background-color: white;
+  border: none;
+  transition: all 1s ease;
+}
+
+.button-light:hover {
+  background-color: lightyellow;
+  transition: all 0.2s ease;
+}
+
+.button-dark {
+  background-color: blue;
+  border: none;
+  color: white;
+  transition: all 1s ease;
+}
+
+.button-dark:hover {
+  background-color: navy;
+  transition: all 0.2s ease;
+}
+
+@media only screen and (max-width: 850px) {
+  .slim {
+    width: 85%;
+    margin: auto;
+  }
+
+  .go-back-header {
+    display: none;
+  }
+
+  .go-back-toolbar {
+    display: block;
+  }
+
+  .thumbnail {
+    margin-top: 2rem;
+  }
+
+  .header .header-toolbar {
+    width: 100%;
+    left: 0;
+  }
+}
+
+.markdown {
+  padding-bottom: 2rem;
+  line-height: 1.5rem;
+}
+
+.markdown h1 {
+  padding-bottom: 0.8rem;
+  padding-top: 1.2rem;
+}
+
+.markdown blockquote {
+  border-left: 3px solid orange;
+  padding-left: 2rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.01rem;
+  margin: 0rem;
+  background: #AAF;
+  font-style: italic;
+  color: #333;
+}
+
+/* Dracula Theme v1.2.5
+ *
+ * https://github.com/dracula/highlightjs
+ *
+ * Copyright 2016-present, All rights reserved
+ *
+ * Code licensed under the MIT license
+ *
+ * @author Denis Ciccale <dciccale@gmail.com>
+ * @author Zeno Rocha <hi@zenorocha.com>
+ */
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #282a36;
+  border-radius: 5px;
+}
+
+.hljs-built_in,
+.hljs-selector-tag,
+.hljs-section,
+.hljs-link {
+  color: #8be9fd;
+}
+
+.hljs-keyword {
+  color: #ff79c6;
+}
+
+.hljs,
+.hljs-subst {
+  color: #f8f8f2;
+}
+
+.hljs-title,
+.hljs-attr,
+.hljs-meta-keyword {
+  /* font-style: italic; */
+  color: #50fa7b;
+}
+
+.hljs-string,
+.hljs-meta,
+.hljs-name,
+.hljs-type,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-tag,
+.hljs-template-variable {
+  color: #f1fa8c;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion {
+  color: #6272a4;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-title,
+.hljs-section,
+.hljs-doctag,
+.hljs-type,
+.hljs-name,
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-literal,
+.hljs-number {
+  color: #bd93f9;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}

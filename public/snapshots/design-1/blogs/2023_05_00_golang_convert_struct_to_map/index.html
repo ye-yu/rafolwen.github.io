@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="I demonstrate how to use Golang reflect package to retrieve exported struct fields and value to convert them into a map of key string recursively" />
+    <meta property="og:title" content="[Golang] Convert struct to map" />
+    <meta property="og:type" content="text/html" />
+    <meta property="og:url" content="https://raflie.cc/blogs/2023_05_00_golang_convert_struct_to_map" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1478860409698-8707f313ee8b?ixlib&#x3D;rb-4.0.3&amp;ixid&#x3D;M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto&#x3D;format&amp;fit&#x3D;crop&amp;w&#x3D;870&amp;q&#x3D;40" />
+    <meta name="twitter:title" content="[Golang] Convert struct to map">
+    <meta name="twitter:description" content="I demonstrate how to use Golang reflect package to retrieve exported struct fields and value to convert them into a map of key string recursively">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1478860409698-8707f313ee8b?ixlib&#x3D;rb-4.0.3&amp;ixid&#x3D;M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto&#x3D;format&amp;fit&#x3D;crop&amp;w&#x3D;870&amp;q&#x3D;40">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="apple-touch-icon" href="./logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="./manifest.json" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css"
+    />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Blog | [Golang] Convert struct to map</title>
+  </head>
+  <body>
+    <template id="feather-sun-template">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="feather feather-sun"
+      >
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </template>
+    <template id="feather-moon-template">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="feather feather-moon"
+      >
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </template>
+    <div class="body light" id="themeable">
+      <div class="content light">
+        <div class="slim">
+          <div class="header">
+            <div
+              class="thumbnail"
+              style="background-image: url(https://images.unsplash.com/photo-1478860409698-8707f313ee8b?ixlib&#x3D;rb-4.0.3&amp;ixid&#x3D;M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto&#x3D;format&amp;fit&#x3D;crop&amp;w&#x3D;870&amp;q&#x3D;40); background-repeat: no-repeat"
+            ></div>
+            <div class="header-info">
+              <div class="header-link go-back-header">
+                <a href="https://raflie.cc">&larr; Go back</a>
+              </div>
+              <div class="header-title">[Golang] Convert struct to map</div>
+              <div class="header-subtitle">
+                Author: <a href="https://raflie.cc">Raflie Zainuddin</a>
+              </div>
+              <div class="header-subtitle">
+                Category: <span class="categories"
+                  >golang</span
+                ><span class="categories"
+                  >gist</span
+                >
+              </div>
+              <div
+                class="header-subtitle"
+                id="header-time"
+                time="2023-05-21T01:43:39.785Z"
+              >
+                Date: 2023-05-21T01:43:39.785Z
+              </div>
+              <div class="header-toolbar">
+                <div class="header-link go-back-toolbar">
+                  <a href="https://raflie.cc">&larr; Go back</a>
+                </div>
+  
+                <span
+                  class="theme-mode"
+                  id="theme-mode"
+                  onclick="toggleThemeMode()"
+                ></span>
+              </div>
+            </div>
+          </div>
+          <hr style="margin: 2rem auto" />
+          <div class="markdown"><h2>Converting struct to <code>map[string]interface{}</code></h2>
+<p>Using the reflect package of Golang, we can inspect the field inside a certain struct and obtain
+the field name and value to be converted into <code>map[string]interface{}</code></p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">type</span> SimpleStruct <span class="hljs-keyword">struct</span> {
+  AString <span class="hljs-type">string</span> <span class="hljs-string">`json:&quot;aString&quot;`</span>
+}
+
+structed := SimpleStruct{<span class="hljs-string">&quot;hehe&quot;</span>}
+reflectedValue := reflect.ValueOf(structed)
+reflectedType := reflect.TypeOf(structed)
+
+log.Printf(<span class="hljs-string">&quot;Struct was named: %s&quot;</span>, reflectedType.Name())
+log.Printf(<span class="hljs-string">&quot;First field was named: %s&quot;</span>, reflectedType.Field(<span class="hljs-number">0</span>).Name)
+log.Printf(<span class="hljs-string">&quot;First field has value: %s&quot;</span>, reflectedValue.Field(<span class="hljs-number">0</span>).Interface())
+</code></pre><p>Some important reflect functions includes:</p>
+<ol>
+<li><code>CanInterface()</code>: to check if we can pick value out of the reflected variable</li>
+<li><code>value.Kind() == reflect.Pointer</code>: to check if the reflected value is a pointer or not</li>
+<li><code>value.Elem().Interface()</code>: to get the pointed value of a pointer variable</li>
+</ol>
+<ul>
+<li>It is also important to check if the variable is a <code>nil</code> pointer or not to avoid accessing inexistent pointer</li>
+</ul>
+<ol start="4">
+<li><code>type.NumField()</code>: to get the number of fields in the struct. We will be using this to iterate through the fields in the struct</li>
+</ol>
+<p>The general idea of this struct to map function is to:</p>
+<ol>
+<li>Always resolve pointer variables. If the variable is a <code>nil</code> pointer, assign <code>nil</code> to the map as well. e.g.<pre><code class="hljs language-go"><span class="hljs-keyword">var</span> maybeNil *T
+reflectedMaybeNil := reflect.ValueOf(maybeNil)
+
+<span class="hljs-keyword">if</span> maybePointer == <span class="hljs-literal">nil</span> {
+ outMap[fieldName] = <span class="hljs-literal">nil</span>
+ <span class="hljs-keyword">return</span>
+}
+
+value := reflectedMaybeNil.Elem().Interface()
+outMap[fieldname] = value
+</code></pre></li>
+<li>Recursively apply struct to map function if the value is a struct or an element of an array is a struct. A simple <code>reflect.Kind</code> check can help us.<pre><code class="hljs language-go">value := reflect.Valueof(someVarHere)
+<span class="hljs-keyword">if</span> value.Kind() == reflect.Struct {
+  outmap[fieldName] = StructToMap(value)
+}
+
+<span class="hljs-keyword">var</span> array []<span class="hljs-keyword">interface</span>{}
+<span class="hljs-keyword">if</span> value.Kind() == reflect.Array || value.Kind() == reflect.Slice {
+  array := value.Interface().([]<span class="hljs-keyword">interface</span>{})
+  <span class="hljs-keyword">var</span> outValue = <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">interface</span>{}, <span class="hljs-built_in">len</span>(array))
+  <span class="hljs-keyword">for</span> index, rawValue := <span class="hljs-keyword">range</span> array {
+    <span class="hljs-comment">// check if struct or array here, call StructToMap as required</span>
+  }
+}
+</code></pre></li>
+</ol>
+<br>
+
+<h1>Complete code</h1>
+<p>The full gist can be found here: <a href="https://gist.github.com/ye-yu/0e4c39fb1eee5b791d2768841f87753c">https://gist.github.com/ye-yu/0e4c39fb1eee5b791d2768841f87753c</a></p>
+<p>In this gist, I inspect the field name by the struct tag (if empty, I default it back to the original field name). I also add <code>,inline</code> feature to allow fields to be populate from the parent map instead.</p>
+</div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const headerTimeDom = document.getElementById("header-time");
+    const time = headerTimeDom.getAttribute("time");
+    if (time) {
+      headerTimeDom.textContent = `Date: ${new Date(time).toLocaleString()}`;
+    }
+
+    function getThemeMode() {
+      try {
+        const stateJSON = localStorage.getItem("AppState");
+        return JSON.parse(stateJSON)?.theme ?? "light";
+      } catch (error) {
+        return "light";
+      }
+    }
+
+    function setAppTheme(theme) {
+      const themeable = document.getElementById("themeable");
+      themeable.classList.remove("light", "dark");
+      themeable.classList.add(theme);
+      switch (theme) {
+        default:
+        case "light": {
+          themeModeDom.innerHTML = "";
+          themeModeDom.appendChild(sunIcon.content.cloneNode(true));
+          break;
+        }
+        case "dark": {
+          themeModeDom.innerHTML = "";
+          themeModeDom.appendChild(moonIcon.content.cloneNode(true));
+        }
+      }
+    }
+
+    function toggleThemeMode() {
+      try {
+        const stateJSON = localStorage.getItem("AppState");
+        const state = JSON.parse(stateJSON);
+        const newTheme = state?.theme === "dark" ? "light" : "dark";
+        state.theme = newTheme;
+        localStorage.setItem("AppState", JSON.stringify(state));
+        setAppTheme(state.theme);
+      } finally {
+        // error, do nothing
+      }
+    }
+
+    const themeModeDom = document.getElementById("theme-mode");
+    const sunIcon = document.getElementById("feather-sun-template");
+    const moonIcon = document.getElementById("feather-moon-template");
+    const theme = getThemeMode();
+    setAppTheme(theme);
+  </script>
+</html>
