@@ -256,7 +256,11 @@ function App() {
           <div className="cards">
             <div className="card">
               <div className="logos">
-                <img style={{scale: "0.95", zIndex: 0}} src={LOGO_TS} alt="TypeScript" />
+                <img
+                  style={{ scale: "0.95", zIndex: 0 }}
+                  src={LOGO_TS}
+                  alt="TypeScript"
+                />
                 <img src={LOGO_ESBUILD} alt="ESBuild" />
               </div>
               <div className="title">Plain TypeScript (w esbuild)</div>
@@ -284,7 +288,7 @@ function App() {
             </div>
             <div className="card">
               <div className="logos">
-                <img style={{scale: "1.05"}} src={LOGO_NESTJS} alt="NestJS" />
+                <img style={{ scale: "1.05" }} src={LOGO_NESTJS} alt="NestJS" />
                 <img src={LOGO_EXPRESSJS} alt="ExpressJS" />
               </div>
               <div className="title">NestJS API Server</div>
@@ -310,9 +314,13 @@ function App() {
             </div>
             <div className="card">
               <div className="logos">
-                <img style={{scale: "1.4"}} src={LOGO_MYSQL} alt="MySQL" />
+                <img
+                  style={{ scale: "1.4", marginLeft: 5 }}
+                  src={LOGO_MYSQL}
+                  alt="MySQL"
+                />
                 <img src={LOGO_POSTGRESQL} alt="PostgreSQL" />
-                <img style={{scale: "0.95"}} src={LOGO_REDIS} alt="Redis" />
+                <img style={{ scale: "0.95" }} src={LOGO_REDIS} alt="Redis" />
               </div>
               <div className="title">MySQL, PostgreSQL, & Redis</div>
               <div className="description">
