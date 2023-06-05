@@ -273,7 +273,7 @@ function App() {
                 </p>
               </div>
               <div className="cta">
-                <a href="/">see related projects &rarr;</a>
+                <a href="https://github.com/ye-yu/react-fullstack">see related projects &rarr;</a>
               </div>
             </div>
             <div className="card">
@@ -297,7 +297,7 @@ function App() {
                 </p>
               </div>
               <div className="cta">
-                <a href="/">see related projects &rarr;</a>
+                <a href="https://github.com/ye-yu/react-fullstack">see related projects &rarr;</a>
               </div>
             </div>
             <div className="card">
@@ -320,7 +320,7 @@ function App() {
                 </p>
               </div>
               <div className="cta">
-                <a href="/">see related projects &rarr;</a>
+                <a href="https://github.com/ye-yu/react-fullstack">see related projects &rarr;</a>
               </div>
             </div>
           </div>
