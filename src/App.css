@@ -44,6 +44,7 @@
   width: 100vw;
   top: 0;
   padding-top: 1rem;
+  z-index: 2;
 }
 
 .desktop .fixed-top {
@@ -143,6 +144,7 @@
   top: 2.5rem;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 3;
 }
 
 .tablet .theme-switch,
