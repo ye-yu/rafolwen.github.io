@@ -268,12 +268,17 @@ function App() {
                   typechecking utility.
                 </p>
                 <p>
-                  See how I also transfer the similar technique to{" "}
-                  <span className="bold">Deno</span> application.
+                  For testing frameworks, I would usually use{" "}
+                  <span className="bold">Jest</span>, but since the recent
+                  release of <span className="bold">NodeJS</span> v20, I have
+                  also explored the built-in testing framework inplace of
+                  third-party packages.
                 </p>
               </div>
               <div className="cta">
-                <a href="https://github.com/ye-yu/react-fullstack">see related projects &rarr;</a>
+                <a href="https://github.com/ye-yu/react-fullstack">
+                  see related projects &rarr;
+                </a>
               </div>
             </div>
             <div className="card">
@@ -297,7 +302,9 @@ function App() {
                 </p>
               </div>
               <div className="cta">
-                <a href="https://github.com/ye-yu/react-fullstack">see related projects &rarr;</a>
+                <a href="https://github.com/ye-yu/react-fullstack">
+                  see related projects &rarr;
+                </a>
               </div>
             </div>
             <div className="card">
@@ -320,7 +327,9 @@ function App() {
                 </p>
               </div>
               <div className="cta">
-                <a href="https://github.com/ye-yu/react-fullstack">see related projects &rarr;</a>
+                <a href="https://github.com/ye-yu/react-fullstack">
+                  see related projects &rarr;
+                </a>
               </div>
             </div>
           </div>
