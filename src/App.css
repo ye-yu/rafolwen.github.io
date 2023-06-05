@@ -128,9 +128,13 @@
 
 .header-info .name-contact .contact {
   margin-top: 0.5rem;
-  color: var(--gray-1);
   font-size: 0.8rem;
   letter-spacing: 5%;
+}
+
+.header-info .name-contact .contact a {
+  color: var(--gray-1);
+  text-decoration: underline dashed;
 }
 
 .theme-switch {

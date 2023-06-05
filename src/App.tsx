@@ -143,7 +143,8 @@ function App() {
                   display: scrollPosition > 100 ? "none" : undefined,
                 }}
               >
-                contact@raflie.cc
+                <a href="mailto:contact@raflie.cc">contact@raflie.cc</a> /{" "}
+                <a href="https://linkedin.com/in/raflie">linkedin: raflie</a>
               </div>
             </div>
           </div>
