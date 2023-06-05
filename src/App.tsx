@@ -143,8 +143,19 @@ function App() {
                   display: scrollPosition > 100 ? "none" : undefined,
                 }}
               >
-                <a href="mailto:contact@raflie.cc">contact@raflie.cc</a> /{" "}
-                <a href="https://linkedin.com/in/raflie">linkedin: raflie</a>
+                <div>
+                  <a href="mailto:contact@raflie.cc">contact@raflie.cc</a>
+                </div>
+                <div
+                  style={{
+                    display: breakpoint === "mobile" ? "none" : undefined,
+                  }}
+                >
+                  /
+                </div>
+                <div>
+                  <a href="https://linkedin.com/in/raflie">linkedin: raflie</a>
+                </div>
               </div>
             </div>
           </div>

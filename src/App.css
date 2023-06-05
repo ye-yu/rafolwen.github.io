@@ -128,10 +128,16 @@
 }
 
 .header-info .name-contact .contact {
+  display: flex;
+  gap: 0.5rem;
   margin-top: 0.5rem;
   color: var(--gray-1);
   font-size: 0.8rem;
   letter-spacing: 5%;
+}
+
+.mobile .header-info .name-contact .contact {
+  flex-direction: column;
 }
 
 .header-info .name-contact .contact a {
