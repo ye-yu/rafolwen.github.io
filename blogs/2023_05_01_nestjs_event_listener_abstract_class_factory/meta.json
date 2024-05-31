@@ -1,7 +1,0 @@
-{
-  "title": "[NestJS] Event Listener Abstract Class Factory",
-  "description": "In this blog post, I discover a new technique in instantiating an event listener class in NestJS with the help of NestJS Event Emitter package. This helps in TypeScript compiler to notify missing implemented property with the correct event data class.",
-  "thumbnail": "https://images.unsplash.com/photo-1557064262-6acc904bffbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=40",
-  "timestamp": "2023-05-29T05:31:01.732Z",
-  "categories": ["TypeScript", "NestJS"]
-}

@@ -1,7 +1,0 @@
-{
-  "title": "[Golang] Convert struct to map",
-  "description": "I demonstrate how to use Golang reflect package to retrieve exported struct fields and value to convert them into a map of key string recursively",
-  "thumbnail": "https://images.unsplash.com/photo-1478860409698-8707f313ee8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=40",
-  "timestamp": "2023-05-21T01:43:39.785Z",
-  "categories": ["golang", "gist"]
-}
