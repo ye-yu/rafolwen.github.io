@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 
-<meta name="title" content="raflie.com | Home" />
-<meta
-  name="description"
-  content="I enjoy sharing how I leverage functionalities of the programming languages to create useful hacks and tricks. Hopefully, these insights can help you enhance and streamline your own projects."
-/>
-<meta
-  name="keywords"
-  content="typescript,programming,javascript,software engineering,array,data structure"
-/>
+<meta name="title" content="raflie.com | {{ title }}" />
+<meta name="description" content="{{ summary }}" />
+<meta name="keywords" content="{{ keywords }}" />
 <meta name="robots" content="index, follow" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="language" content="English" />
@@ -17,7 +11,7 @@
 
 <head>
   <link rel="stylesheet" href="index.css" />
-  <title>raflie.com | Home</title>
+  <title>raflie.com | {{ title }}</title>
 </head>
 
 <style>
@@ -184,31 +178,7 @@
     </div>
     <div class="content-container">
       <div class="flex-col content-content" style="gap: 40px">
-        <div class="flex-col" name="blog-container" style="gap: 24px">
-          <div class="flex-col" name="blog-header">
-            <div class="blog-title">
-              <span style="padding-right: 8px">
-                <img src="assets/link.svg" alt="link" />
-              </span>
-              Fun with JS Proxy | Array View
-            </div>
-            <div class="blog-timestamp">2024 July 31 &bull; 5min read time</div>
-          </div>
-          <div class="divider"></div>
-          <div class="flex-col" name="blog-content">
-            <p>
-              Learn how to use JavaScript&#39;s Proxy object to simplify
-              accessing elements in an array by their unique identifier. This
-              approach eliminates redundancy by allowing direct access to array
-              elements using keys, while maintaining standard array
-              functionalities. The implementation involves creating a custom
-              <code>toArrayView</code> function that uses Proxy to enhance array
-              behavior.
-            </p>
-
-            <p><a href="001-fun-with-js-array.html">Read more</a></p>
-          </div>
-        </div>
+        {{ contents }}
       </div>
     </div>
   </div>

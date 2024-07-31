@@ -1,6 +1,6 @@
 :root {
-  /* font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; */
-  font-family: "Roboto Mono", "Courier New", Courier, monospace;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: "Roboto Mono", "Courier New", Courier, monospace; */
   line-height: 1.5;
   font-weight: 400;
 
@@ -96,22 +96,26 @@ button:focus-visible {
   }
 }
 
-.flex-col-24px {
+.flex-col {
   display: flex;
   flex-direction: column;
-  gap: 24px;
 }
 
-.flex-col-8px {
+.flex-row {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  flex-direction: row;
 }
 
-.flex-row-8px {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+@media (max-width: 768px) {
+  .md-flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .md-flex-row {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 .px-40px {
@@ -153,4 +157,10 @@ button:focus-visible {
   background-image: url(./assets/bg.png);
   background-position: center;
   background-size: cover;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: #aaa;
 }

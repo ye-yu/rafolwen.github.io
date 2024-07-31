@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<meta name="title" content="raflie.com | Fun with JS Proxy | Array View" />
+<meta
+  name="description"
+  content="Learn how to use JavaScript's Proxy object to simplify accessing elements in an array by their unique identifier. This approach eliminates redundancy by allowing direct access to array elements using keys, while maintaining standard array functionalities. The implementation involves creating a custom `toArrayView` function that uses Proxy to enhance array behavior."
+/>
+<meta
+  name="keywords"
+  content="typescript,programming,javascript,software engineering,array,data structure"
+/>
+<meta name="robots" content="index, follow" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="language" content="English" />
+<meta name="revisit-after" content="30 days" />
+<meta name="author" content="Raflie Zainuddin <rafolwen98@gmail.com>" />
+
+<head>
+  <link rel="stylesheet" href="index.css" />
+  <title>raflie.com | Fun with JS Proxy | Array View</title>
+</head>
+
+<style>
+  .header-container {
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-basis: 400px;
+    background: #313131;
+    min-height: 100dvh;
+    min-height: 100vh;
+  }
+
+  .header-content {
+    padding-top: 24px;
+    padding-right: 32px;
+    padding-bottom: 24px;
+    padding-left: 92px;
+  }
+
+  .content-container {
+    flex: 1;
+    height: 100dvh;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #bbb7b7;
+    color: #333;
+  }
+
+  .content-content {
+    padding: 64px 72px;
+    max-width: 700px;
+    margin: auto;
+  }
+
+  .blog-title {
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: 1px;
+  }
+
+  .blog-timestamp {
+    color: #665;
+  }
+
+  @media (max-width: 768px) {
+    .header-container {
+      flex: 1;
+      background: #313131;
+      min-height: unset;
+      min-height: unset;
+    }
+
+    .header-content {
+      padding: 32px 40px;
+    }
+
+    .content-container {
+      height: unset;
+      height: unset;
+    }
+
+    .content-content {
+      padding: 40px;
+    }
+  }
+</style>
+
+<body>
+  <div class="flex-row md-flex-col">
+    <div class="flex-col header-container">
+      <div class="flex-col header-content" style="gap: 24px">
+        <div style="padding-top: 60px"></div>
+        <div
+          style="
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding-bottom: 12px;
+          "
+        >
+          Raflie Zainuddin
+        </div>
+        <div style="color: #cccccc; font-size: 16px; font-weight: 400">
+          Welcome to my page.
+        </div>
+        <div style="color: #cccccc; font-size: 16px; font-weight: 400">
+          I am Raflie Zainuddin, and I like experimenting with
+          <span style="color: white; font-weight: 700">JavaScript</span> and
+          <span style="color: white; font-weight: 700">TypeScript</span>.
+        </div>
+        <div style="color: #cccccc; font-size: 16px; font-weight: 400">
+          On my website, I enjoy sharing how I leverage functionalities of the
+          programming languages to create useful hacks and tricks. Hopefully,
+          these insights can help you enhance and streamline your own projects.
+        </div>
+
+        <div style="display: flex; margin-top: 32px; gap: 8px">
+          <div style="background-color: #1a1a1a; border-radius: 999px">
+            <a
+              href="https://github.com/ye-yu"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+              "
+            >
+              <svg
+                style="stroke: white"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-github"
+              >
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                ></path>
+              </svg>
+            </a>
+          </div>
+
+          <div style="background-color: white; border-radius: 999px">
+            <a
+              href="https://linkedin.com/in/raflie"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 40px;
+                height: 40px;
+                gap: 8px;
+              "
+            >
+              <svg
+                style="stroke: black"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="feather feather-linkedin"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-container">
+      <div class="flex-col content-content" style="gap: 40px">
+        <div class="flex-col" name="blog-container" style="gap: 24px">
+          <div class="flex-col" name="blog-header">
+            <div class="blog-title">
+              <span style="padding-right: 8px">
+                <img src="assets/link.svg" alt="link" />
+              </span>
+              Fun with JS Proxy | Array View
+            </div>
+            <div class="blog-timestamp">2024 July 31 &bull; 5min read time</div>
+          </div>
+          <div class="divider"></div>
+          <div class="flex-col" name="blog-content">
+            <p>
+              When working with an array of elements that each have an
+              identifier field, you might typically fetch a specific element
+              like this:
+            </p>
+            <pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> <span class="hljs-attr">items</span>: {<span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>}[] = [...]
+<span class="hljs-keyword">const</span> selectedItem = items.<span class="hljs-title function_">find</span>(<span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> e.<span class="hljs-property">id</span> === <span class="hljs-string">&#x27;johndoe&#x27;</span>)
+<span class="hljs-keyword">if</span> (!selectedItem) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;John Doe is not found&quot;</span>)
+}
+</code></pre>
+            <p>
+              Since the id field is unique for each element, you might prefer to
+              accumulate the elements in an object to access them directly by
+              key:
+            </p>
+            <pre><code class="hljs language-ts"><span class="hljs-keyword">type</span> <span class="hljs-title class_">IdName</span> = {<span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>}
+<span class="hljs-keyword">const</span> <span class="hljs-attr">items</span>: <span class="hljs-title class_">IdName</span>[] = [...]
+<span class="hljs-keyword">const</span> <span class="hljs-attr">itemsById</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">IdName</span>&gt; =
+  items.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">a, item</span>) =&gt;</span> {
+    a[item.<span class="hljs-property">id</span>] = item;
+    <span class="hljs-keyword">return</span> a;
+  }, {} <span class="hljs-keyword">as</span> <span class="hljs-title class_">Record</span>&lt;<span class="hljs-built_in">string</span>, <span class="hljs-title class_">IdName</span>&gt;);
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(itemsById.<span class="hljs-property">johnDoe</span>);
+</code></pre>
+            <p>
+              However, maintaining this structure means you must update both the
+              array and the object, which can lead to redundant work. By using a
+              JavaScript Proxy, we can enhance the array to simplify these
+              operations:
+            </p>
+            <pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> <span class="hljs-attr">items</span>: {<span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>}[] = [...]
+<span class="hljs-keyword">const</span> arrayView = <span class="hljs-title function_">toArrayView</span>(items, <span class="hljs-string">&#x27;id&#x27;</span>)
+<span class="hljs-keyword">const</span> johnDoeItem = arrayView.<span class="hljs-property">johnDoe</span>
+<span class="hljs-keyword">if</span> (!johnDoeItem) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;John Doe is not found&quot;</span>)
+}
+
+arrayView.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;johnDoe&quot;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John Doe&quot;</span> })
+<span class="hljs-keyword">const</span> newJohnDoeItem = arrayView.<span class="hljs-property">johnDoe</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;John Doe is now found&quot;</span>:, newJohnDoeItem);
+</code></pre>
+            <p>
+              This approach allows for more intuitive and efficient access to
+              elements by their identifier. So, how do we implement toArrayView?
+            </p>
+            <h1>Implementing ArrayView</h1>
+            <p>
+              The Proxy object in JavaScript is a powerful tool that allows you
+              to create a custom behavior for fundamental operations (e.g.,
+              property lookup, assignment, enumeration, function invocation,
+              etc.) on objects. The <code>toArrayView</code> function leverages
+              the Proxy object to extend the standard array behavior, enabling
+              elements to be accessed via object keys.
+            </p>
+            <p>
+              In our ArrayView, we need to intercept property access to check if
+              the property exists as a key in an accumulated object. First, we
+              create this accumulated object:
+            </p>
+            <pre><code class="hljs language-ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> toArrayView&lt;T&gt;(<span class="hljs-attr">arr</span>: T[], <span class="hljs-attr">key</span>: keyof T): <span class="hljs-title class_">ArrayView</span>&lt;T&gt; {
+  <span class="hljs-keyword">const</span> obj = arr.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> {
+    a[key] = b;
+    <span class="hljs-keyword">return</span> a;
+  }, {} <span class="hljs-keyword">as</span> <span class="hljs-title class_">Record</span>&lt;<span class="hljs-title class_">ObjectKey</span>, T&gt;);
+
+  <span class="hljs-comment">// ...pending implementation below</span>
+}
+</code></pre>
+            <p>
+              This object will be used in the proxy handler to look up the
+              property value if it exists in the array items. To retain the
+              properties of the array, we must also return the array’s property
+              value.
+            </p>
+            <pre><code class="hljs language-ts"><span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Proxy</span>(arr, {
+  <span class="hljs-title function_">get</span>(<span class="hljs-params">target, <span class="hljs-attr">p</span>: <span class="hljs-built_in">any</span></span>) {
+    <span class="hljs-comment">// property p exists in the obj, return this value</span>
+    <span class="hljs-keyword">if</span> (obj[p] !== <span class="hljs-literal">undefined</span>) {
+      <span class="hljs-keyword">return</span> obj[p];
+    }
+
+    <span class="hljs-comment">// property p does not exist in the obj, return the value from array</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> target[p] === <span class="hljs-string">&quot;function&quot;</span>
+      ? <span class="hljs-comment">// dont forget to bind array functions to original object</span>
+        target[p].<span class="hljs-title function_">bind</span>(target)
+      : target[p];
+  },
+}) <span class="hljs-keyword">as</span> <span class="hljs-title class_">ArrayView</span>&lt;T&gt;;
+</code></pre>
+            <p>
+              This approach ensures that property accesses first check the
+              accumulated object for a match, and if not found, default to the
+              array’s properties and methods, maintaining the array’s original
+              functionality.
+            </p>
+            <h2>Handling duplicating values</h2>
+            <p>
+              The easiest way when two elements of the array having the same
+              unique field is to throw an error:
+            </p>
+            <pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> obj = arr.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (a[k] !== <span class="hljs-literal">undefined</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Duplicating index for key <span class="hljs-subst">${<span class="hljs-built_in">String</span>(k)}</span>`</span>);
+  }
+  a[key] = b;
+  <span class="hljs-keyword">return</span> a;
+}, {} <span class="hljs-keyword">as</span> <span class="hljs-title class_">Record</span>&lt;<span class="hljs-title class_">ObjectKey</span>, T&gt;);
+</code></pre>
+            <h2>Handling <code>Array.push</code></h2>
+            <p>
+              Since we are preserving the original functionality of the array,
+              using the <code>push</code> method will mutate the array without
+              updating our lookup object. We can modify the proxy handler to
+              return a modified function for the <code>Array.push</code> method.
+              The <code>assignToObject</code> function will handle checking for
+              duplicate values in our lookup object.
+            </p>
+            <pre><code class="hljs language-ts"><span class="hljs-keyword">function</span> <span class="hljs-title function_">assignToObject</span>(<span class="hljs-params"><span class="hljs-attr">item</span>: T, <span class="hljs-attr">obj</span>: <span class="hljs-title class_">Record</span>&lt;<span class="hljs-title class_">ObjectKey</span>, T&gt;</span>) {
+  <span class="hljs-keyword">const</span> k = item[key];
+  <span class="hljs-keyword">if</span> (obj[k] !== <span class="hljs-literal">undefined</span>) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">`Duplicating index for key <span class="hljs-subst">${<span class="hljs-built_in">String</span>(k)}</span>`</span>);
+  }
+  obj[k] = item;
+  <span class="hljs-keyword">return</span> obj;
+}
+<span class="hljs-keyword">const</span> obj = arr.<span class="hljs-title function_">reduce</span>(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&gt;</span> {
+  <span class="hljs-title function_">assignToObject</span>(b, a);
+  <span class="hljs-keyword">return</span> a;
+}, {} <span class="hljs-keyword">as</span> <span class="hljs-title class_">Record</span>&lt;<span class="hljs-title class_">ObjectKey</span>, T&gt;);
+
+<span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Proxy</span>(arr, {
+  <span class="hljs-title function_">get</span>(<span class="hljs-params">target, <span class="hljs-attr">p</span>: <span class="hljs-built_in">any</span></span>) {
+    <span class="hljs-keyword">if</span> (p === <span class="hljs-string">&quot;push&quot;</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">pushProxy</span>(<span class="hljs-params">...<span class="hljs-attr">items</span>: T[]</span>) {
+        target.<span class="hljs-title function_">push</span>(...items);
+        items.<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">e</span>) =&gt;</span> <span class="hljs-title function_">assignToObject</span>(e, obj));
+      };
+    }
+    <span class="hljs-keyword">if</span> (obj[p] !== <span class="hljs-literal">undefined</span>) {
+      <span class="hljs-keyword">return</span> obj[p];
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">typeof</span> target[p] === <span class="hljs-string">&quot;function&quot;</span> ? target[p].<span class="hljs-title function_">bind</span>(target) : target[p];
+  },
+}) <span class="hljs-keyword">as</span> <span class="hljs-title class_">ArrayView</span>&lt;T&gt;;
+</code></pre>
+            <h1>ArrayView in action!</h1>
+            <p>
+              With a little bit of typing polishing and enhancement, we can
+              finally use this utility function to access the array element
+              directly from the array using its identifier key, while still
+              maintaining all standard array operations.​
+            </p>
+            <pre><code class="hljs language-ts"><span class="hljs-keyword">const</span> <span class="hljs-attr">items</span>: {<span class="hljs-attr">id</span>: <span class="hljs-built_in">string</span>, <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>}[] = [...]
+<span class="hljs-keyword">const</span> arrayView = <span class="hljs-title function_">toArrayView</span>(items, <span class="hljs-string">&#x27;id&#x27;</span>)
+<span class="hljs-keyword">const</span> johnDoeItem = arrayView.<span class="hljs-property">johnDoe</span>
+<span class="hljs-keyword">if</span> (!johnDoeItem) {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(<span class="hljs-string">&quot;John Doe is not found&quot;</span>)
+}
+
+arrayView.<span class="hljs-title function_">push</span>({ <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;johnDoe&quot;</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;John Doe&quot;</span> })
+<span class="hljs-keyword">const</span> newJohnDoeItem = arrayView.<span class="hljs-property">johnDoe</span>
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;John Doe is now found&quot;</span>:, newJohnDoeItem);
+</code></pre>
+            <p>
+              My ArrayView implementation can be found in the gist here:
+              <a
+                href="https://gist.github.com/ye-yu/250c5af0e7f4a09864faef0ef062a648"
+                >https://gist.github.com/ye-yu/250c5af0e7f4a09864faef0ef062a648</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/typescript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+<style>
+  .hljs {
+    border-radius: 4px;
+    background-color: #afacac;
+  }
+</style>

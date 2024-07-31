@@ -1,0 +1,6 @@
+{
+  "title": "Fun with JS Proxy | Array View",
+  "description": "2024 July 31 &bull; 5min read time",
+  "summary": "Learn how to use JavaScript's Proxy object to simplify accessing elements in an array by their unique identifier. This approach eliminates redundancy by allowing direct access to array elements using keys, while maintaining standard array functionalities. The implementation involves creating a custom `toArrayView` function that uses Proxy to enhance array behavior.",
+  "keywords": "typescript,programming,javascript,software engineering,array,data structure"
+}
