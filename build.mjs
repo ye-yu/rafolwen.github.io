@@ -61,6 +61,7 @@ function getContent(e) {
       contentHTML: applyTemplate(
         {
           ...metaJson,
+          link,
           content: marked.parse(contentMd),
         },
         "blog-container.template.html"
@@ -68,6 +69,7 @@ function getContent(e) {
       summaryHTML: applyTemplate(
         {
           ...metaJson,
+          link,
           content: [
             marked.parse(metaJson.summary),
             `<p><a href="${link}">Read more</a></p>`,
@@ -87,7 +89,8 @@ const extractedContents = blogs
   .map((name) => path.join("blogs", name))
   .filter(isDirectory)
   .map(getContent)
-  .filter((e) => e);
+  .filter((e) => e)
+  .reverse();
 
 const mainPageContents = extractedContents.map((e) => e.summaryHTML).join("\n");
 const mainPage = applyTemplate(
