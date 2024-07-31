@@ -62,6 +62,7 @@ function getContent(e) {
         {
           ...metaJson,
           link,
+          before: `<div style="padding-bottom: 24px"><a href="index.html">&larr; &nbsp; back</a></div>`,
           content: marked.parse(contentMd),
         },
         "blog-container.template.html"
@@ -70,6 +71,7 @@ function getContent(e) {
         {
           ...metaJson,
           link,
+          before: "",
           content: [
             marked.parse(metaJson.summary),
             `<p><a href="${link}">Read more</a></p>`,
