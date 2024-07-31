@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
-<meta name="title" content="raflie.com | Home" />
-<meta name="description" content="I enjoy sharing how I leverage functionalities of the programming languages to create useful hacks and tricks. Hopefully, these insights can help you enhance and streamline your own projects." />
-<meta name="keywords" content="typescript,programming,javascript,software engineering,array,data structure" />
+<meta name="title" content="raflie.com | Python list stream" />
+<meta name="description" content="Inspired by Java Streams util, I built a similar utility class that is lightweight and has less lines of code" />
+<meta name="keywords" content="python,stream,gist" />
 <meta name="robots" content="index, follow" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="language" content="English" />
@@ -11,7 +11,7 @@
 
 <head>
   <link rel="stylesheet" href="index.css" />
-  <title>raflie.com | Home</title>
+  <title>raflie.com | Python list stream</title>
 </head>
 
 <style>
@@ -181,60 +181,6 @@
       <span style="padding-right: 8px">
         <img src="assets/link.svg" alt="link" />
       </span>
-      <a href="004-fun-with-js-array.html" style="color: #333; font-weight: 700">
-        Fun with JS Proxy | Array View
-      </a>
-    </div>
-    <div class="blog-timestamp">2024 July 31 &bull; 5min read time</div>
-  </div>
-  <div class="divider"></div>
-  <div class="flex-col" name="blog-content"><p>Learn how to use JavaScript&#39;s Proxy object to simplify accessing elements in an array by their unique identifier. This approach eliminates redundancy by allowing direct access to array elements using keys, while maintaining standard array functionalities. The implementation involves creating a custom <code>toArrayView</code> function that uses Proxy to enhance array behavior.</p>
-
-<p><a href="004-fun-with-js-array.html">Read more</a></p></div>
-</div>
-
-<div class="flex-col" name="blog-container" style="gap: 24px">
-  <div class="flex-col" name="blog-header">
-    <div class="blog-title">
-      <span style="padding-right: 8px">
-        <img src="assets/link.svg" alt="link" />
-      </span>
-      <a href="003-2023_05_01_nestjs_event_listener_abstract_class_factory.html" style="color: #333; font-weight: 700">
-        [NestJS] Event listener class factory
-      </a>
-    </div>
-    <div class="blog-timestamp">2024 Sep 01 &bull; 7min read time</div>
-  </div>
-  <div class="divider"></div>
-  <div class="flex-col" name="blog-content"><p>In this blog post, I discover a new technique in instantiating an event listener class in NestJS with the help of NestJS Event Emitter package. This helps in TypeScript compiler to notify missing implemented property with the correct event data class.</p>
-
-<p><a href="003-2023_05_01_nestjs_event_listener_abstract_class_factory.html">Read more</a></p></div>
-</div>
-
-<div class="flex-col" name="blog-container" style="gap: 24px">
-  <div class="flex-col" name="blog-header">
-    <div class="blog-title">
-      <span style="padding-right: 8px">
-        <img src="assets/link.svg" alt="link" />
-      </span>
-      <a href="002-2023_05_00_golang_convert_struct_to_map.html" style="color: #333; font-weight: 700">
-        [Golang] Convert struct to map
-      </a>
-    </div>
-    <div class="blog-timestamp">2023 Jun 01 &bull; 4min read time</div>
-  </div>
-  <div class="divider"></div>
-  <div class="flex-col" name="blog-content"><p>I demonstrate how to use Golang reflect package to retrieve exported struct fields and value to convert them into a map of key string recursively</p>
-
-<p><a href="002-2023_05_00_golang_convert_struct_to_map.html">Read more</a></p></div>
-</div>
-
-<div class="flex-col" name="blog-container" style="gap: 24px">
-  <div class="flex-col" name="blog-header">
-    <div class="blog-title">
-      <span style="padding-right: 8px">
-        <img src="assets/link.svg" alt="link" />
-      </span>
       <a href="001-2023_05_00_python_list_stream.html" style="color: #333; font-weight: 700">
         Python list stream
       </a>
@@ -242,9 +188,31 @@
     <div class="blog-timestamp">2023 May 1st &bull; 3min read time</div>
   </div>
   <div class="divider"></div>
-  <div class="flex-col" name="blog-content"><p>Inspired by Java Streams util, I built a similar utility class that is lightweight and has less lines of code</p>
+  <div class="flex-col" name="blog-content"><h2>Python List Stream</h2>
+<p>(<a href="https://gist.github.com/ye-yu/26d6806ceb1f7b0712763a1ce6bdac29">Related code snippet</a>)</p>
+<p>I did some data engineering tasks during the duration of my internship, and I was introduced to the data stream from Spark. I was amazed on how clean and easily-read the code became when using stream instead of using for-loop. In fact, the semantic of stream has always been a part of the Java library through their stream API.</p>
+<p>In Python, there is a feature called a list comprehension. We can easily create a list and perform various actions such as filter, map, and so on.</p>
+<pre><code class="hljs language-python">a = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>)] <span class="hljs-comment"># creates [0, 1, 2, 3, 4]</span>
+b = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a <span class="hljs-keyword">if</span> is_prime(i)] <span class="hljs-comment"># creates [2, 3]</span>
 
-<p><a href="001-2023_05_00_python_list_stream.html">Read more</a></p></div>
+<span class="hljs-comment"># one line</span>
+c = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">5</span>) <span class="hljs-keyword">if</span> is_prime(i)]
+</code></pre><p>The disadvantage of this is that it gets too cluttered together when putting the too many operations in one line. In Java, the same operation can be neatly written using <code>IntStream</code>.</p>
+<pre><code class="hljs language-java"><span class="hljs-comment">// NumberClass is a custom class</span>
+IntStream.range(<span class="hljs-number">0</span>, <span class="hljs-number">5</span>).filter(NumberClass::isPrime).toArray()
+</code></pre><p>A similar implementation can be done on python by utilising the built-in <code>filter</code> and <code>map</code> functions. In the my <a href="https://gist.github.com/ye-yu/26d6806ceb1f7b0712763a1ce6bdac29">code snippet</a>, I wrap an iterable into <code>iter()</code> function and store it as the instance iterable field. By using the filter function, the iterable is passed into the built-in filter function, and the new iterable is set as current iterable. When the <code>collect</code> method is called, the current iterable is the same as</p>
+<pre><code class="hljs language-python"><span class="hljs-built_in">filter</span>(some_function, <span class="hljs-built_in">iter</span>(the_original_iterable))
+</code></pre><p>, and this will be passed into <code>list</code> to create a new list.</p>
+<p>The advantage of stream is that the collect operation can be postponed and all operations can be made dynamic.</p>
+<pre><code class="hljs language-python">stream = Stream.of(...)
+<span class="hljs-comment"># some codes here</span>
+<span class="hljs-keyword">if</span> (...):
+  stream = stream.<span class="hljs-built_in">map</span>(...).<span class="hljs-built_in">filter</span>(...)
+<span class="hljs-keyword">while</span>(...):
+  stream = stream.<span class="hljs-built_in">map</span>(...)
+<span class="hljs-comment"># some more codes here</span>
+result = stream.collect() <span class="hljs-comment"># consume the stream here</span>
+</code></pre></div>
 </div>
 
       </div>

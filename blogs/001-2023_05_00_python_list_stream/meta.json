@@ -1,0 +1,6 @@
+{
+  "title": "Python list stream",
+  "description": "2023 May 1st &bull; 3min read time",
+  "summary": "Inspired by Java Streams util, I built a similar utility class that is lightweight and has less lines of code",
+  "keywords": "python,stream,gist"
+}

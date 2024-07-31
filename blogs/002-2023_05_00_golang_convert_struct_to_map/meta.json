@@ -1,0 +1,6 @@
+{
+  "title": "[Golang] Convert struct to map",
+  "description": "2023 Jun 01 &bull; 4min read time",
+  "summary": "I demonstrate how to use Golang reflect package to retrieve exported struct fields and value to convert them into a map of key string recursively",
+  "keywords": "golang,gist"
+}
