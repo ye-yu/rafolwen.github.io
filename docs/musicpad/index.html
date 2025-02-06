@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+    <style>
+      .flex-all-centered {
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      background: lightgray;
+      height: 100dvh;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      overflow-x: auto;
+    "
+  >
+    <div
+      id="app"
+      class="flex-all-centered"
+      style="height: 100%; flex-direction: row"
+    >
+      <!-- clef -->
+      <div style="position: relative; flex: 0">
+        <div class="flex-all-centered" style="flex-direction: column">
+          <div
+            style="
+              width: 100px;
+              height: 1px;
+              background-color: black;
+              margin: 5px 0;
+            "
+          ></div>
+          <div
+            style="
+              width: 100px;
+              height: 1px;
+              background-color: transparent;
+              margin: 5px 0;
+            "
+          ></div>
+          <div
+            style="
+              width: 100px;
+              height: 1px;
+              background-color: black;
+              margin: 5px 0;
+            "
+          ></div>
+          <div
+            style="
+              width: 100px;
+              height: 1px;
+              background-color: transparent;
+              margin: 5px 0;
+            "
+          ></div>
+          <div
+            style="
+              width: 100px;
+              height: 1px;
+              background-color: black;
+              margin: 5px 0;
+            "
+          ></div>
+          <div
+            style="
+              width: 100px;
+              height: 1px;
+              background-color: transparent;
+              margin: 5px 0;
+            "
+          ></div>
+          <div
+            style="
+              width: 100px;
+              height: 1px;
+              background-color: black;
+              margin: 5px 0;
+            "
+          ></div>
+          <div
+            style="
+              width: 100px;
+              height: 1px;
+              background-color: transparent;
+              margin: 5px 0;
+            "
+          ></div>
+          <div
+            style="
+              width: 100px;
+              height: 1px;
+              background-color: black;
+              margin: 5px 0;
+            "
+          ></div>
+        </div>
+        <div
+          style="
+            position: absolute;
+            font-size: 200px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+          "
+        >
+          𝄞
+        </div>
+      </div>
+      <div class="flex-all-centered" id="notes" style="flex: 0"></div>
+      <div style="position: relative" style="flex: 0" id="pad">
+        <div class="flex-all-centered" style="flex-direction: column">
+          <!-- ledger above -->
+          <div
+            style="
+              width: 60px;
+              position: relative;
+              font-size: 8px;
+              padding: 5px 0;
+            "
+            onclick="append(13)"
+          >
+            <div
+              style="height: 1px; background-color: transparent; width: 100%"
+            ></div>
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: -8px;
+                transform: translateY(-50%);
+                color: gray;
+              "
+            >
+              5
+            </div>
+          </div>
+          <div
+            style="
+              width: 60px;
+              position: relative;
+              font-size: 8px;
+              padding: 5px 0;
+            "
+            onclick="append(12)"
+          >
+            <div
+              style="height: 1px; background-color: transparent; width: 100%"
+            ></div>
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: -8px;
+                transform: translateY(-50%);
+                color: gray;
+              "
+            >
+              4
+            </div>
+          </div>
+          <div
+            style="
+              width: 60px;
+              position: relative;
+              font-size: 8px;
+              padding: 5px 0;
+            "
+            onclick="append(11)"
+          >
+            <div
+              style="height: 1px; background-color: transparent; width: 100%"
+            ></div>
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: -8px;
+                transform: translateY(-50%);
+                color: gray;
+              "
+            >
+              3
+            </div>
+          </div>
+          <div
+            style="
+              width: 60px;
+              position: relative;
+              font-size: 8px;
+              padding: 5px 0;
+            "
+            onclick="append(10)"
+          >
+            <div
+              style="height: 1px; background-color: transparent; width: 100%"
+            ></div>
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: -8px;
+                transform: translateY(-50%);
+                color: gray;
+              "
+            >
+              2
+            </div>
+          </div>
+          <div
+            style="
+              width: 60px;
+              position: relative;
+              font-size: 8px;
+              padding: 5px 0;
+            "
+            onclick="append(9)"
+          >
+            <div
+              style="height: 1px; background-color: transparent; width: 100%"
+            ></div>
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: -8px;
+                transform: translateY(-50%);
+                color: gray;
+              "
+            >
+              1
+            </div>
+          </div>
+          <!-- ledger above end -->
+          <div style="width: 60px; padding: 5px 0" onclick="append(8)">
+            <div
+              style="height: 1px; background-color: black; width: 100%"
+            ></div>
+          </div>
+          <div style="width: 60px; padding: 5px 0" onclick="append(7)">
+            <div
+              style="height: 1px; background-color: transparent; width: 100%"
+            ></div>
+          </div>
+          <div style="width: 60px; padding: 5px 0" onclick="append(6)">
+            <div
+              style="height: 1px; background-color: black; width: 100%"
+            ></div>
+          </div>
+          <div style="width: 60px; padding: 5px 0" onclick="append(5)">
+            <div
+              style="height: 1px; background-color: transparent; width: 100%"
+            ></div>
+          </div>
+          <div style="width: 60px; padding: 5px 0" onclick="append(4)">
+            <div
+              style="height: 1px; background-color: black; width: 100%"
+            ></div>
+          </div>
+          <div style="width: 60px; padding: 5px 0" onclick="append(3)">
+            <div
+              style="height: 1px; background-color: transparent; width: 100%"
+            ></div>
+          </div>
+          <div style="width: 60px; padding: 5px 0" onclick="append(2)">
+            <div
+              style="height: 1px; background-color: black; width: 100%"
+            ></div>
+          </div>
+          <div style="width: 60px; padding: 5px 0" onclick="append(1)">
+            <div
+              style="height: 1px; background-color: transparent; width: 100%"
+            ></div>
+          </div>
+          <div style="width: 60px; padding: 5px 0" onclick="append(0)">
+            <div
+              style="height: 1px; background-color: black; width: 100%"
+            ></div>
+          </div>
+          <!-- ledger above -->
+          <div
+            style="
+              width: 60px;
+              position: relative;
+              font-size: 8px;
+              padding: 5px 0;
+            "
+            onclick="append(-1)"
+          >
+            <div
+              style="height: 1px; background-color: transparent; width: 100%"
+            ></div>
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: -8px;
+                transform: translateY(-50%);
+                color: gray;
+              "
+            >
+              1
+            </div>
+          </div>
+          <div
+            style="
+              width: 60px;
+              position: relative;
+              font-size: 8px;
+              padding: 5px 0;
+            "
+            onclick="append(-2)"
+          >
+            <div
+              style="height: 1px; background-color: transparent; width: 100%"
+            ></div>
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: -8px;
+                transform: translateY(-50%);
+                color: gray;
+              "
+            >
+              2
+            </div>
+          </div>
+          <div
+            style="
+              width: 60px;
+              position: relative;
+              font-size: 8px;
+              padding: 5px 0;
+            "
+            onclick="append(-3)"
+          >
+            <div
+              style="height: 1px; background-color: transparent; width: 100%"
+            ></div>
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: -8px;
+                transform: translateY(-50%);
+                color: gray;
+              "
+            >
+              3
+            </div>
+          </div>
+          <div
+            style="
+              width: 60px;
+              position: relative;
+              font-size: 8px;
+              padding: 5px 0;
+            "
+            onclick="append(-4)"
+          >
+            <div
+              style="height: 1px; background-color: transparent; width: 100%"
+            ></div>
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: -8px;
+                transform: translateY(-50%);
+                color: gray;
+              "
+            >
+              4
+            </div>
+          </div>
+          <div
+            style="
+              width: 60px;
+              position: relative;
+              font-size: 8px;
+              padding: 5px 0;
+            "
+            onclick="append(-5)"
+          >
+            <div
+              style="height: 1px; background-color: transparent; width: 100%"
+            ></div>
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: -8px;
+                transform: translateY(-50%);
+                color: gray;
+              "
+            >
+              5
+            </div>
+          </div>
+          <!-- ledger below end -->
+        </div>
+        <div
+          style="
+            position: absolute;
+            width: 40px;
+            height: 300px;
+            background-color: rgba(180, 200, 225, 0.4);
+            cursor: none;
+            pointer-events: none;
+            top: 50%;
+            left: 0px;
+            transform: translateY(-50%);
+            color: gray;
+          "
+        ></div>
+      </div>
+      <div
+        class="flex-all-centered"
+        style="flex: 0; flex-direction: column; gap: 12px; padding: 8px;"
+      >
+        <button style="white-space: nowrap; width: 100%;" onclick="deleteLast()">Delete</button>
+        <button style="white-space: nowrap; width: 100%;" onclick="appendEmpty()">Empty</button>
+        <button style="white-space: nowrap; width: 100%;" onclick="moveLastUp()">Move last up</button>
+        <button style="white-space: nowrap; width: 100%;" onclick="moveLastDown()">Move last down</button>
+      </div>
+    </div>
+    <script type="module" src="/musicpad/musicpad.js"></script>
+  </body>
+
+  <template id="staff">
+    <div style="position: relative; flex: 0">
+      <div class="flex-all-centered" style="flex-direction: column">
+        <!-- ledger above -->
+        <div
+          style="
+            width: 60px;
+            position: relative;
+            font-size: 8px;
+            padding: 5px 0;
+          "
+        >
+          <div
+            style="height: 1px; background-color: transparent; width: 100%"
+          ></div>
+        </div>
+        <div
+          style="
+            width: 60px;
+            position: relative;
+            font-size: 8px;
+            padding: 5px 0;
+          "
+        >
+          <div
+            style="height: 1px; background-color: transparent; width: 100%"
+          ></div>
+        </div>
+        <div
+          style="
+            width: 60px;
+            position: relative;
+            font-size: 8px;
+            padding: 5px 0;
+          "
+        >
+          <div
+            style="height: 1px; background-color: transparent; width: 100%"
+          ></div>
+        </div>
+        <div
+          style="
+            width: 60px;
+            position: relative;
+            font-size: 8px;
+            padding: 5px 0;
+          "
+        >
+          <div
+            style="height: 1px; background-color: transparent; width: 100%"
+          ></div>
+        </div>
+        <div
+          style="
+            width: 60px;
+            position: relative;
+            font-size: 8px;
+            padding: 5px 0;
+          "
+        >
+          <div
+            style="height: 1px; background-color: transparent; width: 100%"
+          ></div>
+        </div>
+        <!-- ledger above end -->
+        <div style="width: 60px; padding: 5px 0">
+          <div style="height: 1px; background-color: black; width: 100%"></div>
+        </div>
+        <div style="width: 60px; padding: 5px 0">
+          <div
+            style="height: 1px; background-color: transparent; width: 100%"
+          ></div>
+        </div>
+        <div style="width: 60px; padding: 5px 0">
+          <div style="height: 1px; background-color: black; width: 100%"></div>
+        </div>
+        <div style="width: 60px; padding: 5px 0">
+          <div
+            style="height: 1px; background-color: transparent; width: 100%"
+          ></div>
+        </div>
+        <div style="width: 60px; padding: 5px 0">
+          <div style="height: 1px; background-color: black; width: 100%"></div>
+        </div>
+        <div style="width: 60px; padding: 5px 0">
+          <div
+            style="height: 1px; background-color: transparent; width: 100%"
+          ></div>
+        </div>
+        <div style="width: 60px; padding: 5px 0">
+          <div style="height: 1px; background-color: black; width: 100%"></div>
+        </div>
+        <div style="width: 60px; padding: 5px 0">
+          <div
+            style="height: 1px; background-color: transparent; width: 100%"
+          ></div>
+        </div>
+        <div style="width: 60px; padding: 5px 0">
+          <div style="height: 1px; background-color: black; width: 100%"></div>
+        </div>
+        <!-- ledger above -->
+        <div
+          style="
+            width: 60px;
+            position: relative;
+            font-size: 8px;
+            padding: 5px 0;
+          "
+        >
+          <div
+            style="height: 1px; background-color: transparent; width: 100%"
+          ></div>
+        </div>
+        <div
+          style="
+            width: 60px;
+            position: relative;
+            font-size: 8px;
+            padding: 5px 0;
+          "
+        >
+          <div
+            style="height: 1px; background-color: transparent; width: 100%"
+          ></div>
+        </div>
+        <div
+          style="
+            width: 60px;
+            position: relative;
+            font-size: 8px;
+            padding: 5px 0;
+          "
+        >
+          <div
+            style="height: 1px; background-color: transparent; width: 100%"
+          ></div>
+        </div>
+        <div
+          style="
+            width: 60px;
+            position: relative;
+            font-size: 8px;
+            padding: 5px 0;
+          "
+        >
+          <div
+            style="height: 1px; background-color: transparent; width: 100%"
+          ></div>
+        </div>
+        <div
+          style="
+            width: 60px;
+            position: relative;
+            font-size: 8px;
+            padding: 5px 0;
+          "
+        >
+          <div
+            style="height: 1px; background-color: transparent; width: 100%"
+          ></div>
+        </div>
+        <!-- ledger below end -->
+      </div>
+    </div>
+  </template>
+</html>
